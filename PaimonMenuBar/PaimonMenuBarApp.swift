@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct PaimonMenuBarApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if false {}
+        }
+
+        Settings {
+            SettingsView()
         }
     }
 }

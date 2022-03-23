@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C290EF27EAFFB000A30C9F /* AppDelegate.swift */; };
 		76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */; };
-		76CCDDE027EAD1C4009CFC64 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDF27EAD1C4009CFC64 /* ContentView.swift */; };
+		76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */; };
 		76CCDDE227EAD1C5009CFC64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */; };
 		76CCDDE527EAD1C5009CFC64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CCDDE427EAD1C5009CFC64 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76C290EF27EAFFB000A30C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaimonMenuBarApp.swift; sourceTree = "<group>"; };
-		76CCDDDF27EAD1C4009CFC64 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76CCDDE427EAD1C5009CFC64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaimonMenuBar.entitlements; sourceTree = "<group>"; };
@@ -53,10 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */,
-				76CCDDDF27EAD1C4009CFC64 /* ContentView.swift */,
+				76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */,
 				76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */,
 				76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */,
 				76CCDDE327EAD1C5009CFC64 /* Preview Content */,
+				76C290EF27EAFFB000A30C9F /* AppDelegate.swift */,
 			);
 			path = PaimonMenuBar;
 			sourceTree = "<group>";
@@ -139,7 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76CCDDE027EAD1C4009CFC64 /* ContentView.swift in Sources */,
+				76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */,
+				76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */,
 				76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
