@@ -8,14 +8,14 @@
 import Foundation
 
 // https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote?role_id=<uid>&server=<server_type>
-struct GameRecord: Decodable {
+struct GameRecord: Codable {
     var retcode: Int
     var message: String
 
     var data: GameData
 }
 
-struct GameData: Decodable {
+struct GameData: Codable {
     var total_task_num: Int
     var max_resin: Int
     var resin_discount_num_limit: Int
@@ -35,7 +35,7 @@ struct GameData: Decodable {
     var expeditions: [Expeditions]
 }
 
-struct Expeditions: Decodable {
+struct Expeditions: Codable {
     var status: String
     var avatar_side_icon: String
     var remained_time: String

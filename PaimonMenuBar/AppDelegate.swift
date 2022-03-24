@@ -13,6 +13,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var window: NSWindow!
     private var statusItem: NSStatusItem!
 
+    @objc private func openSettingsView() {
+        NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Close main APP window on initial launch
         if let window = NSApplication.shared.windows.first {
@@ -23,8 +27,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
             button.image = NSImage(named: NSImage.Name("FragileResin"))
-            button.imagePosition = NSControl.ImagePosition.imageLeft
-            button.title = "Resin"
+//            button.imagePosition = NSControl.ImagePosition.imageLeft
+//            button.title = "Resin"
         }
 
         setupMenus()
@@ -42,7 +46,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Submenu, preferences, and quit APP
         menu.addItem(NSMenuItem.separator())
         // TODO: fix this
-        menu.addItem(NSMenuItem(title: "Preference", action: nil, keyEquivalent: ","))
+        menu.addItem(NSMenuItem(title: "Preference", action: #selector(openSettingsView), keyEquivalent: ","))
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
 
         statusItem.menu = menu
