@@ -24,7 +24,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             button.image = NSImage(named: NSImage.Name("FragileResin"))
             button.imagePosition = NSControl.ImagePosition.imageLeft
-            button.title = "121 / 160"
+            button.title = "Resin"
         }
 
         setupMenus()
@@ -32,6 +32,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func setupMenus() {
         let menu = NSMenu()
+
+        // Main menu area, render view as NSHostingView
+        let menuItem = NSMenuItem()
+        menuItem.view = NSHostingView(rootView: MenuView())
+        menuItem.view?.frame = NSRect(x: 0, y: 0, width: 280, height: 400)
+        menu.addItem(menuItem)
 
         // Submenu, preferences, and quit APP
         menu.addItem(NSMenuItem.separator())

@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761C67A627EC646400078DC3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761C67A527EC646400078DC3 /* MenuView.swift */; };
 		76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C290EF27EAFFB000A30C9F /* AppDelegate.swift */; };
 		76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */; };
 		76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */; };
 		76CCDDE227EAD1C5009CFC64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */; };
 		76CCDDE527EAD1C5009CFC64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CCDDE427EAD1C5009CFC64 /* Preview Assets.xcassets */; };
+		76D73BBF27EC650500CCDEA6 /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D73BBE27EC650500CCDEA6 /* GameRecord.swift */; };
+		76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D73BC027EC67D300CCDEA6 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		761C67A527EC646400078DC3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		76C290EF27EAFFB000A30C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaimonMenuBarApp.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76CCDDE427EAD1C5009CFC64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaimonMenuBar.entitlements; sourceTree = "<group>"; };
+		76D73BBE27EC650500CCDEA6 /* GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
+		76D73BC027EC67D300CCDEA6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */,
 				76CCDDE327EAD1C5009CFC64 /* Preview Content */,
 				76C290EF27EAFFB000A30C9F /* AppDelegate.swift */,
+				761C67A527EC646400078DC3 /* MenuView.swift */,
+				76D73BBE27EC650500CCDEA6 /* GameRecord.swift */,
+				76D73BC027EC67D300CCDEA6 /* Networking.swift */,
 			);
 			path = PaimonMenuBar;
 			sourceTree = "<group>";
@@ -142,7 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D73BBF27EC650500CCDEA6 /* GameRecord.swift in Sources */,
 				76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */,
+				761C67A627EC646400078DC3 /* MenuView.swift in Sources */,
+				76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */,
 				76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */,
 				76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */,
 			);
@@ -278,6 +290,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +318,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
