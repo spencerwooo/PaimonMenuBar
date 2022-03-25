@@ -13,31 +13,39 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var window: NSWindow!
     private var statusItem: NSStatusItem!
 
+    private lazy var contentView: NSView? = {
+        let view = (statusItem.value(forKey: "window") as? NSWindow)?.contentView
+        return view
+    }()
+
     @objc private func openSettingsView() {
         NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
     }
 
-    @objc private func updateGameRecordVM() async {
-        await GameRecordViewModel.shared.fetchData()
-    }
-
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Update game record on initial launch
         Task {
-            await updateGameRecordVM()
+            await GameRecordViewModel.shared.updateGameRecord()
         }
-
         // Close main APP window on initial launch
         if let window = NSApplication.shared.windows.first {
             window.close()
         }
 
         // Status bar icon (with button)
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        if let button = statusItem.button {
-            button.image = NSImage(named: NSImage.Name("FragileResin"))
-//            button.imagePosition = NSControl.ImagePosition.imageLeft
-//            button.title = "\(currentResin)/\(maxResin)"
-        }
+        statusItem = NSStatusBar.system.statusItem(withLength: 100)
+
+        let hostingView = NSHostingView(rootView: MenuBarResinView())
+        hostingView.translatesAutoresizingMaskIntoConstraints = false
+        guard let contentView = contentView else { return }
+        contentView.addSubview(hostingView)
+
+        NSLayoutConstraint.activate([
+            hostingView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            hostingView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            hostingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            hostingView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+        ])
 
         setupMenus()
     }

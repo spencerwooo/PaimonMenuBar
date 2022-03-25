@@ -66,9 +66,6 @@ struct MenuExtrasView: View {
         }
         .padding([.horizontal, .top])
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .task {
-            await gameRecordVM.fetchData()
-        }
     }
 }
 

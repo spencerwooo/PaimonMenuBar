@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76C2009027EE124B0026D6CC /* MenuBarResinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */; };
 		76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C290EF27EAFFB000A30C9F /* AppDelegate.swift */; };
 		76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */; };
 		76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarResinView.swift; sourceTree = "<group>"; };
 		76C290EF27EAFFB000A30C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaimonMenuBarApp.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */,
 				76CCDDE327EAD1C5009CFC64 /* Preview Content */,
 				76C290EF27EAFFB000A30C9F /* AppDelegate.swift */,
+				76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */,
 				76D73BBE27EC650500CCDEA6 /* GameRecord.swift */,
 				76D73BC027EC67D300CCDEA6 /* Networking.swift */,
 			);
@@ -161,6 +164,7 @@
 				76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */,
 				76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */,
 				76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */,
+				76C2009027EE124B0026D6CC /* MenuBarResinView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

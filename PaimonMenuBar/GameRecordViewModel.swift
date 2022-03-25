@@ -18,9 +18,26 @@ let initGameRecord = GameRecord(
 
 class GameRecordViewModel: ObservableObject {
     static let shared = GameRecordViewModel()
-    @Published var gameRecord: GameRecord = initGameRecord
 
-    func fetchData() async {
+    @Published var gameRecord: GameRecord {
+        didSet {
+            saveGameRecord()
+        }
+    }
+
+    let gameRecordKey = "game_record"
+
+    init() {
+        if let data = UserDefaults.standard.data(forKey: gameRecordKey),
+           let decodedGameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
+        {
+            gameRecord = decodedGameRecord
+        } else {
+            gameRecord = initGameRecord
+        }
+    }
+
+    func updateGameRecord() async {
         print("Fetching data...")
         guard let data = await getGameRecord() else { return }
         DispatchQueue.main.async {
@@ -28,7 +45,13 @@ class GameRecordViewModel: ObservableObject {
         }
     }
 
-    func clearData() {
+    func clearGameRecord() {
         gameRecord = initGameRecord
+    }
+
+    func saveGameRecord() {
+        if let encodedGameRecord = try? JSONEncoder().encode(gameRecord) {
+            UserDefaults.standard.set(encodedGameRecord, forKey: gameRecordKey)
+        }
     }
 }
