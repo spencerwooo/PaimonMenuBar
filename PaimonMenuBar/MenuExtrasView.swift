@@ -2,7 +2,7 @@
 //  MenuView.swift
 //  PaimonMenuBar
 //
-//  Created by Spencer Woo on 2022/3/24.
+//  Created by Spencer Woo on 2022/3/25.
 //
 
 import Foundation
@@ -35,7 +35,7 @@ private func formatFutureDate(timeInterval: String) -> String {
     return futureTime.formatted()
 }
 
-struct MenuView: View {
+struct MenuExtrasView: View {
     @State private var gameRecord = GameRecord(
         retcode: 0, message: "OK",
         data: GameData(
@@ -221,6 +221,6 @@ struct ExtraTaskRewardView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuExtrasView()
     }
 }
