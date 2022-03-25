@@ -36,28 +36,22 @@ func getGameRecord() async -> GameRecord? {
     let api = "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
 
     // Saved properties for constructing the query
-    @AppStorage("uid") var uid: String?
-    @AppStorage("server") var server: GenshinServer?
-    @AppStorage("cookie") var cookie: String?
+    guard let uid: String = UserDefaults.standard.string(forKey: "uid"),
+          let server: String = UserDefaults.standard.string(forKey: "server"),
+          let cookie: String = UserDefaults.standard.string(forKey: "cookie")
+    else { return nil }
 
-    if uid == "" || cookie == "" {
-        return nil
-    }
-
-    guard let url = URL(string: "\(api)?role_id=\(uid!)&server=\(server!.rawValue)") else {
-        print("Invalid URL")
-        return nil
-    }
+    guard let url = URL(string: "\(api)?role_id=\(uid)&server=\(server)") else { return nil }
 
     // Reverse engineering Mihoyo API ;)
-    let DS = getDS(uid: uid!, server: server!.rawValue)
+    let DS = getDS(uid: uid, server: server)
 
     // Construct request with query parameters and relevant headers
     var req = URLRequest(url: url)
     req.httpMethod = "GET"
 
     // Add required headers
-    req.setValue(cookie!, forHTTPHeaderField: "Cookie")
+    req.setValue(cookie, forHTTPHeaderField: "Cookie")
     req.setValue(DS, forHTTPHeaderField: "DS")
     req.setValue("2.19.1", forHTTPHeaderField: "x-rpc-app_version")
     req.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
@@ -67,7 +61,7 @@ func getGameRecord() async -> GameRecord? {
     // Perform HTTP request
     do {
         let (data, _) = try await URLSession.shared.data(for: req)
-        let gameRecord = try JSONDecoder().decode(GameRecord.self, from: data)
+        let gameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
         return gameRecord
     } catch {
         print("Invalid data")

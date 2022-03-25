@@ -36,7 +36,7 @@ struct PreferenceSettingsView: View {
             Text("Cookie")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("Paste your cookie from [bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys)")
+            Text("Paste your cookie from [bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)

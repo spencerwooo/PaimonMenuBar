@@ -7,7 +7,6 @@
 
 import Foundation
 
-// https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote?role_id=<uid>&server=<server_type>
 struct GameRecord: Codable {
     var retcode: Int
     var message: String
@@ -35,8 +34,12 @@ struct GameData: Codable {
     var expeditions: [Expeditions]
 }
 
-struct Expeditions: Codable {
+struct Expeditions: Codable, Hashable {
     var status: String
     var avatar_side_icon: String
     var remained_time: String
+}
+
+class GameRecordViewModel: ObservableObject {
+    
 }

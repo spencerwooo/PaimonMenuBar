@@ -39,13 +39,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Main menu area, render view as NSHostingView
         let menuItem = NSMenuItem()
-        menuItem.view = NSHostingView(rootView: MenuView())
-        menuItem.view?.frame = NSRect(x: 0, y: 0, width: 280, height: 400)
+        let hostingView = NSHostingView(rootView: MenuView())
+        hostingView.frame = NSRect(x: 0, y: 0, width: 280, height: 400)
+        menuItem.view = hostingView
         menu.addItem(menuItem)
 
         // Submenu, preferences, and quit APP
         menu.addItem(NSMenuItem.separator())
-        // TODO: fix this
         menu.addItem(NSMenuItem(title: "Preference", action: #selector(openSettingsView), keyEquivalent: ","))
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
 
