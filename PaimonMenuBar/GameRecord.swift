@@ -39,7 +39,3 @@ struct Expeditions: Codable, Hashable {
     var avatar_side_icon: String
     var remained_time: String
 }
-
-class GameRecordViewModel: ObservableObject {
-    
-}

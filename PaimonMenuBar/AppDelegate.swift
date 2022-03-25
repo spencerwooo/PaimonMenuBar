@@ -17,7 +17,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
     }
 
+    @objc private func updateGameRecordVM() async {
+        await GameRecordViewModel.shared.fetchData()
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
+        Task {
+            await updateGameRecordVM()
+        }
+
         // Close main APP window on initial launch
         if let window = NSApplication.shared.windows.first {
             window.close()
@@ -28,7 +36,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             button.image = NSImage(named: NSImage.Name("FragileResin"))
 //            button.imagePosition = NSControl.ImagePosition.imageLeft
-//            button.title = "Resin"
+//            button.title = "\(currentResin)/\(maxResin)"
         }
 
         setupMenus()

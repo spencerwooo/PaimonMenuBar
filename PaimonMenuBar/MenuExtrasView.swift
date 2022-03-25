@@ -36,45 +36,38 @@ private func formatFutureDate(timeInterval: String) -> String {
 }
 
 struct MenuExtrasView: View {
-    @State private var gameRecord = GameRecord(
-        retcode: 0, message: "OK",
-        data: GameData(
-            total_task_num: 4, max_resin: 200, resin_discount_num_limit: 0, current_resin: 0,
-            current_expedition_num: 0, home_coin_recovery_time: "0", calendar_url: "", max_home_coin: 0,
-            max_expedition_num: 0, finished_task_num: 0, is_extra_task_reward_received: false,
-            current_home_coin: 0, remain_resin_discount_num: 0, resin_recovery_time: "0",
-            expeditions: [Expeditions(status: "Finished", avatar_side_icon: "", remained_time: "0")]))
+    @StateObject var gameRecordVM = GameRecordViewModel.shared
 
     var body: some View {
         VStack(spacing: 8) {
             ResinView(
-                currentResin: gameRecord.data.current_resin, maxResin: gameRecord.data.max_resin,
-                resinRecoveryTime: gameRecord.data.resin_recovery_time)
+                currentResin: gameRecordVM.gameRecord.data.current_resin,
+                maxResin: gameRecordVM.gameRecord.data.max_resin,
+                resinRecoveryTime: gameRecordVM.gameRecord.data.resin_recovery_time)
 
             ExpeditionView(
-                expeditions: gameRecord.data.expeditions,
-                maxExpeditionNum: gameRecord.data.max_expedition_num,
-                currentExpeditionNum: gameRecord.data.current_expedition_num)
+                expeditions: gameRecordVM.gameRecord.data.expeditions,
+                maxExpeditionNum: gameRecordVM.gameRecord.data.max_expedition_num,
+                currentExpeditionNum: gameRecordVM.gameRecord.data.current_expedition_num)
 
             DailyCommissionView(
-                finishedTaskNum: gameRecord.data.finished_task_num,
-                totalTaskNum: gameRecord.data.total_task_num)
+                finishedTaskNum: gameRecordVM.gameRecord.data.finished_task_num,
+                totalTaskNum: gameRecordVM.gameRecord.data.total_task_num)
 
             HomeCoinView(
-                currentHomeCoin: gameRecord.data.current_home_coin,
-                maxHomeCoin: gameRecord.data.max_home_coin,
-                homeCoinRecoveryTime: gameRecord.data.home_coin_recovery_time)
+                currentHomeCoin: gameRecordVM.gameRecord.data.current_home_coin,
+                maxHomeCoin: gameRecordVM.gameRecord.data.max_home_coin,
+                homeCoinRecoveryTime: gameRecordVM.gameRecord.data.home_coin_recovery_time)
 
             ExtraTaskRewardView(
-                remainResinDiscountNum: gameRecord.data.remain_resin_discount_num,
-                resinDiscountNumLimit: gameRecord.data.resin_discount_num_limit,
-                isExtraTaskRewardReceived: gameRecord.data.is_extra_task_reward_received)
+                remainResinDiscountNum: gameRecordVM.gameRecord.data.remain_resin_discount_num,
+                resinDiscountNumLimit: gameRecordVM.gameRecord.data.resin_discount_num_limit,
+                isExtraTaskRewardReceived: gameRecordVM.gameRecord.data.is_extra_task_reward_received)
         }
         .padding([.horizontal, .top])
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .task {
-            guard let resp = await getGameRecord() else { return }
-            gameRecord = resp
+            await gameRecordVM.fetchData()
         }
     }
 }
@@ -219,8 +212,8 @@ struct ExtraTaskRewardView: View {
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuExtrasView()
-    }
-}
+// struct MenuView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MenuExtrasView()
+//    }
+// }
