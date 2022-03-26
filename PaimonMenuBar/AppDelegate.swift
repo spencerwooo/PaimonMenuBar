@@ -36,7 +36,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             window.close()
         }
 
-        // Status bar icon (with button)
+        setupStatusItem()
+        setupMenus()
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        // Hide app icon in dock after all windows are closed
+        NSApp.setActivationPolicy(.accessory)
+        return false
+    }
+
+    private func setupStatusItem() {
         statusItem = NSStatusBar.system.statusItem(withLength: 100)
 
         let hostingView = NSHostingView(rootView: MenuBarResinView())
@@ -50,14 +60,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             hostingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hostingView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
         ])
-
-        setupMenus()
-    }
-
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        print(".accessory")
-        NSApp.setActivationPolicy(.accessory)
-        return false
     }
 
     private func setupMenus() {

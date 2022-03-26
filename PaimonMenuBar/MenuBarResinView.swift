@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MenuBarResinView: View {
     @StateObject var gameRecordVM = GameRecordViewModel.shared
+    @ObservedObject var monitor = NetworkMonitor()
     @AppStorage("update_interval") private var updateInterval: Double = 60 * 6 // Resin restores every 6 minutes
 
     // Init timer before view appears
@@ -35,6 +36,14 @@ struct MenuBarResinView: View {
         .onChange(of: updateInterval) { interval in
             // Update timer when updateInterval changes in settings
             timer = Timer.publish(every: interval, tolerance: 10, on: .main, in: .common).autoconnect()
+        }
+        .onChange(of: monitor.isConnected) { connected in
+            Task {
+                // Update game record when application reconnects to the internet
+                if connected {
+                    await gameRecordVM.updateGameRecord()
+                }
+            }
         }
     }
 }

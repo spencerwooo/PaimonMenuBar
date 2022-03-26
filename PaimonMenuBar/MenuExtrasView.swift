@@ -75,34 +75,36 @@ struct ResinView: View {
     let resinRecoveryTime: String
 
     var body: some View {
-        HStack {
-            Image("FragileResin")
-                .resizable()
-                .frame(width: 16, height: 16)
-            Text("当前树脂")
-                .font(.subheadline)
-                .opacity(0.6)
-            Spacer()
-        }
+        VStack(spacing: 8) {
+            HStack {
+                Image("FragileResin")
+                    .resizable()
+                    .frame(width: 16, height: 16)
+                Text("当前树脂")
+                    .font(.subheadline)
+                    .opacity(0.6)
+                Spacer()
+            }
 
-        Text("\(currentResin)/\(maxResin)")
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .font(.system(.largeTitle).monospaced().bold())
+            Text("\(currentResin)/\(maxResin)")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(.largeTitle).monospaced().bold())
 
-        HStack {
-            Label("距离全部恢复", systemImage: "hourglass.circle")
-            Spacer()
-            Text(formatTimeInterval(timeInterval: resinRecoveryTime))
-                .font(.body.monospaced().bold())
-        }
-        HStack {
-            Label("全部恢复于", systemImage: "clock")
-            Spacer()
-            Text(formatFutureDate(timeInterval: resinRecoveryTime))
-                .font(.body.monospaced().bold())
-        }
+            HStack {
+                Label("距离全部恢复", systemImage: "hourglass.circle")
+                Spacer()
+                Text(formatTimeInterval(timeInterval: resinRecoveryTime))
+                    .font(.body.monospaced().bold())
+            }
+            HStack {
+                Label("全部恢复于", systemImage: "clock")
+                Spacer()
+                Text(formatFutureDate(timeInterval: resinRecoveryTime))
+                    .font(.body.monospaced().bold())
+            }
 
-        Divider()
+            Divider()
+        }
     }
 }
 
@@ -184,8 +186,6 @@ struct HomeCoinView: View {
             Spacer()
             Text("\(currentHomeCoin)/\(maxHomeCoin)")
                 .font(.system(.body).monospaced().bold())
-        }.contextMenu {
-            Menu("恢复时间") {}
         }
     }
 }

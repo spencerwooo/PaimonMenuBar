@@ -30,7 +30,7 @@ struct PreferenceSettingsView: View {
                 }) { editing in
                     isEditing = editing
                 }
-                .frame(width: 360)
+                .frame(width: 400)
 
                 Text("Paimon fetches data every \(updateInterval, specifier: "%.0f") seconds*")
                     .font(.caption)
@@ -131,12 +131,12 @@ struct SettingsView: View {
             PreferenceSettingsView()
                 .frame(width: 500, height: 200)
                 .tabItem {
-                    Label("Preferences", systemImage: "gearshape")
+                    Label("Preferences", systemImage: "gear")
                 }
             ConfigurationSettingsView()
                 .frame(width: 500, height: 320)
                 .tabItem {
-                    Label("Configuration", systemImage: "gear")
+                    Label("Configuration", systemImage: "square.and.pencil")
                 }
             AboutSettingsView()
                 .frame(width: 500, height: 240)
