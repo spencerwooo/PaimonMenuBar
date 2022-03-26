@@ -5,6 +5,7 @@
 //  Created by Spencer Woo on 2022/3/23.
 //
 
+import LaunchAtLogin
 import SwiftUI
 
 enum GenshinServer: String, CaseIterable, Identifiable {
@@ -14,15 +15,14 @@ enum GenshinServer: String, CaseIterable, Identifiable {
 }
 
 struct PreferenceSettingsView: View {
-    @AppStorage("start_at_login") private var startAtLogin: Bool = false
     @AppStorage("update_interval") private var updateInterval: Double = 60 * 6 // Resin restores every 6 minutes
     @State private var isEditing = false
 
     var body: some View {
         VStack {
             Form {
-                Toggle(isOn: $startAtLogin) {
-                    Text("Start at Login")
+                LaunchAtLogin.Toggle {
+                    Text("Launch at login")
                 }
 
                 Slider(value: $updateInterval, in: 60 ... 12 * 60, step: 60, label: {

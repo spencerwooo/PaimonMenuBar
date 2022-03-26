@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7686473C27EEEBB200BCC350 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 7686473B27EEEBB200BCC350 /* LaunchAtLogin */; };
 		76C2009027EE124B0026D6CC /* MenuBarResinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */; };
 		76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C290EF27EAFFB000A30C9F /* AppDelegate.swift */; };
 		76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7686473327EEE87700BCC350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarResinView.swift; sourceTree = "<group>"; };
 		76C290EF27EAFFB000A30C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7686473C27EEEBB200BCC350 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +67,7 @@
 		76CCDDDC27EAD1C4009CFC64 /* PaimonMenuBar */ = {
 			isa = PBXGroup;
 			children = (
+				7686473327EEE87700BCC350 /* Info.plist */,
 				76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */,
 				76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */,
 				76E429A827EDDE000032313C /* GameRecordViewModel.swift */,
@@ -97,12 +101,16 @@
 				76CCDDD627EAD1C4009CFC64 /* Sources */,
 				76CCDDD727EAD1C4009CFC64 /* Frameworks */,
 				76CCDDD827EAD1C4009CFC64 /* Resources */,
+				7686473F27EEED4500BCC350 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PaimonMenuBar;
+			packageProductDependencies = (
+				7686473B27EEEBB200BCC350 /* LaunchAtLogin */,
+			);
 			productName = PaimonMenuBar;
 			productReference = 76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */;
 			productType = "com.apple.product-type.application";
@@ -131,6 +139,9 @@
 				Base,
 			);
 			mainGroup = 76CCDDD127EAD1C4009CFC64;
+			packageReferences = (
+				7686473A27EEEBB200BCC350 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+			);
 			productRefGroup = 76CCDDDB27EAD1C4009CFC64 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -151,6 +162,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7686473F27EEED4500BCC350 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		76CCDDD627EAD1C4009CFC64 /* Sources */ = {
@@ -289,6 +320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PaimonMenuBar/PaimonMenuBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -298,6 +330,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PaimonMenuBar/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -317,6 +350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PaimonMenuBar/PaimonMenuBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -326,6 +360,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PaimonMenuBar/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -362,6 +397,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7686473A27EEEBB200BCC350 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7686473B27EEEBB200BCC350 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7686473A27EEEBB200BCC350 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76CCDDD227EAD1C4009CFC64 /* Project object */;
 }
