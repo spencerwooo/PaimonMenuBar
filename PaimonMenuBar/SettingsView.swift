@@ -62,7 +62,7 @@ struct ConfigurationSettingsView: View {
                     .textFieldStyle(.roundedBorder)
                 Picker("Server:", selection: $server) {
                     ForEach(GenshinServer.allCases, id: \.id) { value in
-                        Text(value.rawValue).tag(value)
+                        Text(value == .cn_gf01 ? "天空岛" : "世界树").tag(value)
                     }
                 }
             }.padding([.bottom])
@@ -113,8 +113,15 @@ struct ConfigurationSettingsView: View {
 
 struct AboutSettingsView: View {
     var body: some View {
-        Text("About")
-            .font(.title)
+        VStack(spacing: 8) {
+            Image(nsImage: NSImage(named: "AppIcon") ?? NSImage())
+            Text(Bundle.main.appName ?? "").font(.headline.bold())
+            Text("Build \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))").font(.subheadline.monospaced())
+
+            Divider()
+
+            Text("Made with love @ [SpencerWoo](https://spencerwoo.com)").font(.caption.monospaced())
+        }
     }
 }
 
@@ -132,7 +139,7 @@ struct SettingsView: View {
                     Label("Configuration", systemImage: "gear")
                 }
             AboutSettingsView()
-                .frame(width: 500, height: 100)
+                .frame(width: 500, height: 240)
                 .tabItem {
                     Label("About", systemImage: "person")
                 }
