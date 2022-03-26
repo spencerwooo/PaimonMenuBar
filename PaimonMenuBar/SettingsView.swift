@@ -124,7 +124,7 @@ struct SettingsView: View {
             PreferenceSettingsView()
                 .frame(width: 500, height: 200)
                 .tabItem {
-                    Label("Preference", systemImage: "gearshape")
+                    Label("Preferences", systemImage: "gearshape")
                 }
             ConfigurationSettingsView()
                 .frame(width: 500, height: 320)

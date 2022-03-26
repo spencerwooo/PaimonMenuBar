@@ -21,7 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7686473327EEE87700BCC350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarResinView.swift; sourceTree = "<group>"; };
 		76C290EF27EAFFB000A30C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +66,6 @@
 		76CCDDDC27EAD1C4009CFC64 /* PaimonMenuBar */ = {
 			isa = PBXGroup;
 			children = (
-				7686473327EEE87700BCC350 /* Info.plist */,
 				76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */,
 				76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */,
 				76E429A827EDDE000032313C /* GameRecordViewModel.swift */,

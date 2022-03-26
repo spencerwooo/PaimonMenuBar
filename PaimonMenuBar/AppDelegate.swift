@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    private var window: NSWindow!
     private var statusItem: NSStatusItem!
 
     private lazy var contentView: NSView? = {
@@ -20,6 +19,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func openSettingsView() {
         NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+        NSApp.setActivationPolicy(.regular)
+        NSApp.activate(ignoringOtherApps: true)
+        NSApp.windows.first?.makeKeyAndOrderFront(self)
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -27,7 +29,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         Task {
             await GameRecordViewModel.shared.updateGameRecord()
         }
+
         // Close main APP window on initial launch
+        NSApp.setActivationPolicy(.accessory)
         if let window = NSApplication.shared.windows.first {
             window.close()
         }
@@ -50,6 +54,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupMenus()
     }
 
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        print(".accessory")
+        NSApp.setActivationPolicy(.accessory)
+        return false
+    }
+
     private func setupMenus() {
         let menu = NSMenu()
 
@@ -62,7 +72,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Submenu, preferences, and quit APP
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Preference", action: #selector(openSettingsView), keyEquivalent: ","))
+        menu.addItem(NSMenuItem(title: "Preferences", action: #selector(openSettingsView), keyEquivalent: ","))
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
 
         statusItem.menu = menu
