@@ -5,11 +5,15 @@
 //  Created by Spencer Woo on 2022/3/25.
 //
 
+import Combine
 import SwiftUI
 
 struct MenuBarResinView: View {
     @StateObject var gameRecordVM = GameRecordViewModel.shared
-    let timer = Timer.publish(every: 10 * 60, tolerance: 10, on: .main, in: .common).autoconnect()
+    @AppStorage("update_interval") private var updateInterval: Double = 60 * 6 // Resin restores every 6 minutes
+
+    // Init timer before view appears
+    @State var timer = Timer.publish(every: 60, tolerance: 10, on: .main, in: .common).autoconnect()
 
     var body: some View {
         HStack(spacing: 4) {
@@ -19,10 +23,18 @@ struct MenuBarResinView: View {
             Text("\(gameRecordVM.gameRecord.data.current_resin)/\(gameRecordVM.gameRecord.data.max_resin)")
                 .font(.system(.body).monospaced().bold())
         }
+        .onAppear {
+            // Update timer based on saved updateInterval after view loads
+            self.timer = Timer.publish(every: updateInterval, tolerance: 10, on: .main, in: .common).autoconnect()
+        }
         .onReceive(timer) { _ in
             Task {
                 await gameRecordVM.updateGameRecord()
             }
+        }
+        .onChange(of: updateInterval) { interval in
+            // Update timer when updateInterval changes in settings
+            timer = Timer.publish(every: interval, tolerance: 10, on: .main, in: .common).autoconnect()
         }
     }
 }

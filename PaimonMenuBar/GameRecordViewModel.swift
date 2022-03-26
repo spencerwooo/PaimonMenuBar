@@ -17,22 +17,27 @@ let initGameRecord = GameRecord(
         expeditions: [Expeditions(status: "Finished", avatar_side_icon: "", remained_time: "0")]))
 
 class GameRecordViewModel: ObservableObject {
+    // Shared GameRecordVM across the application
     static let shared = GameRecordViewModel()
 
     @Published var gameRecord: GameRecord {
         didSet {
+            // Save game record to userdefaults on change
             saveGameRecord()
         }
     }
 
+    // Game record key saved in userdefaults
     let gameRecordKey = "game_record"
 
     init() {
+        // Try to load game record from user defaults
         if let data = UserDefaults.standard.data(forKey: gameRecordKey),
            let decodedGameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
         {
             gameRecord = decodedGameRecord
         } else {
+            // If game record cannot be recovered, init with empty game record object
             gameRecord = initGameRecord
         }
     }

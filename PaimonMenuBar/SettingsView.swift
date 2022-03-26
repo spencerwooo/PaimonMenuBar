@@ -14,9 +14,43 @@ enum GenshinServer: String, CaseIterable, Identifiable {
 }
 
 struct PreferenceSettingsView: View {
+    @AppStorage("start_at_login") private var startAtLogin: Bool = false
+    @AppStorage("update_interval") private var updateInterval: Double = 60 * 6 // Resin restores every 6 minutes
+    @State private var isEditing = false
+
+    var body: some View {
+        VStack {
+            Form {
+                Toggle(isOn: $startAtLogin) {
+                    Text("Start at Login")
+                }
+
+                Slider(value: $updateInterval, in: 60 ... 12 * 60, step: 60, label: {
+                    Text("Update interval:")
+                }) { editing in
+                    isEditing = editing
+                }
+                .frame(width: 360)
+
+                Text("Paimon fetches data every \(updateInterval, specifier: "%.0f") seconds*")
+                    .font(.caption)
+            }
+
+            Label("*Resin replenishes every 6 minutes, for your reference.", image: "FragileResin")
+                .font(.caption)
+                .opacity(0.6)
+        }.padding()
+    }
+}
+
+struct ConfigurationSettingsView: View {
     @AppStorage("uid") private var uid: String = ""
     @AppStorage("server") private var server: GenshinServer = .cn_gf01
     @AppStorage("cookie") private var cookie: String = ""
+
+    @State private var alertText = ""
+    @State private var alertMessage = ""
+    @State private var showAlert = false
 
     var body: some View {
         VStack {
@@ -47,10 +81,24 @@ struct PreferenceSettingsView: View {
 
             HStack {
                 Button {
-                    print("Hi!")
+                    Task {
+                        if let _ = await getGameRecord() {
+                            self.alertText = "👌 It's working!"
+                            self.alertMessage = "Your config is valid."
+                            self.showAlert.toggle()
+                        } else {
+                            self.alertText = "🚫 Whoooops..."
+                            self.alertMessage = "Failed to fetch, check your config."
+                            self.showAlert.toggle()
+                        }
+                    }
                 } label: {
                     Label("Test config", systemImage: "bolt")
                 }
+                .alert(isPresented: self.$showAlert, content: {
+                    Alert(title: Text(alertText), message: Text(alertMessage))
+                })
+
                 Button {
                     uid = ""
                     server = .cn_gf01
@@ -74,14 +122,21 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             PreferenceSettingsView()
+                .frame(width: 500, height: 200)
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("Preference", systemImage: "gearshape")
+                }
+            ConfigurationSettingsView()
+                .frame(width: 500, height: 320)
+                .tabItem {
+                    Label("Configuration", systemImage: "gear")
                 }
             AboutSettingsView()
+                .frame(width: 500, height: 100)
                 .tabItem {
                     Label("About", systemImage: "person")
                 }
-        }.frame(width: 500, height: 320)
+        }
     }
 }
 
@@ -90,6 +145,7 @@ struct SettingsView_Previews: PreviewProvider {
         Group {
             SettingsView()
             PreferenceSettingsView()
+            ConfigurationSettingsView()
             AboutSettingsView()
         }
     }
