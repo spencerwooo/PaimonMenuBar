@@ -88,19 +88,19 @@ struct ResinView: View {
 
             Text("\(currentResin)/\(maxResin)")
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(.largeTitle).monospaced().bold())
+                .font(.system(.largeTitle, design: .monospaced).bold())
 
             HStack {
                 Label("距离全部恢复", systemImage: "hourglass.circle")
                 Spacer()
                 Text(formatTimeInterval(timeInterval: resinRecoveryTime))
-                    .font(.body.monospaced().bold())
+                    .font(.system(.body, design: .monospaced).bold())
             }
             HStack {
                 Label("全部恢复于", systemImage: "clock")
                 Spacer()
                 Text(formatFutureDate(timeInterval: resinRecoveryTime))
-                    .font(.body.monospaced().bold())
+                    .font(.system(.body, design: .monospaced).bold())
             }
 
             Divider()
@@ -149,7 +149,7 @@ struct ExpeditionItemView: View {
             Text(status == "Finished" ? "探险完成" : "剩余探索时间")
             Spacer()
             Text(formatTimeInterval(timeInterval: remainedTime))
-                .font(.system(.body).monospaced().bold())
+                .font(.system(.body, design: .monospaced).bold())
         }
     }
 }
@@ -166,7 +166,7 @@ struct DailyCommissionView: View {
             Text("每日委托")
             Spacer()
             Text("\(finishedTaskNum)/\(totalTaskNum)")
-                .font(.system(.body).monospaced().bold())
+                .font(.system(.body, design: .monospaced).bold())
         }
     }
 }
@@ -185,7 +185,7 @@ struct HomeCoinView: View {
             Text("洞天宝钱")
             Spacer()
             Text("\(currentHomeCoin)/\(maxHomeCoin)")
-                .font(.system(.body).monospaced().bold())
+                .font(.system(.body, design: .monospaced).bold())
         }
     }
 }
@@ -204,7 +204,7 @@ struct ExtraTaskRewardView: View {
             Text("周本")
             Spacer()
             Text("\(remainResinDiscountNum)/\(resinDiscountNumLimit)")
-                .font(.system(.body).monospaced().bold())
+                .font(.system(.body, design: .monospaced).bold())
         }
     }
 }

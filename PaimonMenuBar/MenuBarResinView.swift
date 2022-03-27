@@ -22,7 +22,7 @@ struct MenuBarResinView: View {
                 .resizable()
                 .frame(width: 19, height: 19)
             Text("\(gameRecordVM.gameRecord.data.current_resin)/\(gameRecordVM.gameRecord.data.max_resin)")
-                .font(.system(.body).monospaced().bold())
+                .font(.system(.body, design: .monospaced).bold())
         }
         .onAppear {
             // Update timer based on saved updateInterval after view loads

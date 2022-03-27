@@ -125,11 +125,15 @@ struct AboutSettingsView: View {
         VStack(spacing: 8) {
             Image(nsImage: NSImage(named: "AppIcon") ?? NSImage())
             Text(Bundle.main.appName ?? "").font(.headline.bold())
-            Text("Build \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))").font(.subheadline.monospaced())
+            Text("Build \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
+                .font(.system(.subheadline, design: .monospaced))
 
             Divider()
 
-            Text("Made with love @ [SpencerWoo](https://spencerwoo.com)").font(.caption.monospaced())
+            Text("Made with love @ [SpencerWoo](https://spencerwoo.com)")
+                .font(.system(.caption, design: .monospaced))
+            Text("Icon by [Chawong](https://www.pixiv.net/en/artworks/92415888)")
+                .font(.system(.caption, design: .monospaced))
         }
     }
 }

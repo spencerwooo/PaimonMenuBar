@@ -21,9 +21,12 @@ class GameRecordViewModel: ObservableObject {
     // Shared GameRecordVM across the application
     static let shared = GameRecordViewModel()
 
-    @Published var hostingView = NSHostingView(rootView: MenuExtrasView())
+    @Published var hostingView: NSHostingView<AnyView>?
     @Published var gameRecord: GameRecord {
         didSet {
+            // Update hostingView frame height on gameRecord change
+            let currentExpeditionNum = gameRecord.data.current_expedition_num
+            hostingView?.frame = NSRect(x: 0, y: 0, width: 280, height: 240 + currentExpeditionNum * 32)
             // Save game record to userdefaults on change
             saveGameRecord()
         }
@@ -47,10 +50,7 @@ class GameRecordViewModel: ObservableObject {
     func updateGameRecord() async {
         print("Fetching data...")
         guard let data = await getGameRecord() else { return }
-
         DispatchQueue.main.async {
-            let currentExpeditionNum = data.data.current_expedition_num
-            self.hostingView.frame = NSRect(x: 0, y: 0, width: 280, height: 240 + currentExpeditionNum * 32)
             self.gameRecord = data
         }
     }
