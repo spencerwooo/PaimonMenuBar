@@ -19,11 +19,12 @@ struct PreferenceSettingsView: View {
     @State private var isEditing = false
 
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             Form {
                 LaunchAtLogin.Toggle {
-                    Text("Launch at login")
+                    Text("Launch at Login")
                 }
+                .formLabel(Text("Start:"))
 
                 Slider(value: $updateInterval, in: 60 ... 12 * 60, step: 60, label: {
                     Text("Update interval:")
@@ -33,13 +34,23 @@ struct PreferenceSettingsView: View {
                 .frame(width: 400)
 
                 Text("Paimon fetches data every \(updateInterval, specifier: "%.0f") seconds*")
-                    .font(.caption)
+                    .font(.caption).opacity(0.6)
+
+                Button("Check for Updates") {
+                    print("Hi")
+                }
+                .formLabel(Text("Updates:"))
+
+                Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
+                    .font(.caption).opacity(0.6)
             }
+
+            Divider()
 
             Label("*Resin replenishes every 6 minutes, for your reference.", image: "FragileResin")
                 .font(.caption)
                 .opacity(0.6)
-        }.padding()
+        }
     }
 }
 
@@ -100,11 +111,9 @@ struct ConfigurationSettingsView: View {
                 })
 
                 Button {
-                    uid = ""
-                    server = .cn_gf01
-                    cookie = ""
+                    GameRecordViewModel.shared.clearGameRecord()
                 } label: {
-                    Label("Clear all", systemImage: "trash")
+                    Label("Clear cached data", systemImage: "trash")
                 }
             }
         }.padding()
@@ -129,21 +138,46 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             PreferenceSettingsView()
-                .frame(width: 500, height: 200)
                 .tabItem {
                     Label("Preferences", systemImage: "gear")
                 }
             ConfigurationSettingsView()
-                .frame(width: 500, height: 320)
                 .tabItem {
                     Label("Configuration", systemImage: "square.and.pencil")
                 }
             AboutSettingsView()
-                .frame(width: 500, height: 240)
                 .tabItem {
                     Label("About", systemImage: "person")
                 }
         }
+        .frame(width: 560, height: 320)
+    }
+}
+
+/// Alignment guide for aligning a text field in a `Form`.
+/// Thanks for Jim Dovey  https://developer.apple.com/forums/thread/126268
+extension HorizontalAlignment {
+    private enum ControlAlignment: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            return context[HorizontalAlignment.center]
+        }
+    }
+
+    static let controlAlignment = HorizontalAlignment(ControlAlignment.self)
+}
+
+// Adapted from https://gist.github.com/marcprux/afd2f80baa5b6d60865182a828e83586
+public extension View {
+    /// Attaches a label to this view for laying out in a `Form`
+    /// - Parameter view: the label view to use
+    /// - Returns: an `HStack` with an alignment guide for placing in a form
+    func formLabel<V: View>(_ view: V) -> some View {
+        HStack {
+            view
+            self
+                .alignmentGuide(.controlAlignment) { $0[.leading] }
+        }
+        .alignmentGuide(.leading) { $0[.controlAlignment] }
     }
 }
 
