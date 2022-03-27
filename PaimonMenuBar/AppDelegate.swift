@@ -67,7 +67,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Main menu area, render view as NSHostingView
         let menuItem = NSMenuItem()
-        let hostingView = NSHostingView(rootView: MenuExtrasView())
+        let hostingView = GameRecordViewModel.shared.hostingView
         hostingView.frame = NSRect(x: 0, y: 0, width: 280, height: 400)
         menuItem.view = hostingView
         menu.addItem(menuItem)

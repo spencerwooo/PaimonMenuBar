@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 let initGameRecord = GameRecord(
     retcode: 0, message: "OK",
@@ -20,6 +21,7 @@ class GameRecordViewModel: ObservableObject {
     // Shared GameRecordVM across the application
     static let shared = GameRecordViewModel()
 
+    @Published var hostingView = NSHostingView(rootView: MenuExtrasView())
     @Published var gameRecord: GameRecord {
         didSet {
             // Save game record to userdefaults on change
@@ -45,7 +47,10 @@ class GameRecordViewModel: ObservableObject {
     func updateGameRecord() async {
         print("Fetching data...")
         guard let data = await getGameRecord() else { return }
+
         DispatchQueue.main.async {
+            let currentExpeditionNum = data.data.current_expedition_num
+            self.hostingView.frame = NSRect(x: 0, y: 0, width: 280, height: 240 + currentExpeditionNum * 32)
             self.gameRecord = data
         }
     }
