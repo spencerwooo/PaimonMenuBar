@@ -22,7 +22,7 @@ class GameRecordViewModel: ObservableObject {
     static let shared = GameRecordViewModel()
 
     @Published var hostingView: NSHostingView<AnyView>?
-    @Published var gameRecord: GameRecord {
+    @Published var gameRecord: GameRecord = initGameRecord {
         didSet {
             // Update hostingView frame height on gameRecord change
             let currentExpeditionNum = gameRecord.data.current_expedition_num
@@ -41,17 +41,18 @@ class GameRecordViewModel: ObservableObject {
            let decodedGameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
         {
             gameRecord = decodedGameRecord
-        } else {
-            // If game record cannot be recovered, init with empty game record object
-            gameRecord = initGameRecord
         }
     }
 
-    func updateGameRecord() async {
+    func updateGameRecord() async -> GameRecord? {
         print("Fetching data...")
-        guard let data = await getGameRecord() else { return }
-        DispatchQueue.main.async {
-            self.gameRecord = data
+        if let data = await getGameRecord() {
+            DispatchQueue.main.async {
+                self.gameRecord = data
+            }
+            return data
+        } else {
+            return nil
         }
     }
 

@@ -41,7 +41,7 @@ struct MenuBarResinView: View {
             Task {
                 // Update game record when application reconnects to the internet
                 if connected {
-                    await gameRecordVM.updateGameRecord()
+                    let _ = await gameRecordVM.updateGameRecord()
                 }
             }
         }
