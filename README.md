@@ -12,8 +12,6 @@
 
 ![Screenshot](Assets/screenshot.png)
 
-> There is no pre-built package available for download yet, stay tuned!
-
 ## What's this?
 
 Genshin Impact has got a complicated daily system, consisting of:
@@ -26,6 +24,10 @@ Genshin Impact has got a complicated daily system, consisting of:
 Keeping track of these things daily to decide whether it is time to log into Genshin Impact is a pain-in-the-ass. Hence, I present: `PaimonMenuBar`.
 
 `PaimonMenuBar` is a native SwiftUI app living only in your macOS menu bar. Paimon will periodically pulls data from the Mihoyo API to update your latest in-game statistics - so you can decide whether it's time to continue the grind in that stupid artifact domain ;).
+
+## Download
+
+[![GitHub Release](https://img.shields.io/github/v/release/spencerwooo/PaimonMenuBar?labelColor=282c34&logo=GitHub&style=for-the-badge)](https://github.com/spencerwooo/PaimonMenuBar/releases/latest)
 
 ## TO-DO
 
