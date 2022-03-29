@@ -34,7 +34,7 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 * [x] Start at login.
 * [ ] Backward-compatibility for macOS 11.0.
 * [ ] `i18n` support for at least Simplified Chinese and English.
-* [ ] Manual refresh button.
+* [x] Manual refresh button.
 * [ ] Code-sign and publish as `.dmg`.
 * [ ] Auto-updates and check for update.
 * [ ] Support for multiple accounts.
@@ -50,6 +50,6 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 [MIT](LICENSE)
 
 <div align="center">
-  <img src="assets/footer.png" />
+  <img src="Assets/footer.png" />
   <em>made with ❤️ by <a href="https://spencerwoo.com">spencer woo</a></em>
 </div>

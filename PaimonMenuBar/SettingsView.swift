@@ -63,71 +63,76 @@ struct ConfigurationSettingsView: View {
     @State private var alertMessage = ""
     @State private var showAlert = false
 
-    @State private var loading = false
+    @State private var isLoading = false
 
     var body: some View {
-        ZStack {
-            if loading {
-                ProgressView("Loading ...")
-            }
-            VStack {
-                Text("Personal information")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Form {
-                    TextField("UID:", text: $uid)
-                        .textFieldStyle(.roundedBorder)
-                    Picker("Server:", selection: $server) {
-                        ForEach(GenshinServer.allCases, id: \.id) { value in
-                            Text(value == .cn_gf01 ? "天空岛" : "世界树").tag(value)
-                        }
-                    }
-                }.padding([.bottom])
-
-                Text("Cookie")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Paste your cookie from [bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
-                    .font(.subheadline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                TextEditor(text: $cookie)
-                    .font(.system(.body, design: .monospaced))
-                    .frame(height: 80)
-
-                Spacer()
-
-                HStack {
-                    Button {
-                        Task {
-                            loading = true
-                            if let _ = await GameRecordViewModel.shared.updateGameRecord() {
-                                self.alertText = "👌 It's working!"
-                                self.alertMessage = "Your config is valid."
-                                self.showAlert.toggle()
-                            } else {
-                                self.alertText = "🚫 Whoooops..."
-                                self.alertMessage = "Failed to fetch, check your config."
-                                self.showAlert.toggle()
-                            }
-                            loading = false
-                        }
-                    } label: {
-                        Label("Test config", systemImage: "bolt")
-                    }
-                    .alert(isPresented: self.$showAlert, content: {
-                        Alert(title: Text(alertText), message: Text(alertMessage))
-                    })
-                    .disabled(loading)
-
-                    Button {
-                        GameRecordViewModel.shared.clearGameRecord()
-                    } label: {
-                        Label("Clear cached data", systemImage: "trash")
+        VStack {
+            Text("Personal information")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Form {
+                TextField("UID:", text: $uid)
+                    .textFieldStyle(.roundedBorder)
+                Picker("Server:", selection: $server) {
+                    ForEach(GenshinServer.allCases, id: \.id) { value in
+                        Text(value == .cn_gf01 ? "天空岛" : "世界树").tag(value)
                     }
                 }
+            }.padding([.bottom])
+
+            Text("Cookie")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text("Paste your cookie from [bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
+                .font(.subheadline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            TextEditor(text: $cookie)
+                .font(.system(.body, design: .monospaced))
+                .frame(height: 80)
+
+            Spacer()
+
+            HStack {
+                Button {
+                    Task {
+                        isLoading = true
+                        if let _ = await GameRecordViewModel.shared.updateGameRecord() {
+                            self.alertText = "👌 It's working!"
+                            self.alertMessage = "Your config is valid."
+                            self.showAlert.toggle()
+                        } else {
+                            self.alertText = "🚫 Whoooops..."
+                            self.alertMessage = "Failed to fetch, check your config."
+                            self.showAlert.toggle()
+                        }
+                        isLoading = false
+                    }
+                } label: {
+                    Label {
+                        Text("Test config")
+                    } icon: {
+                        Image(systemName: "bolt")
+                            .opacity(isLoading ? 0 : 1)
+                            .overlay(ProgressView().scaleEffect(0.4).opacity(isLoading ? 1 : 0))
+                    }
+                }
+                .alert(isPresented: self.$showAlert, content: {
+                    Alert(title: Text(alertText), message: Text(alertMessage))
+                })
+                .disabled(isLoading)
+
+                Button {
+                    self.showAlert.toggle()
+                    GameRecordViewModel.shared.clearGameRecord()
+                } label: {
+                    Label("Clear cached data", systemImage: "trash")
+                }
+                .alert(isPresented: self.$showAlert) {
+                    Alert(title: Text("✅ Cached data all cleared!"))
+                }
             }
-        }
-        .padding()
+
+        }.padding()
     }
 }
 
