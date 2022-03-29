@@ -1,0 +1,104 @@
+/* No comment provided by engineer. */
+"*Resin replenishes every 6 minutes, for your reference." = "* 原粹树脂每 6 分钟恢复一点，供参考。";
+
+/* No comment provided by engineer. */
+"✅ Cached data all cleared!" = "✅ 缓存数据全部清除！";
+
+/* No comment provided by engineer. */
+"About" = "关于";
+
+/* No comment provided by engineer. */
+"Check for Updates" = "检查更新";
+
+/* No comment provided by engineer. */
+"Clear cached data" = "清除缓存数据";
+
+/* No comment provided by engineer. */
+"Complete" = "完成";
+
+/* No comment provided by engineer. */
+"Configuration" = "配置信息";
+
+/* No comment provided by engineer. */
+"Current Resin" = "当前树脂";
+
+/* No comment provided by engineer. */
+"Current version: %@ (%@)" = "当前版本：%@ (%@)";
+
+/* No comment provided by engineer. */
+"Daily commissions" = "每日委托";
+
+/* No comment provided by engineer. */
+"ETA" = "全部恢复于";
+
+/* No comment provided by engineer. */
+"Expeditions %lld/%lld" = "探索派遣 %lld/%lld";
+
+/* No comment provided by engineer. */
+"Fully replenished" = "距离全部恢复";
+
+/* No comment provided by engineer. */
+"Launch at Login" = "登录时启动";
+
+/* No comment provided by engineer. */
+"Paimon fetches data every %.0f seconds*" = "派蒙每隔 %.0f 秒更新一次数据 *";
+
+/* No comment provided by engineer. */
+"Paste your cookie from [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys)." = "将 [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys) 的 cookie 粘贴至此处。";
+
+/* No comment provided by engineer. */
+"Personal information" = "个人信息";
+
+/* No comment provided by engineer. */
+"Preferences" = "偏好设置";
+
+/* No comment provided by engineer. */
+"Realm currency" = "洞天宝钱";
+
+/* No comment provided by engineer. */
+"UID:" = "游戏内 UID：";
+
+/* No comment provided by engineer. */
+"Server:" = "服务器：";
+
+/* No comment provided by engineer. */
+"Start:" = "启动：";
+
+/* No comment provided by engineer. */
+"Test config" = "测试配置";
+
+/* No comment provided by engineer. */
+"Update interval:" = "更新频率：";
+
+/* No comment provided by engineer. */
+"Updates:" = "更新：";
+
+/* No comment provided by engineer. */
+"Tomorrow" = "明日";
+
+/* No comment provided by engineer. */
+"Today" = "今日";
+
+/* No comment provided by engineer. */
+"Exploring" = "剩余探索时间";
+
+/* No comment provided by engineer. */
+"Complete" = "探索完成";
+
+/* No comment provided by engineer. */
+"Weekly bosses" = "周本 boss";
+
+/* No comment provided by engineer. */
+"Quit" = "退出";
+
+/* No comment provided by engineer. */
+"👌 It's working!" = "👌 成功！";
+
+/* No comment provided by engineer. */
+"Your config is valid." = "你的配置信息正确无误。";
+
+/* No comment provided by engineer. */
+"🚫 Whoooops..." = "🚫 啊哦……";
+
+/* No comment provided by engineer. */
+"Failed to fetch, check your config." = "数据获取失败，请检查配置。";

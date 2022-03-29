@@ -26,10 +26,10 @@ private func formatFutureDate(timeInterval: String) -> String {
     let futureTime = currentTime.addingTimeInterval(TimeInterval(timeInterval)!)
 
     if Calendar.current.isDateInToday(futureTime) {
-        return "今日 \(futureTime.formatted(date: .omitted, time: .shortened))"
+        return "\(String(localized: "Today")) \(futureTime.formatted(date: .omitted, time: .shortened))"
     }
     if Calendar.current.isDateInTomorrow(futureTime) {
-        return "明日 \(futureTime.formatted(date: .omitted, time: .shortened))"
+        return "\(String(localized: "Tomorrow")) \(futureTime.formatted(date: .omitted, time: .shortened))"
     }
     // This should not happen, but just in case.
     return futureTime.formatted()
@@ -80,7 +80,7 @@ struct ResinView: View {
                 Image("FragileResin")
                     .resizable()
                     .frame(width: 16, height: 16)
-                Text("当前树脂")
+                Text("Current Resin")
                     .font(.subheadline)
                     .opacity(0.6)
                 Spacer()
@@ -91,13 +91,13 @@ struct ResinView: View {
                 .font(.system(.largeTitle, design: .monospaced).bold())
 
             HStack {
-                Label("距离全部恢复", systemImage: "hourglass.circle")
+                Label("Fully replenished", systemImage: "hourglass.circle")
                 Spacer()
                 Text(formatTimeInterval(timeInterval: resinRecoveryTime))
                     .font(.system(.body, design: .monospaced).bold())
             }
             HStack {
-                Label("全部恢复于", systemImage: "clock")
+                Label("ETA", systemImage: "clock")
                 Spacer()
                 Text(formatFutureDate(timeInterval: resinRecoveryTime))
                     .font(.system(.body, design: .monospaced).bold())
@@ -115,7 +115,7 @@ struct ExpeditionView: View {
 
     var body: some View {
         HStack {
-            Text("探索派遣 \(currentExpeditionNum)/\(maxExpeditionNum)")
+            Text("Expeditions \(currentExpeditionNum)/\(maxExpeditionNum)")
                 .font(.subheadline)
                 .opacity(0.6)
             Spacer()
@@ -146,7 +146,7 @@ struct ExpeditionItemView: View {
                 .clipShape(Circle())
                 .overlay(Circle().stroke(status == "Finished" ? Color.green : Color.gray))
                 .frame(width: 20, height: 20)
-            Text(status == "Finished" ? "探险完成" : "剩余探索时间")
+            Text(status == "Finished" ? String(localized: "Complete") : String(localized: "Exploring"))
             Spacer()
             Text(formatTimeInterval(timeInterval: remainedTime))
                 .font(.system(.body, design: .monospaced).bold())
@@ -163,7 +163,7 @@ struct DailyCommissionView: View {
             Image("Commision")
                 .resizable()
                 .frame(width: 20, height: 20, alignment: .leading)
-            Text("每日委托")
+            Text("Daily commissions")
             Spacer()
             Text("\(finishedTaskNum)/\(totalTaskNum)")
                 .font(.system(.body, design: .monospaced).bold())
@@ -182,7 +182,7 @@ struct HomeCoinView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20, height: 20, alignment: .center)
-            Text("洞天宝钱")
+            Text("Realm currency")
             Spacer()
             Text("\(currentHomeCoin)/\(maxHomeCoin)")
                 .font(.system(.body, design: .monospaced).bold())
@@ -201,7 +201,7 @@ struct ExtraTaskRewardView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20, height: 20, alignment: .center)
-            Text("周本")
+            Text("Weekly bosses")
             Spacer()
             Text("\(remainResinDiscountNum)/\(resinDiscountNumLimit)")
                 .font(.system(.body, design: .monospaced).bold())

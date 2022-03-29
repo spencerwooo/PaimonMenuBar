@@ -61,7 +61,8 @@ struct ConfigurationSettingsView: View {
 
     @State private var alertText = ""
     @State private var alertMessage = ""
-    @State private var showAlert = false
+    @State private var showConfigValidAlert = false
+    @State private var showDataClearedAlert = false
 
     @State private var isLoading = false
 
@@ -83,7 +84,7 @@ struct ConfigurationSettingsView: View {
             Text("Cookie")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("Paste your cookie from [bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
+            Text("Paste your cookie from [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)
@@ -97,13 +98,13 @@ struct ConfigurationSettingsView: View {
                     Task {
                         isLoading = true
                         if let _ = await GameRecordViewModel.shared.updateGameRecord() {
-                            self.alertText = "👌 It's working!"
-                            self.alertMessage = "Your config is valid."
-                            self.showAlert.toggle()
+                            self.alertText = String(localized: "👌 It's working!")
+                            self.alertMessage = String(localized: "Your config is valid.")
+                            self.showConfigValidAlert.toggle()
                         } else {
-                            self.alertText = "🚫 Whoooops..."
-                            self.alertMessage = "Failed to fetch, check your config."
-                            self.showAlert.toggle()
+                            self.alertText = String(localized: "🚫 Whoooops...")
+                            self.alertMessage = String(localized: "Failed to fetch, check your config.")
+                            self.showConfigValidAlert.toggle()
                         }
                         isLoading = false
                     }
@@ -116,18 +117,18 @@ struct ConfigurationSettingsView: View {
                             .overlay(ProgressView().scaleEffect(0.4).opacity(isLoading ? 1 : 0))
                     }
                 }
-                .alert(isPresented: self.$showAlert, content: {
+                .alert(isPresented: self.$showConfigValidAlert, content: {
                     Alert(title: Text(alertText), message: Text(alertMessage))
                 })
                 .disabled(isLoading)
 
                 Button {
-                    self.showAlert.toggle()
+                    self.showDataClearedAlert.toggle()
                     GameRecordViewModel.shared.clearGameRecord()
                 } label: {
                     Label("Clear cached data", systemImage: "trash")
                 }
-                .alert(isPresented: self.$showAlert) {
+                .alert(isPresented: self.$showDataClearedAlert) {
                     Alert(title: Text("✅ Cached data all cleared!"))
                 }
             }
