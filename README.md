@@ -5,7 +5,7 @@
 
   <img src="https://img.shields.io/badge/uses-SwiftUI-f05138?labelColor=282c34&logo=swift" alt="Use Swift" />
   <img src="https://img.shields.io/badge/macOS-12.0+-f05138?labelColor=282c34&logo=apple" alt="macOS 12.0+" />
-  <!-- <img src="https://img.shields.io/github/v/release/spencerwooo/PaimonMenuBar?labelColor=282c34&logo=GitHub" alt="GitHub Release" /> -->
+  <a href="https://github.com/spencerwooo/PaimonMenuBar/releases/latest"><img src="https://img.shields.io/github/v/release/spencerwooo/PaimonMenuBar?labelColor=282c34&logo=GitHub" alt="GitHub Release" /></a>
 </div>
 
 ## Demo
@@ -32,10 +32,10 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 * [x] Menu bar of varying height.
 * [x] Configurable data refresh rate.
 * [x] Start at login.
-* [ ] Backward-compatibility for macOS 11.0.
-* [ ] `i18n` support for at least Simplified Chinese and English.
+* [x] `i18n` support for at least Simplified Chinese and English.
 * [x] Manual refresh button.
-* [ ] Code-sign and publish as `.dmg`.
+* [x] ~~Code-sign~~ and publish as `.dmg`.
+* [ ] Backward-compatibility for macOS 11.0.
 * [ ] Auto-updates and check for update.
 * [ ] Support for multiple accounts.
 * [ ] Support for hoyolab? (Maybe)
