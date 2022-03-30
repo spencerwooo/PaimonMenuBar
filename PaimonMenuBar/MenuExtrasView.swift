@@ -15,7 +15,7 @@ private func formatTimeInterval(timeInterval: String) -> String {
     let formatter = DateComponentsFormatter()
     formatter.allowedUnits = [.hour, .minute]
     formatter.unitsStyle = .abbreviated
-    return formatter.string(from: TimeInterval(timeInterval)!)!
+    return formatter.string(from: (TimeInterval(timeInterval) ?? TimeInterval("0"))!) ?? ""
 }
 
 /// Format a date that is of 'timeInterval' seconds away from now
