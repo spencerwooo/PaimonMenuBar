@@ -61,6 +61,9 @@ func getGameRecord() async -> GameRecord? {
     // Perform HTTP request
     do {
         let (data, _) = try await URLSession.shared.data(for: req)
+//        if let string = String(bytes: data, encoding: .utf8) {
+//            print(string)
+//        }
         let gameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
         return gameRecord
     } catch {

@@ -63,6 +63,8 @@ struct MenuExtrasView: View {
                 remainResinDiscountNum: gameRecordVM.gameRecord.data.remain_resin_discount_num,
                 resinDiscountNumLimit: gameRecordVM.gameRecord.data.resin_discount_num_limit,
                 isExtraTaskRewardReceived: gameRecordVM.gameRecord.data.is_extra_task_reward_received)
+
+            ParametricTransformerView(transformer: gameRecordVM.gameRecord.data.transformer)
         }
         .padding([.horizontal, .top])
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -209,8 +211,40 @@ struct ExtraTaskRewardView: View {
     }
 }
 
-// struct MenuView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MenuExtrasView()
-//    }
-// }
+struct ParametricTransformerView: View {
+    let transformer: Transformer
+
+    func formatRecoveryTime(recoveryTime: RecoveryTime) -> String {
+        if recoveryTime.reached {
+            return "✔"
+        } else {
+            return recoveryTime.Day != 0 ? "\(recoveryTime.Day)\(String(localized: "d"))" :
+                recoveryTime.Hour != 0 ? "\(recoveryTime.Hour)\(String(localized: "h"))"
+                : "\(recoveryTime.Minute)\(String(localized: "m"))"
+        }
+    }
+
+    var body: some View {
+        HStack {
+            Image("ParametricTransformer")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 20, height: 20, alignment: .center)
+            Text("Parametric Transformer")
+            Spacer()
+            if transformer.obtained {
+                Text(formatRecoveryTime(recoveryTime: transformer.recovery_time))
+                    .font(.system(.body, design: .monospaced).bold())
+            } else {
+                Text("🚫")
+            }
+        }
+    }
+}
+
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        MenuExtrasView()
+            .frame(height: 430.0)
+    }
+}

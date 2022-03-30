@@ -102,3 +102,6 @@
 
 /* No comment provided by engineer. */
 "Failed to fetch, check your config." = "数据获取失败，请检查配置。";
+
+/* No comment provided by engineer. */
+"Parametric Transformer" = "参量质变仪";
