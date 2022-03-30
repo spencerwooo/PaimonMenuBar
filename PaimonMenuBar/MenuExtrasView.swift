@@ -23,7 +23,7 @@ private func formatTimeInterval(timeInterval: String) -> String {
 /// - Returns: A human-readable string describing the future date
 private func formatFutureDate(timeInterval: String) -> String {
     let currentTime = Date()
-    let futureTime = currentTime.addingTimeInterval(TimeInterval(timeInterval)!)
+    let futureTime = currentTime.addingTimeInterval((TimeInterval(timeInterval) ?? TimeInterval("0"))!)
 
     if Calendar.current.isDateInToday(futureTime) {
         return "\(String(localized: "Today")) \(futureTime.formatted(date: .omitted, time: .shortened))"
