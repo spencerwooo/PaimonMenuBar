@@ -36,9 +36,9 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 * [x] Start at login.
 * [x] `i18n` support for at least Simplified Chinese and English.
 * [x] Manual refresh button.
-* [x] ~~Code-sign~~ and publish as `.dmg`.
+* [x] Code-sign and publish as `.dmg`.
+* [x] ~~Auto-updates and check for update.~~ Publish on the Mac App Store.
 * [ ] Backward-compatibility for macOS 11.0.
-* [ ] Auto-updates and check for update.
 * [ ] Support for multiple accounts.
 * [ ] Support for hoyolab? (Maybe)
 

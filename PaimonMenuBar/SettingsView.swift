@@ -35,14 +35,6 @@ struct PreferenceSettingsView: View {
 
                 Text("Paimon fetches data every \(updateInterval, specifier: "%.0f") seconds*")
                     .font(.caption).opacity(0.6)
-
-                Button("Check for Updates") {
-                    print("Hi")
-                }
-                .formLabel(Text("Updates:"))
-
-                Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
-                    .font(.caption).opacity(0.6)
             }
 
             Divider()
@@ -149,7 +141,7 @@ struct AboutSettingsView: View {
 
             Text("Made with love @ [SpencerWoo](https://spencerwoo.com)")
                 .font(.system(.caption, design: .monospaced))
-            Text("Icon by [Chawong](https://www.pixiv.net/en/artworks/92415888)")
+            Text("Icon by [Chawong](https://www.pixiv.net/en/artworks/92415888) | GitHub: [spencerwooo/PaimonMenuBar](https://github.com/spencerwooo/PaimonMenuBar)")
                 .font(.system(.caption, design: .monospaced))
         }
     }
