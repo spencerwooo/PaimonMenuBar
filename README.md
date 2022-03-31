@@ -14,7 +14,7 @@
 
 ## What's this?
 
-Genshin Impact has got a complicated daily system, consisting of:
+Genshin Impact has got a complicated daily (weekly) system, consisting of:
 
 * 4 Daily commisions.
 * 5 Expeditions.
@@ -37,10 +37,13 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 * [x] `i18n` support for at least Simplified Chinese and English.
 * [x] Manual refresh button.
 * [x] Code-sign and publish as `.dmg`.
-* [x] ~~Auto-updates and check for update.~~ Publish on the Mac App Store.
+* [x] Auto-updates and check for update.
+* [ ] Better first-time installation experience (guidance for initial setup).
+* [ ] Custom website and help for acquiring the cookie.
+* [ ] Help button beside the text field for entering the cookie.
 * [ ] Backward-compatibility for macOS 11.0.
-* [ ] Support for multiple accounts.
-* [ ] Support for hoyolab? (Maybe)
+* [ ] Support for multiple accounts?
+* [ ] Support for hoyolab?
 
 ## Credits
 
