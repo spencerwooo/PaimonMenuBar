@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SUPublicEDKey</key>
-	<string>AhJieofGr0gFEypC7KPkg3f37YZ2Pj9lo2+reSx1a20=</string>
 	<key>SUFeedURL</key>
 	<string></string>
+	<key>SUPublicEDKey</key>
+	<string>AhJieofGr0gFEypC7KPkg3f37YZ2Pj9lo2+reSx1a20=</string>
 </dict>
 </plist>

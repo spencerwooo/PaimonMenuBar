@@ -23,7 +23,6 @@
 		76E986B627EDD5FC004ECC6C /* MenuExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */; };
 		76F9AE6A27F560B10051CDC8 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 76F9AE6927F560B10051CDC8 /* Sparkle */; };
 		76F9AE6D27F570D90051CDC8 /* UpdaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */; };
-		76F9AE6F27F577D10051CDC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F9AE6E27F577D10051CDC8 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +44,6 @@
 		76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuExtrasView.swift; sourceTree = "<group>"; };
 		76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterViewModel.swift; sourceTree = "<group>"; };
-		76F9AE6E27F577D10051CDC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +76,6 @@
 				76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */,
 				76E429A827EDDE000032313C /* GameRecordViewModel.swift */,
 				76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */,
-				76F9AE6E27F577D10051CDC8 /* Info.plist */,
 				76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */,
 				7686474027EF082400BCC350 /* Bundle.swift */,
 				76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */,
@@ -169,7 +166,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76F9AE6F27F577D10051CDC8 /* Info.plist in Resources */,
 				76CCDDE527EAD1C5009CFC64 /* Preview Assets.xcassets in Resources */,
 				7621675327F2FC080023F8B2 /* Localizable.strings in Resources */,
 				76CCDDE227EAD1C5009CFC64 /* Assets.xcassets in Resources */,
@@ -355,7 +351,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"PaimonMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = W2HGAU9MPP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -369,7 +365,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = spencerwoo.PaimonMenuBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -387,7 +383,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"PaimonMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = W2HGAU9MPP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -401,7 +397,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = spencerwoo.PaimonMenuBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
