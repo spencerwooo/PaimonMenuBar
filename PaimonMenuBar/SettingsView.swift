@@ -14,8 +14,22 @@ enum GenshinServer: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
+// This additional view is needed for the disabled state on the menu item to work properly before Monterey.
+// See https://stackoverflow.com/questions/68553092/menu-not-updating-swiftui-bug for more information
+struct CheckForUpdatesView: View {
+    @ObservedObject var updaterViewModel: UpdaterViewModel
+
+    var body: some View {
+        Button("Check for Updates", action: updaterViewModel.checkForUpdates)
+            .disabled(!updaterViewModel.canCheckForUpdates)
+    }
+}
+
 struct PreferenceSettingsView: View {
     @AppStorage("update_interval") private var updateInterval: Double = 60 * 6 // Resin restores every 6 minutes
+
+    @StateObject var updaterViewModel = UpdaterViewModel.shared
+
     @State private var isEditing = false
 
     var body: some View {
@@ -25,6 +39,11 @@ struct PreferenceSettingsView: View {
                     Text("Launch at Login")
                 }
                 .formLabel(Text("Start:"))
+
+                CheckForUpdatesView(updaterViewModel: updaterViewModel)
+                    .formLabel(Text("Updates:"))
+                Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
+                    .font(.caption).opacity(0.6)
 
                 Slider(value: $updateInterval, in: 60 ... 12 * 60, step: 60, label: {
                     Text("Update interval:")

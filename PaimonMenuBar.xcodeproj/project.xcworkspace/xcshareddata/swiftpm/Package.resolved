@@ -8,6 +8,15 @@
         "branch" : "main",
         "revision" : "e8171b3e38a2816f579f58f3dac1522aa39efe41"
       }
+    },
+    {
+      "identity" : "sparkle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sparkle-project/Sparkle",
+      "state" : {
+        "branch" : "2.x",
+        "revision" : "f250bead4b943ef9711c61274a1f52e380afa0e8"
+      }
     }
   ],
   "version" : 2

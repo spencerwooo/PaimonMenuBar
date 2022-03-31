@@ -15,6 +15,11 @@ struct PaimonMenuBarApp: App {
         WindowGroup {
             if false {}
         }
+        .commands {
+            CommandGroup(after: .appInfo) {
+                CheckForUpdatesView(updaterViewModel: UpdaterViewModel.shared)
+            }
+        }
 
         Settings {
             SettingsView()

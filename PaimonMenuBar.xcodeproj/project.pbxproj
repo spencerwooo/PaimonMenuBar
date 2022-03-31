@@ -21,6 +21,9 @@
 		76DD33FE27EF5CA400F0A563 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DD33FD27EF5CA400F0A563 /* NetworkMonitor.swift */; };
 		76E429A927EDDE000032313C /* GameRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E429A827EDDE000032313C /* GameRecordViewModel.swift */; };
 		76E986B627EDD5FC004ECC6C /* MenuExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */; };
+		76F9AE6A27F560B10051CDC8 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 76F9AE6927F560B10051CDC8 /* Sparkle */; };
+		76F9AE6D27F570D90051CDC8 /* UpdaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */; };
+		76F9AE6F27F577D10051CDC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F9AE6E27F577D10051CDC8 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +33,6 @@
 		76B3F03127F2B76100833555 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarResinView.swift; sourceTree = "<group>"; };
 		76C290EF27EAFFB000A30C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaimonMenuBarApp.swift; sourceTree = "<group>"; };
 		76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,6 +43,9 @@
 		76DD33FD27EF5CA400F0A563 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		76E429A827EDDE000032313C /* GameRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordViewModel.swift; sourceTree = "<group>"; };
 		76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuExtrasView.swift; sourceTree = "<group>"; };
+		76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterViewModel.swift; sourceTree = "<group>"; };
+		76F9AE6E27F577D10051CDC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7686473C27EEEBB200BCC350 /* LaunchAtLogin in Frameworks */,
+				76F9AE6A27F560B10051CDC8 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,16 +66,8 @@
 			children = (
 				76B3F03127F2B76100833555 /* README.md */,
 				76CCDDDC27EAD1C4009CFC64 /* PaimonMenuBar */,
-				76CCDDDB27EAD1C4009CFC64 /* Products */,
+				76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */,
 			);
-			sourceTree = "<group>";
-		};
-		76CCDDDB27EAD1C4009CFC64 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		76CCDDDC27EAD1C4009CFC64 /* PaimonMenuBar */ = {
@@ -80,6 +78,8 @@
 				76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */,
 				76E429A827EDDE000032313C /* GameRecordViewModel.swift */,
 				76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */,
+				76F9AE6E27F577D10051CDC8 /* Info.plist */,
+				76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */,
 				7686474027EF082400BCC350 /* Bundle.swift */,
 				76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */,
 				76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */,
@@ -120,9 +120,10 @@
 			name = PaimonMenuBar;
 			packageProductDependencies = (
 				7686473B27EEEBB200BCC350 /* LaunchAtLogin */,
+				76F9AE6927F560B10051CDC8 /* Sparkle */,
 			);
 			productName = PaimonMenuBar;
-			productReference = 76CCDDDA27EAD1C4009CFC64 /* PaimonMenuBar.app */;
+			productReference = 76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -152,8 +153,9 @@
 			mainGroup = 76CCDDD127EAD1C4009CFC64;
 			packageReferences = (
 				7686473A27EEEBB200BCC350 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				76F9AE6827F560B10051CDC8 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
-			productRefGroup = 76CCDDDB27EAD1C4009CFC64 /* Products */;
+			productRefGroup = 76CCDDD127EAD1C4009CFC64;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -167,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F9AE6F27F577D10051CDC8 /* Info.plist in Resources */,
 				76CCDDE527EAD1C5009CFC64 /* Preview Assets.xcassets in Resources */,
 				7621675327F2FC080023F8B2 /* Localizable.strings in Resources */,
 				76CCDDE227EAD1C5009CFC64 /* Assets.xcassets in Resources */,
@@ -206,6 +209,7 @@
 				76D73BBF27EC650500CCDEA6 /* GameRecord.swift in Sources */,
 				76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */,
 				76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */,
+				76F9AE6D27F570D90051CDC8 /* UpdaterViewModel.swift in Sources */,
 				76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */,
 				76DD33FE27EF5CA400F0A563 /* NetworkMonitor.swift in Sources */,
 				76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */,
@@ -348,7 +352,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PaimonMenuBar/PaimonMenuBar.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 102;
@@ -380,7 +384,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PaimonMenuBar/PaimonMenuBar.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 102;
@@ -437,6 +441,14 @@
 				kind = branch;
 			};
 		};
+		76F9AE6827F560B10051CDC8 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				branch = 2.x;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -444,6 +456,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7686473A27EEEBB200BCC350 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
+		};
+		76F9AE6927F560B10051CDC8 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76F9AE6827F560B10051CDC8 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
