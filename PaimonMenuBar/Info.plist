@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>SUFeedURL</key>
-	<string></string>
+	<string>https://raw.githubusercontent.com/spencerwooo/PaimonMenuBar/main/Build/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>AhJieofGr0gFEypC7KPkg3f37YZ2Pj9lo2+reSx1a20=</string>
 </dict>
