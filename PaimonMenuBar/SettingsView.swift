@@ -95,9 +95,18 @@ struct ConfigurationSettingsView: View {
             Text("Cookie")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("Paste your cookie from [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
-                .font(.subheadline)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack {
+                Text("Paste your cookie from [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+                // TODO: change this url to the page for acquiring cookies.
+                Link(destination: URL(string: "https://github.com/spencerwooo/PaimonMenuBar")!) {
+                    Button("?") {
+                        print("Navigating to help page.")
+                    }.clipShape(Circle())
+                }
+            }
             TextEditor(text: $cookie)
                 .font(.system(.body, design: .monospaced))
                 .frame(height: 80)
@@ -160,8 +169,10 @@ struct AboutSettingsView: View {
 
             Text("Made with love @ [SpencerWoo](https://spencerwoo.com)")
                 .font(.system(.caption, design: .monospaced))
-            Text("Icon by [Chawong](https://www.pixiv.net/en/artworks/92415888) | GitHub: [spencerwooo/PaimonMenuBar](https://github.com/spencerwooo/PaimonMenuBar)")
-                .font(.system(.caption, design: .monospaced))
+            Text(
+                "Icon by [Chawong](https://www.pixiv.net/en/artworks/92415888) | GitHub: [spencerwooo/PaimonMenuBar](https://github.com/spencerwooo/PaimonMenuBar)"
+            )
+            .font(.system(.caption, design: .monospaced))
         }
     }
 }

@@ -18,7 +18,10 @@ let initGameRecord = GameRecord(
         current_home_coin: 0, max_home_coin: 2400, home_coin_recovery_time: "0", calendar_url: "",
         transformer: Transformer(
             obtained: true,
-            recovery_time: RecoveryTime(Day: 0, Hour: 0, Minute: 0, Second: 0, reached: false), wiki: "")))
+            recovery_time: RecoveryTime(Day: 0, Hour: 0, Minute: 0, Second: 0, reached: false), wiki: ""
+        )
+    )
+)
 
 class GameRecordViewModel: ObservableObject {
     // Shared GameRecordVM across the application

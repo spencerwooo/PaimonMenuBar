@@ -12,7 +12,7 @@ import SwiftUI
 extension String {
     // MD5 hash from: https://powermanuscript.medium.com/swift-5-2-macos-md5-hash-for-some-simple-use-cases-66be9e274182
     var MD5: String {
-        let computed = Insecure.MD5.hash(data: self.data(using: .utf8)!)
+        let computed = Insecure.MD5.hash(data: data(using: .utf8)!)
         return computed.map { String(format: "%02hhx", $0) }.joined()
     }
 }
@@ -22,7 +22,7 @@ func getDS(uid: String, server: String) -> String {
     let timestamp = Int(Date().timeIntervalSince1970)
 
     // Part 2: a random integer from 100,000 to 200,000
-    let randomString = Int.random(in: 100000 ..< 200000)
+    let randomString = Int.random(in: 100_000 ..< 200_000)
 
     // Part 3: MD5 hash of salt
     let salt = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
@@ -56,7 +56,10 @@ func getGameRecord() async -> GameRecord? {
     req.setValue("2.19.1", forHTTPHeaderField: "x-rpc-app_version")
     req.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
     req.setValue("https://webstatic.mihoyo.com/", forHTTPHeaderField: "Referer")
-    req.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1", forHTTPHeaderField: "User-Agent")
+    req.setValue(
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1",
+        forHTTPHeaderField: "User-Agent"
+    )
 
     // Perform HTTP request
     do {

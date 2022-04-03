@@ -43,26 +43,31 @@ struct MenuExtrasView: View {
             ResinView(
                 currentResin: gameRecordVM.gameRecord.data.current_resin,
                 maxResin: gameRecordVM.gameRecord.data.max_resin,
-                resinRecoveryTime: gameRecordVM.gameRecord.data.resin_recovery_time)
+                resinRecoveryTime: gameRecordVM.gameRecord.data.resin_recovery_time
+            )
 
             ExpeditionView(
                 expeditions: gameRecordVM.gameRecord.data.expeditions,
                 maxExpeditionNum: gameRecordVM.gameRecord.data.max_expedition_num,
-                currentExpeditionNum: gameRecordVM.gameRecord.data.current_expedition_num)
+                currentExpeditionNum: gameRecordVM.gameRecord.data.current_expedition_num
+            )
 
             DailyCommissionView(
                 finishedTaskNum: gameRecordVM.gameRecord.data.finished_task_num,
-                totalTaskNum: gameRecordVM.gameRecord.data.total_task_num)
+                totalTaskNum: gameRecordVM.gameRecord.data.total_task_num
+            )
 
             HomeCoinView(
                 currentHomeCoin: gameRecordVM.gameRecord.data.current_home_coin,
                 maxHomeCoin: gameRecordVM.gameRecord.data.max_home_coin,
-                homeCoinRecoveryTime: gameRecordVM.gameRecord.data.home_coin_recovery_time)
+                homeCoinRecoveryTime: gameRecordVM.gameRecord.data.home_coin_recovery_time
+            )
 
             ExtraTaskRewardView(
                 remainResinDiscountNum: gameRecordVM.gameRecord.data.remain_resin_discount_num,
                 resinDiscountNumLimit: gameRecordVM.gameRecord.data.resin_discount_num_limit,
-                isExtraTaskRewardReceived: gameRecordVM.gameRecord.data.is_extra_task_reward_received)
+                isExtraTaskRewardReceived: gameRecordVM.gameRecord.data.is_extra_task_reward_received
+            )
 
             ParametricTransformerView(transformer: gameRecordVM.gameRecord.data.transformer)
         }
@@ -127,7 +132,8 @@ struct ExpeditionView: View {
             ForEach(expeditions, id: \.self) { expedition in
                 ExpeditionItemView(
                     status: expedition.status, avatar: expedition.avatar_side_icon,
-                    remainedTime: expedition.remained_time)
+                    remainedTime: expedition.remained_time
+                )
             }
         }
 

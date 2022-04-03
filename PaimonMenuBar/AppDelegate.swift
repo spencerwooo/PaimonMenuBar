@@ -24,7 +24,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.windows.first?.makeKeyAndOrderFront(self)
     }
 
-    func applicationDidFinishLaunching(_ notification: Notification) {
+    func applicationDidFinishLaunching(_: Notification) {
         // Update game record on initial launch
         Task {
             await GameRecordViewModel.shared.updateGameRecord()
@@ -40,7 +40,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupMenus()
     }
 
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
         // Hide app icon in dock after all windows are closed
         NSApp.setActivationPolicy(.accessory)
         return false
@@ -58,7 +58,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             hostingView.topAnchor.constraint(equalTo: contentView.topAnchor),
             hostingView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             hostingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hostingView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+            hostingView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
         ])
     }
 
@@ -74,8 +74,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Submenu, preferences, and quit APP
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: String(localized: "Preferences"), action: #selector(openSettingsView), keyEquivalent: ","))
-        menu.addItem(NSMenuItem(title: String(localized: "Quit"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menu
+            .addItem(NSMenuItem(title: String(localized: "Preferences"), action: #selector(openSettingsView),
+                                keyEquivalent: ","))
+        menu
+            .addItem(NSMenuItem(title: String(localized: "Quit"), action: #selector(NSApplication.terminate(_:)),
+                                keyEquivalent: "q"))
 
         statusItem.menu = menu
     }
