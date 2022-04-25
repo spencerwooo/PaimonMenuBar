@@ -74,7 +74,7 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const resp = await fetch('https://api.github.com/repos/spencerwooo/PaimonMenuBar/releases/latest')
   const latest = (await resp.json()) as AppReleaseData
-  return { props: { latest } }
+  return { props: { latest }, revalidate: 60 }
 }
 
 export default Home
