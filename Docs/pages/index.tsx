@@ -6,9 +6,14 @@ import Image from 'next/image'
 import DownloadButton from '../components/DownloadButton'
 import ReleaseInfo from '../components/ReleaseInfo'
 import Screenshot3D from '../components/Screenshot3D'
-import logo from '../images/logo.png'
 import Footer from '../components/Footer'
 import GitHubButton from '../components/GitHubButton'
+import PaimonCan from '../components/PaimonCan'
+import PaimonUses from '../components/PaimonUses'
+import PaimonCookie from '../components/PaimonCookie'
+import HowToGetMyCookie from '../components/HowToGetMyCookie'
+
+import logo from '../images/logo.png'
 
 const Home = ({ latest }: { latest: AppReleaseData }) => {
   return (
@@ -23,7 +28,7 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
       </Head>
 
       <div className="min-h-screen flex flex-col items-center bg-secondary text-primary">
-        <div className="min-h-[60vh] flex space-x-4 items-center">
+        <div className="min-h-[80vh] flex flex-1 space-x-4 items-center">
           <div className="hidden md:block">
             <Screenshot3D />
           </div>
@@ -31,7 +36,7 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
           <div className="max-w-md p-4 space-y-2">
             <Image src={logo} alt="PaimonMenuBar logo" height={140} width={140} priority />
             <h1 className="text-white font-bold text-xl">PaimonMenuBar</h1>
-            <h3 className="tracking-wider">yes, paimon now lives in your macos menubar</h3>
+            <h3 className="tracking-wider">yes, paimon now lives in your macos menubar 😎</h3>
 
             <p className="tracking-wider text-xs opacity-60 pb-8">
               * we dont want a logo clash with the game itself, so ... love from Hu Tao! (credits to{' '}
@@ -55,7 +60,10 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
           </div>
         </div>
 
-        <div className="border max-w-xl w-full">Hi</div>
+        <PaimonCan />
+        <PaimonUses />
+        <PaimonCookie />
+        <HowToGetMyCookie />
 
         <Footer />
       </div>
