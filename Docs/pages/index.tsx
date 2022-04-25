@@ -3,8 +3,9 @@ import type { AppReleaseData } from './types'
 import Image from 'next/image'
 
 import DownloadButton from '../components/DownloadButton'
+import ReleaseInfo from '../components/ReleaseInfo'
 import logo from '../images/logo.png'
-import screenshot from '../images/screenshot-transparent.png'
+import screenshot from '../images/screenshot-transparent-light.png'
 
 const Home = ({ latest }: { latest: AppReleaseData }) => {
   return (
@@ -14,7 +15,7 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
         <div className="max-w-md p-4 space-y-2">
           <Image src={logo} alt="PaimonMenuBar logo" height={140} width={140} priority />
           <h1 className="text-white font-bold text-xl">PaimonMenuBar</h1>
-          <h3 className="tracking-wider"> yes, paimon now lives in your macos menubar </h3>
+          <h3 className="tracking-wider">yes, paimon now lives in your macos menubar</h3>
 
           <p className="tracking-wider text-xs opacity-60 pb-8">
             * we dont want a logo clash with the game itself, so ... love from Hu Tao! (credits to{' '}
@@ -24,7 +25,13 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
             for the logo)
           </p>
 
-          <DownloadButton tag_name={latest.tag_name} />
+          <DownloadButton tagName={latest.tag_name} downloadUrl={latest.assets[0].browser_download_url} />
+          <ReleaseInfo
+            htmlUrl={latest.html_url}
+            publishedAt={latest.published_at}
+            downloadCount={latest.assets[0].download_count}
+            reactions={latest.reactions}
+          />
         </div>
       </div>
     </div>
