@@ -1,14 +1,40 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps } from 'next'
+import type { AppReleaseData } from './types'
 import Image from 'next/image'
-import logo from './logo.png'
 
-const Home: NextPage = () => {
+import DownloadButton from '../components/DownloadButton'
+import logo from '../images/logo.png'
+import screenshot from '../images/screenshot-transparent.png'
+
+const Home = ({ latest }: { latest: AppReleaseData }) => {
   return (
-    <div>
-      <Image src={logo} alt="PaimonMenuBar logo" height={140} width={140} />
-      <h1 className="font-bold text-xl">PaimonMenuBar</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-secondary text-primary">
+      <div className="flex space-x-4 items-center">
+        <Image src={screenshot} alt="PaimonMenuBar screenshot" width={300} height={(300 * 1072) / 652} />
+        <div className="max-w-md p-4 space-y-2">
+          <Image src={logo} alt="PaimonMenuBar logo" height={140} width={140} priority />
+          <h1 className="text-white font-bold text-xl">PaimonMenuBar</h1>
+          <h3 className="tracking-wider"> yes, paimon now lives in your macos menubar </h3>
+
+          <p className="tracking-wider text-xs opacity-60 pb-8">
+            * we dont want a logo clash with the game itself, so ... love from Hu Tao! (credits to{' '}
+            <a href="https://www.pixiv.net/en/artworks/92415888" target="_blank" rel="noopener noreferrer">
+              @chawong
+            </a>{' '}
+            for the logo)
+          </p>
+
+          <DownloadButton tag_name={latest.tag_name} />
+        </div>
+      </div>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const resp = await fetch('https://api.github.com/repos/spencerwooo/PaimonMenuBar/releases/latest')
+  const latest = (await resp.json()) as AppReleaseData
+  return { props: { latest } }
 }
 
 export default Home
