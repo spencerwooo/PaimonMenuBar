@@ -4,7 +4,7 @@ import configScreenshot from '../images/config-screenshot.png'
 
 const HowToGetMyCookie = () => {
   return (
-    <div className="w-full p-4">
+    <div id="how-to-get-my-cookie" className="w-full p-4">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-xl font-black mb-4">how to get my cookie?</h2>
 
@@ -28,7 +28,7 @@ const HowToGetMyCookie = () => {
           configuration stays valid, enjoy!
         </p>
 
-        <h3 className="font-bold mb-2">for na, eu, asia, and sar players</h3>
+        <h3 className="font-bold mb-2">for na, eu, asia, and sar server players</h3>
         <p>(🚧 WIP)</p>
       </div>
     </div>
