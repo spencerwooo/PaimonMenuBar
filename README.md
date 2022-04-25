@@ -10,7 +10,7 @@
 
 ## Demo
 
-![Screenshot](Assets/screenshot.png)
+[![Screenshot](Assets/screenshot.png)](https://paimon.swo.moe)
 
 ## What's this?
 
@@ -38,17 +38,36 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 * [x] Manual refresh button.
 * [x] Code-sign and publish as `.dmg`.
 * [x] Auto-updates and check for update.
+* [x] Custom website and help for acquiring the cookie.
+* [x] Help button beside the text field for entering the cookie.
 * [ ] Better first-time installation experience (guidance for initial setup).
-* [ ] Custom website and help for acquiring the cookie.
-* [ ] Help button beside the text field for entering the cookie.
 * [ ] Backward-compatibility for macOS 11.0.
 * [ ] Support for multiple accounts?
 * [ ] Support for hoyolab?
 
-## Credits
+## Releasing a new version
+
+* Create a build in Xcode, bump the build number, and notarize build.
+* Create a new release on GitHub with a new version tag and increment the build number.
+* Use `create-dmg` to create the `.dmg` file:
+
+  ```bash
+  create-dmg PaimonMenuBar.app
+  ```
+
+* Update appcast.xml with the new version tag and build number:
+
+  ```bash
+  cd <PATH_TO_SPARKLE>/artifacts/sparkle/bin
+  ./generate_appcast <PATH_TO_PROJECT>/PaimonMenuBar/Build/
+
+* Profit.
+
+## Credits and related
 
 * Credits to [@Chawong](https://www.pixiv.net/en/artworks/92415888) for the logo - originally posted on Pixiv - where I have shamelessly stolen from. (Love from Hu Tao :heart:).
 * Credits to the iOS widget made with Scriptable: [[闲聊杂谈][工具分享] iOS 快捷指令/小组件 树脂查询 自动获取，无需手动输入树脂](https://bbs.nga.cn/read.php?tid=29801567).
+* Similar web extension: [daidr/paimon-webext](https://github.com/daidr/paimon-webext).
 
 ## License
 
