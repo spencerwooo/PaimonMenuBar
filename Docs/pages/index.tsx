@@ -4,14 +4,16 @@ import Image from 'next/image'
 
 import DownloadButton from '../components/DownloadButton'
 import ReleaseInfo from '../components/ReleaseInfo'
+import Screenshot3D from '../components/Screenshot3D'
 import logo from '../images/logo.png'
-import screenshot from '../images/screenshot-transparent-light.png'
+import Footer from '../components/Footer'
 
 const Home = ({ latest }: { latest: AppReleaseData }) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-secondary text-primary">
-      <div className="flex space-x-4 items-center">
-        <Image src={screenshot} alt="PaimonMenuBar screenshot" width={300} height={(300 * 1072) / 652} />
+      <div className="flex-1 flex space-x-4 items-center">
+        <Screenshot3D />
+
         <div className="max-w-md p-4 space-y-2">
           <Image src={logo} alt="PaimonMenuBar logo" height={140} width={140} priority />
           <h1 className="text-white font-bold text-xl">PaimonMenuBar</h1>
@@ -34,6 +36,8 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
           />
         </div>
       </div>
+
+      <Footer />
     </div>
   )
 }

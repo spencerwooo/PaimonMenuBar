@@ -4,6 +4,7 @@ specifiers:
   '@types/node': 17.0.26
   '@types/react': 18.0.6
   '@types/react-dom': 18.0.2
+  atropos: ^1.0.2
   autoprefixer: ^10.4.5
   eslint: 8.14.0
   eslint-config-next: 12.1.5
@@ -16,6 +17,7 @@ specifiers:
   typescript: 4.6.3
 
 dependencies:
+  atropos: 1.0.2
   next: 12.1.5_react-dom@18.0.0+react@18.0.0
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
@@ -433,6 +435,11 @@ packages:
   /ast-types-flow/0.0.7:
     resolution: {integrity: sha1-9wtzXGvKGlycItmCw+Oef+ujva0=}
     dev: true
+
+  /atropos/1.0.2:
+    resolution: {integrity: sha512-0RqyHfMyIhRXgnHuSQz2LVOE81jtAQ7EZTrF75ngiipklIsxajZ2vD042EXdiIEDs6eEAzfE10k+YhIbNl4/eg==}
+    engines: {node: '>= 12.0.0'}
+    dev: false
 
   /autoprefixer/10.4.5_postcss@8.4.12:
     resolution: {integrity: sha512-Fvd8yCoA7lNX/OUllvS+aS1I7WRBclGXsepbvT8ZaPgrH24rgXpZzF0/6Hh3ZEkwg+0AES/Osd196VZmYoEFtw==}
