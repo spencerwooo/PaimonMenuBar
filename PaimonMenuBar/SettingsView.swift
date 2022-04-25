@@ -100,8 +100,7 @@ struct ConfigurationSettingsView: View {
                     .font(.subheadline)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Spacer()
-                // TODO: change this url to the page for acquiring cookies.
-                Link(destination: URL(string: "https://github.com/spencerwooo/PaimonMenuBar")!) {
+                Link(destination: URL(string: "https://paimon.swo.moe/#how-to-get-my-cookie")!) {
                     Button("?") {
                         print("Navigating to help page.")
                     }.clipShape(Circle())
@@ -167,7 +166,7 @@ struct AboutSettingsView: View {
 
             Divider()
 
-            Text("Made with love @ [SpencerWoo](https://spencerwoo.com)")
+            Text("Made with love @ [SpencerWoo](https://spencerwoo.com) | Check [Paimon's website](https://paimon.swo.moe)")
                 .font(.system(.caption, design: .monospaced))
             Text(
                 "Icon by [Chawong](https://www.pixiv.net/en/artworks/92415888) | GitHub: [spencerwooo/PaimonMenuBar](https://github.com/spencerwooo/PaimonMenuBar)"
