@@ -8,7 +8,7 @@ export type AppReleaseData = {
     download_count: number
     browser_download_url: string
   }>
-  reactions: {
+  reactions?: {
     total_count: number
     '+1': number
     '-1': number

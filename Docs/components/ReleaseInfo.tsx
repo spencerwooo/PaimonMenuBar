@@ -23,14 +23,16 @@ const ReleaseInfo = ({
   downloadCount: number
   reactions: AppReleaseData['reactions']
 }) => {
-  const reactionsNonZero = Object.entries(reactions).filter(
+  const reactionsNonZero = Object.entries(reactions ?? {}).filter(
     ([key, count]) => key !== 'total_count' && count > 0
   ) as Array<[reactionKeys, number]>
 
   return (
     <div className="flex flex-wrap items-center text-xs gap-x-2 py-2 opacity-60 hover:opacity-80 transition-all duration-150">
       <span>on {new Date(publishedAt).toLocaleDateString()},</span>
-      <span>{downloadCount} downloads,</span>
+      <span>
+        {downloadCount} {downloadCount > 1 ? 'downloads' : 'download'},
+      </span>
 
       <a href={htmlUrl} target="_blank" rel="noopener noreferrer">
         goto release.
