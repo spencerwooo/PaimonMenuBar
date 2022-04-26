@@ -11,8 +11,7 @@ const PaimonUses = () => {
           or{' '}
           <a href="https://www.hoyolab.com/home" target="_blank" rel="noopener noreferrer">
             hoyolab
-          </a>{' '}
-          (🚧 WIP)
+          </a>
         </p>
       </div>
     </div>
