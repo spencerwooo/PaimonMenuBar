@@ -55,3 +55,41 @@ struct RecoveryTime: Codable {
     var Second: Int
     var reached: Bool
 }
+
+enum GenshinServer: String, CaseIterable, Identifiable {
+    case cn_gf01 // 天空岛
+    case cn_qd01 // 世界树
+
+    case os_usa // Global (NA)
+    case os_euro // Global (EU)
+    case os_asia // Global (Asia)
+    case os_cht // Global (SAR)
+
+    var id: String { rawValue }
+}
+
+func getGenshinServerName(server: GenshinServer) -> String {
+    switch server {
+    case .cn_gf01:
+        return "天空岛"
+    case .cn_qd01:
+        return "世界树"
+    case .os_usa:
+        return "NA"
+    case .os_euro:
+        return "EU"
+    case .os_asia:
+        return "Asia"
+    case .os_cht:
+        return "SAR"
+    }
+}
+
+func getCookieSiteUrl(server: GenshinServer) -> String {
+    switch server {
+    case .cn_gf01, .cn_qd01:
+        return "https://bbs.mihoyo.com/ys"
+    case .os_usa, .os_euro, .os_asia, .os_cht:
+        return "https://www.hoyolab.com/home"
+    }
+}

@@ -30,9 +30,6 @@ class GameRecordViewModel: ObservableObject {
     @Published var hostingView: NSHostingView<AnyView>?
     @Published var gameRecord: GameRecord = initGameRecord {
         didSet {
-            // Update hostingView frame height on gameRecord change
-            let currentExpeditionNum = gameRecord.data.current_expedition_num
-            hostingView?.frame = NSRect(x: 0, y: 0, width: 280, height: 265 + currentExpeditionNum * 32)
             // Save game record to userdefaults on change
             saveGameRecord()
         }
@@ -55,6 +52,10 @@ class GameRecordViewModel: ObservableObject {
         if let data = await getGameRecord() {
             DispatchQueue.main.async {
                 self.gameRecord = data
+                // Update hostingView frame height on gameRecord change
+                let currentExpeditionNum = data.data.current_expedition_num
+                print(currentExpeditionNum)
+                self.hostingView?.frame = NSRect(x: 0, y: 0, width: 280, height: 265 + currentExpeditionNum * 32)
             }
             return data
         } else {

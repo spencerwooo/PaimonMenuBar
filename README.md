@@ -40,10 +40,10 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 * [x] Auto-updates and check for update.
 * [x] Custom website and help for acquiring the cookie.
 * [x] Help button beside the text field for entering the cookie.
+* [x] Support for cn and global genshin accounts (米游社 and hoyolab).
 * [ ] Better first-time installation experience (guidance for initial setup).
 * [ ] Backward-compatibility for macOS 11.0.
 * [ ] Support for multiple accounts?
-* [ ] Support for hoyolab?
 
 ## Releasing a new version
 

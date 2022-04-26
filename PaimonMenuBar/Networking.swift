@@ -17,6 +17,10 @@ extension String {
     }
 }
 
+func isCnServer(server: String) -> Bool {
+    return server == GenshinServer.cn_gf01.rawValue || server == GenshinServer.cn_qd01.rawValue
+}
+
 func getDS(uid: String, server: String) -> String {
     // Part 1: current unix timestamp
     let timestamp = Int(Date().timeIntervalSince1970)
@@ -25,7 +29,7 @@ func getDS(uid: String, server: String) -> String {
     let randomString = Int.random(in: 100_000 ..< 200_000)
 
     // Part 3: MD5 hash of salt
-    let salt = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
+    let salt = isCnServer(server: server) ? "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs" : "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
     let sign = "salt=\(salt)&t=\(timestamp)&r=\(randomString)&b=&q=role_id=\(uid)&server=\(server)".MD5
 
     return "\(timestamp),\(randomString),\(sign)"
@@ -33,7 +37,8 @@ func getDS(uid: String, server: String) -> String {
 
 func getGameRecord() async -> GameRecord? {
     // API to query Genshin game record
-    let api = "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
+    let apiCn = "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
+    let apiGlobal = "https://bbs-api-os.hoyolab.com/game_record/app/genshin/api/dailyNote"
 
     // Saved properties for constructing the query
     guard let uid: String = UserDefaults.standard.string(forKey: "uid"),
@@ -41,10 +46,13 @@ func getGameRecord() async -> GameRecord? {
           let cookie: String = UserDefaults.standard.string(forKey: "cookie")
     else { return nil }
 
+    let api = isCnServer(server: server) ? apiCn : apiGlobal
     guard let url = URL(string: "\(api)?role_id=\(uid)&server=\(server)") else { return nil }
 
     // Reverse engineering Mihoyo API ;)
     let DS = getDS(uid: uid, server: server)
+    let appVersion = isCnServer(server: server) ? "2.26.1" : "2.9.1"
+    let clientType = isCnServer(server: server) ? "5" : "2"
 
     // Construct request with query parameters and relevant headers
     var req = URLRequest(url: url)
@@ -53,13 +61,8 @@ func getGameRecord() async -> GameRecord? {
     // Add required headers
     req.setValue(cookie, forHTTPHeaderField: "Cookie")
     req.setValue(DS, forHTTPHeaderField: "DS")
-    req.setValue("2.19.1", forHTTPHeaderField: "x-rpc-app_version")
-    req.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
-    req.setValue("https://webstatic.mihoyo.com/", forHTTPHeaderField: "Referer")
-    req.setValue(
-        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1",
-        forHTTPHeaderField: "User-Agent"
-    )
+    req.setValue(appVersion, forHTTPHeaderField: "x-rpc-app_version")
+    req.setValue(clientType, forHTTPHeaderField: "x-rpc-client_type")
 
     // Perform HTTP request
     do {

@@ -8,12 +8,6 @@
 import LaunchAtLogin
 import SwiftUI
 
-enum GenshinServer: String, CaseIterable, Identifiable {
-    case cn_gf01 // 天空岛
-    case cn_qd01 // 世界树
-    var id: String { rawValue }
-}
-
 // This additional view is needed for the disabled state on the menu item to work properly before Monterey.
 // See https://stackoverflow.com/questions/68553092/menu-not-updating-swiftui-bug for more information
 struct CheckForUpdatesView: View {
@@ -87,7 +81,7 @@ struct ConfigurationSettingsView: View {
                     .textFieldStyle(.roundedBorder)
                 Picker("Server:", selection: $server) {
                     ForEach(GenshinServer.allCases, id: \.id) { value in
-                        Text(value == .cn_gf01 ? "天空岛" : "世界树").tag(value)
+                        Text(getGenshinServerName(server: value)).tag(value)
                     }
                 }
             }.padding([.bottom])
@@ -96,9 +90,12 @@ struct ConfigurationSettingsView: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack {
-                Text("Paste your cookie from [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys).")
+                Text("Paste your cookie from:")
                     .font(.subheadline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                Link(destination: URL(string: getCookieSiteUrl(server: server))!) {
+                    Text(getCookieSiteUrl(server: server))
+                        .font(.subheadline)
+                }
                 Spacer()
                 Link(destination: URL(string: "https://paimon.swo.moe/#how-to-get-my-cookie")!) {
                     Button("?") {
@@ -106,6 +103,7 @@ struct ConfigurationSettingsView: View {
                     }.clipShape(Circle())
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)
                 .font(.system(.body, design: .monospaced))
                 .frame(height: 80)
@@ -166,8 +164,10 @@ struct AboutSettingsView: View {
 
             Divider()
 
-            Text("Made with love @ [SpencerWoo](https://spencerwoo.com) | Check [Paimon's website](https://paimon.swo.moe)")
-                .font(.system(.caption, design: .monospaced))
+            Text(
+                "Made with love @ [SpencerWoo](https://spencerwoo.com) | Check [Paimon's website](https://paimon.swo.moe)"
+            )
+            .font(.system(.caption, design: .monospaced))
             Text(
                 "Icon by [Chawong](https://www.pixiv.net/en/artworks/92415888) | GitHub: [spencerwooo/PaimonMenuBar](https://github.com/spencerwooo/PaimonMenuBar)"
             )
