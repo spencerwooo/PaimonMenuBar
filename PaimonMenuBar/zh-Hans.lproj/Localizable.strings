@@ -1,5 +1,5 @@
 /* No comment provided by engineer. */
-"*Resin replenishes every 6 minutes, for your reference." = "* 原粹树脂每 6 分钟恢复一点，供参考。";
+"*Resin replenishes every 8 minutes, for your reference." = "* 原粹树脂每 8 分钟恢复一点，供参考。";
 
 /* No comment provided by engineer. */
 "✅ Cached data all cleared!" = "✅ 缓存数据全部清除！";
@@ -44,7 +44,7 @@
 "Paimon fetches data every %.0f seconds*" = "派蒙每隔 %.0f 秒更新一次数据 *";
 
 /* No comment provided by engineer. */
-"Paste your cookie from [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys)." = "将 [https://bbs.mihoyo.com/ys](https://bbs.mihoyo.com/ys) 的 cookie 粘贴至此处。";
+"Paste your cookie from:" = "从这里粘贴你的 Cookie：";
 
 /* No comment provided by engineer. */
 "Personal information" = "个人信息";

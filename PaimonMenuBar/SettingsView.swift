@@ -20,7 +20,7 @@ struct CheckForUpdatesView: View {
 }
 
 struct PreferenceSettingsView: View {
-    @AppStorage("update_interval") private var updateInterval: Double = 60 * 6 // Resin restores every 6 minutes
+    @AppStorage("update_interval") private var updateInterval: Double = 60 * 8 // Resin restores every 6 minutes
 
     @StateObject var updaterViewModel = UpdaterViewModel.shared
 
@@ -39,7 +39,7 @@ struct PreferenceSettingsView: View {
                 Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
                     .font(.caption).opacity(0.6)
 
-                Slider(value: $updateInterval, in: 60 ... 12 * 60, step: 60, label: {
+                Slider(value: $updateInterval, in: 60 ... 16 * 60, step: 60, label: {
                     Text("Update interval:")
                 }) { editing in
                     isEditing = editing
@@ -52,7 +52,7 @@ struct PreferenceSettingsView: View {
 
             Divider()
 
-            Label("*Resin replenishes every 6 minutes, for your reference.", image: "FragileResin")
+            Label("*Resin replenishes every 8 minutes, for your reference.", image: "FragileResin")
                 .font(.caption)
                 .opacity(0.6)
         }
@@ -83,7 +83,7 @@ struct ConfigurationSettingsView: View {
                     ForEach(GenshinServer.allCases, id: \.id) { value in
                         Text(getGenshinServerName(server: value)).tag(value)
                     }
-                }
+                }.pickerStyle(SegmentedPickerStyle())
             }.padding([.bottom])
 
             Text("Cookie")
