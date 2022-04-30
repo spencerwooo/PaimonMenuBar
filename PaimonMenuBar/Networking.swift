@@ -42,9 +42,11 @@ func getGameRecord() async -> GameRecord? {
 
     // Saved properties for constructing the query
     guard let uid: String = UserDefaults.standard.string(forKey: "uid"),
-          let server: String = UserDefaults.standard.string(forKey: "server"),
           let cookie: String = UserDefaults.standard.string(forKey: "cookie")
     else { return nil }
+
+    // Set default value for server as .cn_gf01
+    let server: String = UserDefaults.standard.string(forKey: "server") ?? GenshinServer.cn_gf01.rawValue
 
     print("Fetching game record data...", uid, server)
 

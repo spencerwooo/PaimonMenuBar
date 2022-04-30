@@ -21,8 +21,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         button.imagePosition = NSControl.ImagePosition.imageLeading
         button.image = NSImage(named: NSImage.Name("FragileResin"))
         button.image?.isTemplate = true // This sets the resin icon in the statusbar as monochrome
-        button.image?.size.width = 14
-        button.image?.size.height = 14
+        button.image?.size.width = 19
+        button.image?.size.height = 19
 
         let gameRecord = GameRecordViewModel.shared.gameRecord
         if gameRecord.retcode == nil {
