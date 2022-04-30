@@ -71,8 +71,8 @@ struct MenuExtrasView: View {
 
             ParametricTransformerView(transformer: gameRecordVM.gameRecord.data.transformer)
         }
-        .padding([.horizontal, .top])
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding([.horizontal])
+        .padding([.vertical], 8)
     }
 }
 
@@ -121,23 +121,23 @@ struct ExpeditionView: View {
     let currentExpeditionNum: Int
 
     var body: some View {
-        HStack {
-            Text("Expeditions \(currentExpeditionNum)/\(maxExpeditionNum)")
-                .font(.subheadline)
-                .opacity(0.6)
-            Spacer()
-        }
-
-        VStack {
+        VStack(spacing: 8)  {
+            HStack {
+                Text("Expeditions \(currentExpeditionNum)/\(maxExpeditionNum)")
+                    .font(.subheadline)
+                    .opacity(0.6)
+                Spacer()
+            }
+            
             ForEach(expeditions, id: \.self) { expedition in
                 ExpeditionItemView(
                     status: expedition.status, avatar: expedition.avatar_side_icon,
                     remainedTime: expedition.remained_time
                 )
             }
+            
+            Divider()
         }
-
-        Divider()
     }
 }
 

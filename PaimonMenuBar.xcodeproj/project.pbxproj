@@ -11,7 +11,6 @@
 		76085E6427FC23EA00960915 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 76085E6327FC23EA00960915 /* Sparkle */; };
 		7621675327F2FC080023F8B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7621675527F2FC080023F8B2 /* Localizable.strings */; };
 		7686474127EF082400BCC350 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686474027EF082400BCC350 /* Bundle.swift */; };
-		76C2009027EE124B0026D6CC /* MenuBarResinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */; };
 		76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C290EF27EAFFB000A30C9F /* AppDelegate.swift */; };
 		76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */; };
 		76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */; };
@@ -19,7 +18,6 @@
 		76CCDDE527EAD1C5009CFC64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CCDDE427EAD1C5009CFC64 /* Preview Assets.xcassets */; };
 		76D73BBF27EC650500CCDEA6 /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D73BBE27EC650500CCDEA6 /* GameRecord.swift */; };
 		76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D73BC027EC67D300CCDEA6 /* Networking.swift */; };
-		76DD33FE27EF5CA400F0A563 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DD33FD27EF5CA400F0A563 /* NetworkMonitor.swift */; };
 		76E429A927EDDE000032313C /* GameRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E429A827EDDE000032313C /* GameRecordViewModel.swift */; };
 		76E986B627EDD5FC004ECC6C /* MenuExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */; };
 		76F9AE6D27F570D90051CDC8 /* UpdaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */; };
@@ -30,7 +28,6 @@
 		7621675627F2FC0B0023F8B2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7686474027EF082400BCC350 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		76B3F03127F2B76100833555 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarResinView.swift; sourceTree = "<group>"; };
 		76C290EF27EAFFB000A30C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaimonMenuBarApp.swift; sourceTree = "<group>"; };
 		76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -39,7 +36,6 @@
 		76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaimonMenuBar.entitlements; sourceTree = "<group>"; };
 		76D73BBE27EC650500CCDEA6 /* GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
 		76D73BC027EC67D300CCDEA6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		76DD33FD27EF5CA400F0A563 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		76E429A827EDDE000032313C /* GameRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordViewModel.swift; sourceTree = "<group>"; };
 		76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuExtrasView.swift; sourceTree = "<group>"; };
 		76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,8 +78,6 @@
 				76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */,
 				76CCDDE327EAD1C5009CFC64 /* Preview Content */,
 				76C290EF27EAFFB000A30C9F /* AppDelegate.swift */,
-				76C2008F27EE124B0026D6CC /* MenuBarResinView.swift */,
-				76DD33FD27EF5CA400F0A563 /* NetworkMonitor.swift */,
 				76D73BBE27EC650500CCDEA6 /* GameRecord.swift */,
 				76D73BC027EC67D300CCDEA6 /* Networking.swift */,
 			);
@@ -207,9 +201,7 @@
 				76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */,
 				76F9AE6D27F570D90051CDC8 /* UpdaterViewModel.swift in Sources */,
 				76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */,
-				76DD33FE27EF5CA400F0A563 /* NetworkMonitor.swift in Sources */,
 				76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */,
-				76C2009027EE124B0026D6CC /* MenuBarResinView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -332,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
