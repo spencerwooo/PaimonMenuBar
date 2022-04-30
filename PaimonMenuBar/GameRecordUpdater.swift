@@ -1,5 +1,5 @@
 //
-//  GameRecordRenderer.swift
+//  GameRecordUpdater.swift
 //  PaimonMenuBar
 //
 //  Created by Spencer Woo on 2022/3/25.
@@ -11,8 +11,8 @@ import SwiftUI
 import Combine
 import Defaults
 
-class GameRecordRenderer {
-    static let shared = GameRecordRenderer()
+class GameRecordUpdater {
+    static let shared = GameRecordUpdater()
     
     /**
      Fetch latest game record. After finished, UI will be updated accordingly.

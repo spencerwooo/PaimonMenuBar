@@ -115,7 +115,7 @@ struct ConfigurationSettingsView: View {
                 Button {
                     Task {
                         isLoading = true
-                        if let _ = await GameRecordRenderer.shared.fetchGameRecordAndRenderNow() {
+                        if let _ = await GameRecordUpdater.shared.fetchGameRecordAndRenderNow() {
                             self.alertText = String(localized: "👌 It's working!")
                             self.alertMessage = String(localized: "Your config is valid.")
                             self.showConfigValidAlert.toggle()
@@ -142,7 +142,7 @@ struct ConfigurationSettingsView: View {
 
                 Button {
                     self.showDataClearedAlert.toggle()
-                    GameRecordRenderer.shared.clearGameRecord()
+                    GameRecordUpdater.shared.clearGameRecord()
                 } label: {
                     Label("Clear cached data", systemImage: "trash")
                 }

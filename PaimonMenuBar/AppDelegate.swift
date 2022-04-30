@@ -52,7 +52,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Update game record on initial launch
         print("App is started")
-        GameRecordRenderer.shared.tryFetchGameRecordAndRender()
+        GameRecordUpdater.shared.tryFetchGameRecordAndRender()
 
         // Close main APP window on initial launch
         NSApp.setActivationPolicy(.accessory)
