@@ -7,6 +7,7 @@
 
 import LaunchAtLogin
 import SwiftUI
+import Defaults
 
 // This additional view is needed for the disabled state on the menu item to work properly before Monterey.
 // See https://stackoverflow.com/questions/68553092/menu-not-updating-swiftui-bug for more information
@@ -20,7 +21,7 @@ struct CheckForUpdatesView: View {
 }
 
 struct PreferenceSettingsView: View {
-    @StateObject var gameRecordVM = GameRecordViewModel.shared
+    @Default(.recordUpdateInterval) private var recordUpdateInterval
 
     @StateObject var updaterViewModel = UpdaterViewModel.shared
 
@@ -39,14 +40,14 @@ struct PreferenceSettingsView: View {
                 Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
                     .font(.caption).opacity(0.6)
 
-                Slider(value: $gameRecordVM.recordUpdateInterval, in: 60 ... 16 * 60, step: 60, label: {
+                Slider(value: $recordUpdateInterval, in: 60 ... 16 * 60, step: 60, label: {
                     Text("Update interval:")
                 }) { editing in
                     isEditing = editing
                 }
                 .frame(width: 400)
 
-                Text("Paimon fetches data every \(gameRecordVM.recordUpdateInterval, specifier: "%.0f") seconds*")
+                Text("Paimon fetches data every \(recordUpdateInterval, specifier: "%.0f") seconds*")
                     .font(.caption).opacity(0.6)
             }
 
@@ -60,9 +61,9 @@ struct PreferenceSettingsView: View {
 }
 
 struct ConfigurationSettingsView: View {
-    @AppStorage("uid") private var uid: String = ""
-    @AppStorage("server") private var server: GenshinServer = .cn_gf01
-    @AppStorage("cookie") private var cookie: String = ""
+    @Default(.uid) private var uid
+    @Default(.server) private var server
+    @Default(.cookie) private var cookie
 
     @State private var alertText = ""
     @State private var alertMessage = ""
@@ -81,7 +82,7 @@ struct ConfigurationSettingsView: View {
                     .textFieldStyle(.roundedBorder)
                 Picker("Server:", selection: $server) {
                     ForEach(GenshinServer.allCases, id: \.id) { value in
-                        Text(getGenshinServerName(server: value)).tag(value)
+                        Text(value.serverName).tag(value)
                     }
                 }.pickerStyle(SegmentedPickerStyle())
             }.padding([.bottom])
@@ -92,8 +93,8 @@ struct ConfigurationSettingsView: View {
             HStack {
                 Text("Paste your cookie from:")
                     .font(.subheadline)
-                Link(destination: URL(string: getCookieSiteUrl(server: server))!) {
-                    Text(getCookieSiteUrl(server: server))
+                Link(destination: URL(string: server.cookieSiteUrl)!) {
+                    Text(server.cookieSiteUrl)
                         .font(.subheadline)
                 }
                 Spacer()
@@ -114,7 +115,7 @@ struct ConfigurationSettingsView: View {
                 Button {
                     Task {
                         isLoading = true
-                        if let _ = await GameRecordViewModel.shared.updateGameRecordNow() {
+                        if let _ = await GameRecordRenderer.shared.fetchGameRecordAndRenderNow() {
                             self.alertText = String(localized: "👌 It's working!")
                             self.alertMessage = String(localized: "Your config is valid.")
                             self.showConfigValidAlert.toggle()
@@ -141,7 +142,7 @@ struct ConfigurationSettingsView: View {
 
                 Button {
                     self.showDataClearedAlert.toggle()
-                    GameRecordViewModel.shared.clearGameRecord()
+                    GameRecordRenderer.shared.clearGameRecord()
                 } label: {
                     Label("Clear cached data", systemImage: "trash")
                 }

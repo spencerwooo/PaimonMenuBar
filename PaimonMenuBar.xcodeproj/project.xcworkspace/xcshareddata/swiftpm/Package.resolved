@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3535f3d088113cf24705014eec6a17f0fd73237f"
+      }
+    },
+    {
       "identity" : "launchatlogin",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/LaunchAtLogin",
