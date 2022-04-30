@@ -46,6 +46,8 @@ func getGameRecord() async -> GameRecord? {
           let cookie: String = UserDefaults.standard.string(forKey: "cookie")
     else { return nil }
 
+    print("Fetching game record data...", uid, server)
+
     let api = isCnServer(server: server) ? apiCn : apiGlobal
     guard let url = URL(string: "\(api)?role_id=\(uid)&server=\(server)") else { return nil }
 

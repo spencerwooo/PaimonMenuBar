@@ -8,7 +8,10 @@
 import Foundation
 
 struct GameRecord: Codable {
-    var retcode: Int
+    /**
+     We specifically use nil to mark that this GameRecord is valid. The server will always present this field in the response.
+     */
+    var retcode: Int?
     var message: String
 
     var data: GameData

@@ -10,12 +10,34 @@ import Foundation
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    private var statusItem: NSStatusItem!
+    private(set) static var shared: AppDelegate!
 
-    private lazy var contentView: NSView? = {
-        let view = (statusItem.value(forKey: "window") as? NSWindow)?.contentView
-        return view
-    }()
+    /** Must be called in the main thread to avoid race condition. */
+    func updateStatusBar() {
+        assert(Thread.isMainThread)
+
+        guard let button = statusItem.button else { return }
+
+        button.imagePosition = NSControl.ImagePosition.imageLeading
+        button.image = NSImage(named: NSImage.Name("FragileResin"))
+        button.image?.isTemplate = true // This sets the resin icon in the statusbar as monochrome
+        button.image?.size.width = 14
+        button.image?.size.height = 14
+
+        let gameRecord = GameRecordViewModel.shared.gameRecord
+        if gameRecord.retcode == nil {
+            button.title = "" // Cookie Not configured
+        } else {
+            button.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
+        }
+
+        let currentExpeditionNum = gameRecord.data.current_expedition_num
+        // 271 = 299 (ViewHeight with Padding) - 28
+        menuItemMain.frame = NSRect(x: 0, y: 0, width: 280, height: 271 + currentExpeditionNum * 28)
+    }
+
+    private var statusItem: NSStatusItem!
+    private var menuItemMain: NSHostingView<MenuExtrasView>!
 
     @objc private func openSettingsView() {
         NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
@@ -25,10 +47,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_: Notification) {
+        AppDelegate.shared = self
+
         // Update game record on initial launch
-        Task {
-            await GameRecordViewModel.shared.updateGameRecord()
-        }
+        print("App is started")
+        GameRecordViewModel.shared.tryUpdateGameRecord()
 
         // Close main APP window on initial launch
         NSApp.setActivationPolicy(.accessory)
@@ -36,8 +59,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             window.close()
         }
 
-        setupStatusItem()
-        setupMenus()
+        setupStatusBar()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
@@ -46,30 +68,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return false
     }
 
-    private func setupStatusItem() {
-        statusItem = NSStatusBar.system.statusItem(withLength: 100)
-
-        let hostingView = NSHostingView(rootView: MenuBarResinView())
-        hostingView.translatesAutoresizingMaskIntoConstraints = false
-        guard let contentView = contentView else { return }
-        contentView.addSubview(hostingView)
-
-        NSLayoutConstraint.activate([
-            hostingView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            hostingView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            hostingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hostingView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-        ])
-    }
-
-    private func setupMenus() {
+    private func setupStatusBar() {
         let menu = NSMenu()
 
         // Main menu area, render view as NSHostingView
+        menuItemMain = NSHostingView(rootView: MenuExtrasView())
         let menuItem = NSMenuItem()
-        GameRecordViewModel.shared.hostingView = NSHostingView(rootView: AnyView(MenuExtrasView()))
-        GameRecordViewModel.shared.hostingView?.frame = NSRect(x: 0, y: 0, width: 280, height: 425)
-        menuItem.view = GameRecordViewModel.shared.hostingView
+        menuItem.view = menuItemMain
         menu.addItem(menuItem)
 
         // Submenu, preferences, and quit APP
@@ -81,6 +86,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             .addItem(NSMenuItem(title: String(localized: "Quit"), action: #selector(NSApplication.terminate(_:)),
                                 keyEquivalent: "q"))
 
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.menu = menu
+
+        updateStatusBar()
     }
 }

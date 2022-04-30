@@ -20,7 +20,7 @@ struct CheckForUpdatesView: View {
 }
 
 struct PreferenceSettingsView: View {
-    @AppStorage("update_interval") private var updateInterval: Double = 60 * 8 // Resin restores every 6 minutes
+    @StateObject var gameRecordVM = GameRecordViewModel.shared
 
     @StateObject var updaterViewModel = UpdaterViewModel.shared
 
@@ -39,14 +39,14 @@ struct PreferenceSettingsView: View {
                 Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
                     .font(.caption).opacity(0.6)
 
-                Slider(value: $updateInterval, in: 60 ... 16 * 60, step: 60, label: {
+                Slider(value: $gameRecordVM.recordUpdateInterval, in: 60 ... 16 * 60, step: 60, label: {
                     Text("Update interval:")
                 }) { editing in
                     isEditing = editing
                 }
                 .frame(width: 400)
 
-                Text("Paimon fetches data every \(updateInterval, specifier: "%.0f") seconds*")
+                Text("Paimon fetches data every \(gameRecordVM.recordUpdateInterval, specifier: "%.0f") seconds*")
                     .font(.caption).opacity(0.6)
             }
 
@@ -114,7 +114,7 @@ struct ConfigurationSettingsView: View {
                 Button {
                     Task {
                         isLoading = true
-                        if let _ = await GameRecordViewModel.shared.updateGameRecord() {
+                        if let _ = await GameRecordViewModel.shared.updateGameRecordNow() {
                             self.alertText = String(localized: "👌 It's working!")
                             self.alertMessage = String(localized: "Your config is valid.")
                             self.showConfigValidAlert.toggle()
