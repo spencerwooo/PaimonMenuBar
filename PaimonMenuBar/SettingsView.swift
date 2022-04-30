@@ -131,7 +131,7 @@ struct ConfigurationSettingsView: View {
                     } icon: {
                         Image(systemName: "bolt")
                             .opacity(isLoading ? 0 : 1)
-                            .overlay(ProgressView().scaleEffect(0.4).opacity(isLoading ? 1 : 0))
+                            .overlay(isLoading ? ProgressView().scaleEffect(0.4) : nil)
                     }
                 }
                 .alert(isPresented: self.$showConfigValidAlert, content: {
