@@ -10,33 +10,32 @@ import Foundation
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    static private(set) var shared: AppDelegate!
-    
+    private(set) static var shared: AppDelegate!
+
     /** Must be called in the main thread to avoid race condition. */
     func updateStatusBar() {
         assert(Thread.isMainThread)
-        
+
         guard let button = statusItem.button else { return }
-        
+
         button.imagePosition = NSControl.ImagePosition.imageLeading
-        button.image = NSImage(named:NSImage.Name("FragileResin"))
-        button.image?.isTemplate = true
-        button.image?.size.width = 19
-        button.image?.size.height = 19
-        
+        button.image = NSImage(named: NSImage.Name("FragileResin"))
+        button.image?.isTemplate = true // This sets the resin icon in the statusbar as monochrome
+        button.image?.size.width = 14
+        button.image?.size.height = 14
+
         let gameRecord = GameRecordViewModel.shared.gameRecord
         if gameRecord.retcode == nil {
             button.title = "" // Cookie Not configured
         } else {
-            button.title = String(gameRecord.data.current_resin)
+            button.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
         }
-        
+
         let currentExpeditionNum = gameRecord.data.current_expedition_num
         // 271 = 299 (ViewHeight with Padding) - 28
         menuItemMain.frame = NSRect(x: 0, y: 0, width: 280, height: 271 + currentExpeditionNum * 28)
     }
-    
+
     private var statusItem: NSStatusItem!
     private var menuItemMain: NSHostingView<MenuExtrasView>!
 
@@ -49,7 +48,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         AppDelegate.shared = self
-        
+
         // Update game record on initial launch
         print("App is started")
         GameRecordViewModel.shared.tryUpdateGameRecord()
@@ -89,7 +88,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.menu = menu
-        
+
         updateStatusBar()
     }
 }

@@ -121,21 +121,21 @@ struct ExpeditionView: View {
     let currentExpeditionNum: Int
 
     var body: some View {
-        VStack(spacing: 8)  {
+        VStack(spacing: 8) {
             HStack {
                 Text("Expeditions \(currentExpeditionNum)/\(maxExpeditionNum)")
                     .font(.subheadline)
                     .opacity(0.6)
                 Spacer()
             }
-            
+
             ForEach(expeditions, id: \.self) { expedition in
                 ExpeditionItemView(
                     status: expedition.status, avatar: expedition.avatar_side_icon,
                     remainedTime: expedition.remained_time
                 )
             }
-            
+
             Divider()
         }
     }
