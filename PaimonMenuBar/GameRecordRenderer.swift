@@ -11,7 +11,7 @@ import SwiftUI
 import Combine
 import Defaults
 
-class GameRecordRenderer: ObservableObject {
+class GameRecordRenderer {
     static let shared = GameRecordRenderer()
     
     /**
