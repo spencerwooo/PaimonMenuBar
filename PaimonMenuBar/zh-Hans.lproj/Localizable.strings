@@ -2,16 +2,10 @@
 "*Resin replenishes every 8 minutes, for your reference." = "* 原粹树脂每 8 分钟恢复一点，供参考。";
 
 /* No comment provided by engineer. */
-"✅ Cached data all cleared!" = "✅ 缓存数据全部清除！";
-
-/* No comment provided by engineer. */
 "About" = "关于";
 
 /* No comment provided by engineer. */
 "Check for Updates" = "检查更新";
-
-/* No comment provided by engineer. */
-"Clear cached data" = "清除缓存数据";
 
 /* No comment provided by engineer. */
 "Complete" = "完成";
@@ -108,3 +102,6 @@
 
 /* No comment provided by engineer. */
 "Parametric Transformer" = "参量质变仪";
+
+/* No comment provided by engineer. */
+"Update: %@" = "更新时间：%@";

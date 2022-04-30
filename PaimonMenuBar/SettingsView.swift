@@ -68,7 +68,6 @@ struct ConfigurationSettingsView: View {
     @State private var alertText = ""
     @State private var alertMessage = ""
     @State private var showConfigValidAlert = false
-    @State private var showDataClearedAlert = false
 
     @State private var isLoading = false
 
@@ -113,6 +112,7 @@ struct ConfigurationSettingsView: View {
 
             HStack {
                 Button {
+                    GameRecordUpdater.shared.clearGameRecord()
                     Task {
                         isLoading = true
                         if let _ = await GameRecordUpdater.shared.fetchGameRecordAndRenderNow() {
@@ -139,16 +139,6 @@ struct ConfigurationSettingsView: View {
                     Alert(title: Text(alertText), message: Text(alertMessage))
                 })
                 .disabled(isLoading)
-
-                Button {
-                    self.showDataClearedAlert.toggle()
-                    GameRecordUpdater.shared.clearGameRecord()
-                } label: {
-                    Label("Clear cached data", systemImage: "trash")
-                }
-                .alert(isPresented: self.$showDataClearedAlert) {
-                    Alert(title: Text("✅ Cached data all cleared!"))
-                }
             }
 
         }.padding()

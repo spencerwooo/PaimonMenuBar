@@ -9,6 +9,20 @@ import Foundation
 import SwiftUI
 import Defaults
 
+class RelativeFormatter {
+    private let df = DateFormatter()
+    
+    init() {
+        df.dateStyle = DateFormatter.Style.long
+        df.timeStyle = DateFormatter.Style.short
+        df.doesRelativeDateFormatting = true
+    }
+    
+    func string(time: Date) -> String {
+        return df.string(from: time)
+    }
+}
+
 /// Return the formatted time interval in a human-readable string
 /// - Parameter timeInterval: A time interval represented in seconds
 /// - Returns: A human-readable string representing the time interval
@@ -38,13 +52,14 @@ private func formatFutureDate(timeInterval: String) -> String {
 
 struct MenuExtrasView: View {
     @Default(.lastGameRecord) private var lastGameRecord
-
+    
     var body: some View {
         VStack(spacing: 8) {
             ResinView(
                 currentResin: lastGameRecord.data.current_resin,
                 maxResin: lastGameRecord.data.max_resin,
-                resinRecoveryTime: lastGameRecord.data.resin_recovery_time
+                resinRecoveryTime: lastGameRecord.data.resin_recovery_time,
+                fetchAt: lastGameRecord.fetchAt
             )
 
             ExpeditionView(
@@ -81,10 +96,13 @@ struct ResinView: View {
     let currentResin: Int
     let maxResin: Int
     let resinRecoveryTime: String
+    let fetchAt: Date?
+    
+    private let formatter = RelativeFormatter()
 
     var body: some View {
         VStack(spacing: 8) {
-            HStack {
+            HStack(spacing: 4) {
                 Image("FragileResin")
                     .resizable()
                     .frame(width: 16, height: 16)
@@ -92,6 +110,11 @@ struct ResinView: View {
                     .font(.subheadline)
                     .opacity(0.6)
                 Spacer()
+                if fetchAt != nil {
+                    Text("Update: \(formatter.string(time: fetchAt!))")
+                        .font(.subheadline)
+                        .opacity(0.6)
+                }
             }
 
             Text("\(currentResin)/\(maxResin)")
@@ -252,6 +275,7 @@ struct ParametricTransformerView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuExtrasView()
+            .frame(width: 280.0)
             .frame(height: 430.0)
     }
 }

@@ -26,7 +26,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         button.image?.size.height = 19
 
         let gameRecord = Defaults[.lastGameRecord]
-        if gameRecord.retcode == nil {
+        if gameRecord.fetchAt == nil {
             button.title = "" // Cookie Not configured
         } else {
             button.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
