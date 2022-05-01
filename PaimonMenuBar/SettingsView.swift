@@ -5,9 +5,9 @@
 //  Created by Spencer Woo on 2022/3/23.
 //
 
+import Defaults
 import LaunchAtLogin
 import SwiftUI
-import Defaults
 
 // This additional view is needed for the disabled state on the menu item to work properly before Monterey.
 // See https://stackoverflow.com/questions/68553092/menu-not-updating-swiftui-bug for more information

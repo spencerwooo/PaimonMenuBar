@@ -6,9 +6,9 @@
 //
 
 import AppKit
+import Defaults
 import Foundation
 import SwiftUI
-import Defaults
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private(set) static var shared: AppDelegate!

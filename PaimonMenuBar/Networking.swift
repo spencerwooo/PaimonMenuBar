@@ -6,8 +6,8 @@
 //
 
 import CryptoKit
-import Foundation
 import Defaults
+import Foundation
 
 extension String {
     // MD5 hash from: https://powermanuscript.medium.com/swift-5-2-macos-md5-hash-for-some-simple-use-cases-66be9e274182
@@ -39,7 +39,7 @@ func getGameRecord() async -> GameRecord? {
     let uid = Defaults[.uid]
     let server = Defaults[.server]
     let cookie = Defaults[.cookie]
-    guard !uid.isEmpty && !cookie.isEmpty else {
+    guard !uid.isEmpty, !cookie.isEmpty else {
         print("Fetch skipped, because cookie is not set")
         return nil
     }

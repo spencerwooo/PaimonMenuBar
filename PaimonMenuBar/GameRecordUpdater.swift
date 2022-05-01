@@ -5,15 +5,15 @@
 //  Created by Spencer Woo on 2022/3/25.
 //
 
+import Combine
+import Defaults
 import Foundation
 import Network
 import SwiftUI
-import Combine
-import Defaults
 
 class GameRecordUpdater {
     static let shared = GameRecordUpdater()
-    
+
     /**
      Fetch latest game record. After finished, UI will be updated accordingly.
      */
@@ -99,27 +99,27 @@ class GameRecordUpdater {
     }
 
     // MARK: -
-    
+
     private var initialized = false
 
     init() {
         startNetworkActivityUpdater()
         resetUpdateTimer()
-        
+
         Defaults.observe(.recordUpdateInterval) { _ in
             self.onRecordUpdateIntervalChanged()
         }.tieToLifetime(of: self)
-        
+
         Defaults.observe(.lastGameRecord) { _ in
             self.onGameRecordChanged()
         }.tieToLifetime(of: self)
-        
+
         initialized = true
     }
 
     private func onGameRecordChanged() {
         assert(Thread.isMainThread)
-        
+
         guard initialized else { return }
 
         print("GameRecord is updated: ", Defaults[.lastGameRecord])
@@ -128,7 +128,7 @@ class GameRecordUpdater {
 
     private func onRecordUpdateIntervalChanged() {
         assert(Thread.isMainThread)
-        
+
         guard initialized else { return }
 
         print("RecordUpdateInterval is changed: ", Defaults[.recordUpdateInterval])

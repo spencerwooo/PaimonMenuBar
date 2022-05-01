@@ -5,9 +5,9 @@
 //  Created by Spencer Woo on 2022/3/25.
 //
 
+import Defaults
 import Foundation
 import SwiftUI
-import Defaults
 
 /// Return the formatted time interval in a human-readable string
 /// - Parameter timeInterval: A time interval represented in seconds
