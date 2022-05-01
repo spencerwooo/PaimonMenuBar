@@ -5,8 +5,8 @@
 //  Created by Spencer Woo on 2022/3/24.
 //
 
-import Foundation
 import Defaults
+import Foundation
 
 struct GameRecord: Codable, Defaults.Serializable {
     /**
@@ -14,12 +14,12 @@ struct GameRecord: Codable, Defaults.Serializable {
      When this field is not present, it means the record is not a real record (e.g. empty record).
      */
     var fetchAt: Date?
-    
+
     var retcode: Int
     var message: String
 
     var data: GameData
-    
+
     static let empty = GameRecord(
         fetchAt: nil, // Indicate an empty record
         retcode: 0,
@@ -90,7 +90,7 @@ enum GenshinServer: String, CaseIterable, Identifiable, Defaults.Serializable {
     case os_cht // Global (SAR)
 
     var id: String { rawValue }
-    
+
     var serverName: String {
         switch self {
         case .cn_gf01:
@@ -107,7 +107,7 @@ enum GenshinServer: String, CaseIterable, Identifiable, Defaults.Serializable {
             return "SAR"
         }
     }
-    
+
     var isCNServer: Bool {
         switch self {
         case .cn_gf01, .cn_qd01:
@@ -116,7 +116,7 @@ enum GenshinServer: String, CaseIterable, Identifiable, Defaults.Serializable {
             return false
         }
     }
-    
+
     var cookieSiteUrl: String {
         switch self {
         case .cn_gf01, .cn_qd01:

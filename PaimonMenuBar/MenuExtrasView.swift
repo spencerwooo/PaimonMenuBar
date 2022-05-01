@@ -5,19 +5,19 @@
 //  Created by Spencer Woo on 2022/3/25.
 //
 
+import Defaults
 import Foundation
 import SwiftUI
-import Defaults
 
 class RelativeFormatter {
     private let df = DateFormatter()
-    
+
     init() {
         df.dateStyle = DateFormatter.Style.long
         df.timeStyle = DateFormatter.Style.short
         df.doesRelativeDateFormatting = true
     }
-    
+
     func string(time: Date) -> String {
         return df.string(from: time)
     }
@@ -52,7 +52,7 @@ private func formatFutureDate(timeInterval: String) -> String {
 
 struct MenuExtrasView: View {
     @Default(.lastGameRecord) private var lastGameRecord
-    
+
     var body: some View {
         VStack(spacing: 8) {
             ResinView(
@@ -97,7 +97,7 @@ struct ResinView: View {
     let maxResin: Int
     let resinRecoveryTime: String
     let fetchAt: Date?
-    
+
     private let formatter = RelativeFormatter()
 
     var body: some View {
