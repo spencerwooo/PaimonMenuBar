@@ -6,8 +6,8 @@
 //
 
 import CryptoKit
+import Defaults
 import Foundation
-import SwiftUI
 
 extension String {
     // MD5 hash from: https://powermanuscript.medium.com/swift-5-2-macos-md5-hash-for-some-simple-use-cases-66be9e274182
@@ -17,11 +17,7 @@ extension String {
     }
 }
 
-func isCnServer(server: String) -> Bool {
-    return server == GenshinServer.cn_gf01.rawValue || server == GenshinServer.cn_qd01.rawValue
-}
-
-func getDS(uid: String, server: String) -> String {
+func getDS(uid: String, server: GenshinServer) -> String {
     // Part 1: current unix timestamp
     let timestamp = Int(Date().timeIntervalSince1970)
 
@@ -29,7 +25,7 @@ func getDS(uid: String, server: String) -> String {
     let randomString = Int.random(in: 100_000 ..< 200_000)
 
     // Part 3: MD5 hash of salt
-    let salt = isCnServer(server: server) ? "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs" : "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
+    let salt = server.isCNServer ? "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs" : "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
     let sign = "salt=\(salt)&t=\(timestamp)&r=\(randomString)&b=&q=role_id=\(uid)&server=\(server)".MD5
 
     return "\(timestamp),\(randomString),\(sign)"
@@ -40,23 +36,23 @@ func getGameRecord() async -> GameRecord? {
     let apiCn = "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
     let apiGlobal = "https://bbs-api-os.hoyolab.com/game_record/app/genshin/api/dailyNote"
 
-    // Saved properties for constructing the query
-    guard let uid: String = UserDefaults.standard.string(forKey: "uid"),
-          let cookie: String = UserDefaults.standard.string(forKey: "cookie")
-    else { return nil }
-
-    // Set default value for server as .cn_gf01
-    let server: String = UserDefaults.standard.string(forKey: "server") ?? GenshinServer.cn_gf01.rawValue
+    let uid = Defaults[.uid]
+    let server = Defaults[.server]
+    let cookie = Defaults[.cookie]
+    guard !uid.isEmpty, !cookie.isEmpty else {
+        print("Fetch skipped, because cookie is not set")
+        return nil
+    }
 
     print("Fetching game record data...", uid, server)
 
-    let api = isCnServer(server: server) ? apiCn : apiGlobal
+    let api = server.isCNServer ? apiCn : apiGlobal
     guard let url = URL(string: "\(api)?role_id=\(uid)&server=\(server)") else { return nil }
 
     // Reverse engineering Mihoyo API ;)
     let DS = getDS(uid: uid, server: server)
-    let appVersion = isCnServer(server: server) ? "2.26.1" : "2.9.1"
-    let clientType = isCnServer(server: server) ? "5" : "2"
+    let appVersion = server.isCNServer ? "2.26.1" : "2.9.1"
+    let clientType = server.isCNServer ? "5" : "2"
 
     // Construct request with query parameters and relevant headers
     var req = URLRequest(url: url)

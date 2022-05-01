@@ -5,6 +5,7 @@
 //  Created by Spencer Woo on 2022/3/25.
 //
 
+import Defaults
 import Foundation
 import SwiftUI
 
@@ -36,40 +37,40 @@ private func formatFutureDate(timeInterval: String) -> String {
 }
 
 struct MenuExtrasView: View {
-    @StateObject var gameRecordVM = GameRecordViewModel.shared
+    @Default(.lastGameRecord) private var lastGameRecord
 
     var body: some View {
         VStack(spacing: 8) {
             ResinView(
-                currentResin: gameRecordVM.gameRecord.data.current_resin,
-                maxResin: gameRecordVM.gameRecord.data.max_resin,
-                resinRecoveryTime: gameRecordVM.gameRecord.data.resin_recovery_time
+                currentResin: lastGameRecord.data.current_resin,
+                maxResin: lastGameRecord.data.max_resin,
+                resinRecoveryTime: lastGameRecord.data.resin_recovery_time
             )
 
             ExpeditionView(
-                expeditions: gameRecordVM.gameRecord.data.expeditions,
-                maxExpeditionNum: gameRecordVM.gameRecord.data.max_expedition_num,
-                currentExpeditionNum: gameRecordVM.gameRecord.data.current_expedition_num
+                expeditions: lastGameRecord.data.expeditions,
+                maxExpeditionNum: lastGameRecord.data.max_expedition_num,
+                currentExpeditionNum: lastGameRecord.data.current_expedition_num
             )
 
             DailyCommissionView(
-                finishedTaskNum: gameRecordVM.gameRecord.data.finished_task_num,
-                totalTaskNum: gameRecordVM.gameRecord.data.total_task_num
+                finishedTaskNum: lastGameRecord.data.finished_task_num,
+                totalTaskNum: lastGameRecord.data.total_task_num
             )
 
             HomeCoinView(
-                currentHomeCoin: gameRecordVM.gameRecord.data.current_home_coin,
-                maxHomeCoin: gameRecordVM.gameRecord.data.max_home_coin,
-                homeCoinRecoveryTime: gameRecordVM.gameRecord.data.home_coin_recovery_time
+                currentHomeCoin: lastGameRecord.data.current_home_coin,
+                maxHomeCoin: lastGameRecord.data.max_home_coin,
+                homeCoinRecoveryTime: lastGameRecord.data.home_coin_recovery_time
             )
 
             ExtraTaskRewardView(
-                remainResinDiscountNum: gameRecordVM.gameRecord.data.remain_resin_discount_num,
-                resinDiscountNumLimit: gameRecordVM.gameRecord.data.resin_discount_num_limit,
-                isExtraTaskRewardReceived: gameRecordVM.gameRecord.data.is_extra_task_reward_received
+                remainResinDiscountNum: lastGameRecord.data.remain_resin_discount_num,
+                resinDiscountNumLimit: lastGameRecord.data.resin_discount_num_limit,
+                isExtraTaskRewardReceived: lastGameRecord.data.is_extra_task_reward_received
             )
 
-            ParametricTransformerView(transformer: gameRecordVM.gameRecord.data.transformer)
+            ParametricTransformerView(transformer: lastGameRecord.data.transformer)
         }
         .padding([.horizontal])
         .padding([.vertical], 8)

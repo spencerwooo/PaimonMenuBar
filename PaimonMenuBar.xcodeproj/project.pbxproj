@@ -16,11 +16,14 @@
 		76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */; };
 		76CCDDE227EAD1C5009CFC64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */; };
 		76CCDDE527EAD1C5009CFC64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CCDDE427EAD1C5009CFC64 /* Preview Assets.xcassets */; };
-		76D73BBF27EC650500CCDEA6 /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D73BBE27EC650500CCDEA6 /* GameRecord.swift */; };
+		76D73BBF27EC650500CCDEA6 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D73BBE27EC650500CCDEA6 /* DataModels.swift */; };
 		76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D73BC027EC67D300CCDEA6 /* Networking.swift */; };
-		76E429A927EDDE000032313C /* GameRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E429A827EDDE000032313C /* GameRecordViewModel.swift */; };
+		76E429A927EDDE000032313C /* GameRecordUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E429A827EDDE000032313C /* GameRecordUpdater.swift */; };
 		76E986B627EDD5FC004ECC6C /* MenuExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */; };
 		76F9AE6D27F570D90051CDC8 /* UpdaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */; };
+		9F38F96F281D1BE90004D240 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38F96E281D1BE90004D240 /* Defaults.swift */; };
+		9F38F972281D4D000004D240 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 9F38F971281D4D000004D240 /* Defaults */; };
+		9F38F974281D4D120004D240 /* Defaults+Workaround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38F973281D4D120004D240 /* Defaults+Workaround.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +37,14 @@
 		76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76CCDDE427EAD1C5009CFC64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaimonMenuBar.entitlements; sourceTree = "<group>"; };
-		76D73BBE27EC650500CCDEA6 /* GameRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
+		76D73BBE27EC650500CCDEA6 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		76D73BC027EC67D300CCDEA6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		76E429A827EDDE000032313C /* GameRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordViewModel.swift; sourceTree = "<group>"; };
+		76E429A827EDDE000032313C /* GameRecordUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordUpdater.swift; sourceTree = "<group>"; };
 		76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuExtrasView.swift; sourceTree = "<group>"; };
 		76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaimonMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterViewModel.swift; sourceTree = "<group>"; };
+		9F38F96E281D1BE90004D240 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		9F38F973281D4D120004D240 /* Defaults+Workaround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Workaround.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F38F972281D4D000004D240 /* Defaults in Frameworks */,
 				76085E6127FC23B000960915 /* LaunchAtLogin in Frameworks */,
 				76085E6427FC23EA00960915 /* Sparkle in Frameworks */,
 			);
@@ -70,16 +76,18 @@
 				7621675527F2FC080023F8B2 /* Localizable.strings */,
 				76CCDDDD27EAD1C4009CFC64 /* PaimonMenuBarApp.swift */,
 				76E986B527EDD5FC004ECC6C /* MenuExtrasView.swift */,
-				76E429A827EDDE000032313C /* GameRecordViewModel.swift */,
+				76E429A827EDDE000032313C /* GameRecordUpdater.swift */,
 				76CCDDDF27EAD1C4009CFC64 /* SettingsView.swift */,
 				76F9AE6C27F570D90051CDC8 /* UpdaterViewModel.swift */,
+				9F38F96E281D1BE90004D240 /* Defaults.swift */,
 				7686474027EF082400BCC350 /* Bundle.swift */,
 				76CCDDE127EAD1C5009CFC64 /* Assets.xcassets */,
 				76CCDDE627EAD1C5009CFC64 /* PaimonMenuBar.entitlements */,
 				76CCDDE327EAD1C5009CFC64 /* Preview Content */,
 				76C290EF27EAFFB000A30C9F /* AppDelegate.swift */,
-				76D73BBE27EC650500CCDEA6 /* GameRecord.swift */,
+				76D73BBE27EC650500CCDEA6 /* DataModels.swift */,
 				76D73BC027EC67D300CCDEA6 /* Networking.swift */,
+				9F38F973281D4D120004D240 /* Defaults+Workaround.swift */,
 			);
 			path = PaimonMenuBar;
 			sourceTree = "<group>";
@@ -112,6 +120,7 @@
 			packageProductDependencies = (
 				76085E6027FC23B000960915 /* LaunchAtLogin */,
 				76085E6327FC23EA00960915 /* Sparkle */,
+				9F38F971281D4D000004D240 /* Defaults */,
 			);
 			productName = PaimonMenuBar;
 			productReference = 76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */;
@@ -145,6 +154,7 @@
 			packageReferences = (
 				76085E5F27FC23B000960915 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				76085E6227FC23EA00960915 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				9F38F970281D4D000004D240 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 76CCDDD127EAD1C4009CFC64;
 			projectDirPath = "";
@@ -195,11 +205,13 @@
 			files = (
 				76E986B627EDD5FC004ECC6C /* MenuExtrasView.swift in Sources */,
 				7686474127EF082400BCC350 /* Bundle.swift in Sources */,
-				76E429A927EDDE000032313C /* GameRecordViewModel.swift in Sources */,
-				76D73BBF27EC650500CCDEA6 /* GameRecord.swift in Sources */,
+				76E429A927EDDE000032313C /* GameRecordUpdater.swift in Sources */,
+				9F38F974281D4D120004D240 /* Defaults+Workaround.swift in Sources */,
+				76D73BBF27EC650500CCDEA6 /* DataModels.swift in Sources */,
 				76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */,
 				76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */,
 				76F9AE6D27F570D90051CDC8 /* UpdaterViewModel.swift in Sources */,
+				9F38F96F281D1BE90004D240 /* Defaults.swift in Sources */,
 				76CCDDE027EAD1C4009CFC64 /* SettingsView.swift in Sources */,
 				76CCDDDE27EAD1C4009CFC64 /* PaimonMenuBarApp.swift in Sources */,
 			);
@@ -437,6 +449,14 @@
 				kind = branch;
 			};
 		};
+		9F38F970281D4D000004D240 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -449,6 +469,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 76085E6227FC23EA00960915 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
+		};
+		9F38F971281D4D000004D240 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F38F970281D4D000004D240 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

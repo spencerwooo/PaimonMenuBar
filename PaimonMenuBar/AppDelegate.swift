@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import Defaults
 import Foundation
 import SwiftUI
 
@@ -24,7 +25,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         button.image?.size.width = 19
         button.image?.size.height = 19
 
-        let gameRecord = GameRecordViewModel.shared.gameRecord
+        let gameRecord = Defaults[.lastGameRecord]
         if gameRecord.retcode == nil {
             button.title = "" // Cookie Not configured
         } else {
@@ -51,7 +52,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Update game record on initial launch
         print("App is started")
-        GameRecordViewModel.shared.tryUpdateGameRecord()
+        GameRecordUpdater.shared.tryFetchGameRecordAndRender()
 
         // Close main APP window on initial launch
         NSApp.setActivationPolicy(.accessory)
