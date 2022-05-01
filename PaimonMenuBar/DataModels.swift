@@ -10,16 +10,19 @@ import Foundation
 
 struct GameRecord: Codable, Defaults.Serializable {
     /**
-     We specifically use nil to mark that this GameRecord is valid. The server will always present this field in the response.
+     This field is not returned by server. Instead, it is set by us after fetching.
+     When this field is not present, it means the record is not a real record (e.g. empty record).
      */
-    var retcode: Int?
+    var fetchAt: Date?
+
+    var retcode: Int
     var message: String
 
     var data: GameData
 
     static let empty = GameRecord(
-        retcode: nil, // Indicate that this is a mock record
-
+        fetchAt: nil, // Indicate an empty record
+        retcode: 0,
         message: "OK",
         data: GameData(
             current_resin: 0, max_resin: 160, resin_recovery_time: "0", finished_task_num: 0,

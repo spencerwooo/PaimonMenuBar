@@ -70,7 +70,8 @@ func getGameRecord() async -> GameRecord? {
 //        if let string = String(bytes: data, encoding: .utf8) {
 //            print(string)
 //        }
-        let gameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
+        var gameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
+        gameRecord?.fetchAt = Date.now
         return gameRecord
     } catch {
         print("Invalid data")

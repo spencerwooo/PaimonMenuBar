@@ -9,6 +9,20 @@ import Defaults
 import Foundation
 import SwiftUI
 
+class RelativeFormatter {
+    private let df = DateFormatter()
+
+    init() {
+        df.dateStyle = DateFormatter.Style.long
+        df.timeStyle = DateFormatter.Style.short
+        df.doesRelativeDateFormatting = true
+    }
+
+    func string(time: Date) -> String {
+        return df.string(from: time)
+    }
+}
+
 /// Return the formatted time interval in a human-readable string
 /// - Parameter timeInterval: A time interval represented in seconds
 /// - Returns: A human-readable string representing the time interval
@@ -44,7 +58,8 @@ struct MenuExtrasView: View {
             ResinView(
                 currentResin: lastGameRecord.data.current_resin,
                 maxResin: lastGameRecord.data.max_resin,
-                resinRecoveryTime: lastGameRecord.data.resin_recovery_time
+                resinRecoveryTime: lastGameRecord.data.resin_recovery_time,
+                fetchAt: lastGameRecord.fetchAt
             )
 
             ExpeditionView(
@@ -81,10 +96,16 @@ struct ResinView: View {
     let currentResin: Int
     let maxResin: Int
     let resinRecoveryTime: String
+    let fetchAt: Date?
+
+    private let formatter = RelativeFormatter()
 
     var body: some View {
         VStack(spacing: 8) {
-            HStack {
+            Text((fetchAt != nil) ? "Update: \(formatter.string(time: fetchAt!))" : "Not updated")
+                .font(.caption).opacity(0.4)
+
+            HStack(spacing: 4) {
                 Image("FragileResin")
                     .resizable()
                     .frame(width: 16, height: 16)
@@ -110,7 +131,6 @@ struct ResinView: View {
                 Text(formatFutureDate(timeInterval: resinRecoveryTime))
                     .font(.system(.body, design: .monospaced).bold())
             }
-
             Divider()
         }
     }
@@ -252,6 +272,7 @@ struct ParametricTransformerView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuExtrasView()
+            .frame(width: 280.0)
             .frame(height: 430.0)
     }
 }
