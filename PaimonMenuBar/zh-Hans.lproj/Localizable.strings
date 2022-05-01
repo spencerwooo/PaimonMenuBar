@@ -105,3 +105,6 @@
 
 /* No comment provided by engineer. */
 "Update: %@" = "更新时间：%@";
+
+/* No comment provided by engineer. */
+"Not updated" = "未更新";

@@ -102,6 +102,9 @@ struct ResinView: View {
 
     var body: some View {
         VStack(spacing: 8) {
+            Text((fetchAt != nil) ? "Update: \(formatter.string(time: fetchAt!))" : "Not updated")
+                .font(.caption).opacity(0.4)
+
             HStack(spacing: 4) {
                 Image("FragileResin")
                     .resizable()
@@ -110,11 +113,6 @@ struct ResinView: View {
                     .font(.subheadline)
                     .opacity(0.6)
                 Spacer()
-                if fetchAt != nil {
-                    Text("Update: \(formatter.string(time: fetchAt!))")
-                        .font(.subheadline)
-                        .opacity(0.6)
-                }
             }
 
             Text("\(currentResin)/\(maxResin)")
@@ -133,7 +131,6 @@ struct ResinView: View {
                 Text(formatFutureDate(timeInterval: resinRecoveryTime))
                     .font(.system(.body, design: .monospaced).bold())
             }
-
             Divider()
         }
     }
