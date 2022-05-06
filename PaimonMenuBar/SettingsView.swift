@@ -116,12 +116,12 @@ struct ConfigurationSettingsView: View {
                     Task {
                         isLoading = true
                         if let _ = await GameRecordUpdater.shared.fetchGameRecordAndRenderNow() {
-                            self.alertText = String(localized: "👌 It's working!")
-                            self.alertMessage = String(localized: "Your config is valid.")
+                            self.alertText = String.localized("👌 It's working!")
+                            self.alertMessage = String.localized("Your config is valid.")
                             self.showConfigValidAlert.toggle()
                         } else {
-                            self.alertText = String(localized: "🚫 Whoooops...")
-                            self.alertMessage = String(localized: "Failed to fetch, check your config.")
+                            self.alertText = String.localized("🚫 Whoooops...")
+                            self.alertMessage = String.localized("Failed to fetch, check your config.")
                             self.showConfigValidAlert.toggle()
                         }
                         isLoading = false
