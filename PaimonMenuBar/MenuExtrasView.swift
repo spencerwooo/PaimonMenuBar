@@ -48,7 +48,7 @@ private func formatFutureDate(timeInterval: String) -> String {
         return "\(String.localized("Tomorrow")) \(futureTime.shortenedFormatted)"
     }
     // This should not happen, but just in case.
-    return futureTime.formatted
+    return futureTime.defaultFormatted
 }
 
 struct MenuExtrasView: View {

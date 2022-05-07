@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension URLSession {
-    @available(iOS, deprecated: 15.0, message: "This extension is no longer necessary. Use API built into SDK")
+    @available(macOS, deprecated: 12.0, message: "This extension is no longer necessary. Use API built into SDK")
     func data(for request: URLRequest) async throws -> (Data, URLResponse) {
         try await withCheckedThrowingContinuation { continuation in
             let task = self.dataTask(with: request) { data, response, error in
@@ -27,6 +27,7 @@ extension URLSession {
 }
 
 extension String {
+    @available(macOS, deprecated: 12.0, message: "This extension is no longer necessary. Use API built into SDK")
     static func localized(_ keyAndValue: LocalizedStringKey, table: String? = nil, bundle: Bundle? = nil, locale: Locale = .current, comment: StaticString? = nil) -> String {
         var language = "en"
         // Region: CN
@@ -73,7 +74,7 @@ extension Date {
     var shortenedFormatted: String {
         return Date.shortenedFormatter.string(from: self)
     }
-    var formatted: String {
+    var defaultFormatted: String {
         return Date.defaultFormatter.string(from: self)
     }
 }
