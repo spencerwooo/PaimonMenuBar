@@ -7,8 +7,8 @@
 
 import Defaults
 import Foundation
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 class RelativeFormatter {
     private let df = DateFormatter()
