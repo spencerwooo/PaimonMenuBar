@@ -96,12 +96,6 @@ struct ConfigurationSettingsView: View {
                     Text(server.cookieSiteUrl)
                         .font(.subheadline)
                 }
-                Spacer()
-                Link(destination: URL(string: "https://paimon.swo.moe/#how-to-get-my-cookie")!) {
-                    Button("?") {
-                        print("Navigating to help page.")
-                    }.clipShape(Circle())
-                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)
@@ -111,6 +105,7 @@ struct ConfigurationSettingsView: View {
             Spacer()
 
             HStack {
+                Spacer()
                 Button {
                     GameRecordUpdater.shared.clearGameRecord()
                     Task {
@@ -139,6 +134,12 @@ struct ConfigurationSettingsView: View {
                     Alert(title: Text(alertText), message: Text(alertMessage))
                 })
                 .disabled(isLoading)
+
+                Link(destination: URL(string: "https://paimon.swo.moe/#how-to-get-my-cookie")!) {
+                    Button("?") {
+                        print("Navigating to help page.")
+                    }.clipShape(Circle())
+                }
             }
 
         }.padding()
