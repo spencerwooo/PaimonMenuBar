@@ -3,6 +3,14 @@
     <channel>
         <title>PaimonMenuBar</title>
         <item>
+            <title>1.7</title>
+            <pubDate>Mon, 09 May 2022 13:49:30 +0800</pubDate>
+            <sparkle:version>111</sparkle:version>
+            <sparkle:shortVersionString>1.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/spencerwooo/PaimonMenuBar/releases/download/v1.7.111/PaimonMenuBar.1.7.dmg" length="4488485" type="application/octet-stream" sparkle:edSignature="31aSlKt4D99sMHpIJg9Mz/aXLF3kpZqJPFyjJWZjK7/8agwH43WEc5vNiMd67uJwgJNRYNQXacfAj9F7oZaMAA=="/>
+        </item>
+        <item>
             <title>1.6</title>
             <pubDate>Sun, 01 May 2022 20:37:03 +0800</pubDate>
             <sparkle:version>110</sparkle:version>
