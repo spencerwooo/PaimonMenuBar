@@ -98,6 +98,13 @@ struct ResinView: View {
     let maxResin: Int
     let resinRecoveryTime: String
     let fetchAt: Date?
+    var recovertyImageName: String {
+        if #available(macOS 12, *) {
+            return "hourglass.circle"
+        } else {
+            return "moon.circle"
+        }
+    }
 
     private let formatter = RelativeFormatter()
 
@@ -121,7 +128,7 @@ struct ResinView: View {
                 .font(.system(.largeTitle, design: .monospaced).bold())
 
             HStack {
-                Label("Fully replenished", systemImage: "hourglass.circle")
+                Label("Fully replenished", systemImage: recovertyImageName)
                 Spacer()
                 Text(formatTimeInterval(timeInterval: resinRecoveryTime))
                     .font(.system(.body, design: .monospaced).bold())
