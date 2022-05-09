@@ -96,12 +96,6 @@ struct ConfigurationSettingsView: View {
                     Text(server.cookieSiteUrl)
                         .font(.subheadline)
                 }
-                Spacer()
-                Link(destination: URL(string: "https://paimon.swo.moe/#how-to-get-my-cookie")!) {
-                    Button("?") {
-                        print("Navigating to help page.")
-                    }.clipShape(Circle())
-                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)
@@ -111,17 +105,18 @@ struct ConfigurationSettingsView: View {
             Spacer()
 
             HStack {
+                Spacer()
                 Button {
                     GameRecordUpdater.shared.clearGameRecord()
                     Task {
                         isLoading = true
                         if let _ = await GameRecordUpdater.shared.fetchGameRecordAndRenderNow() {
-                            self.alertText = String(localized: "👌 It's working!")
-                            self.alertMessage = String(localized: "Your config is valid.")
+                            self.alertText = String.localized("👌 It's working!")
+                            self.alertMessage = String.localized("Your config is valid.")
                             self.showConfigValidAlert.toggle()
                         } else {
-                            self.alertText = String(localized: "🚫 Whoooops...")
-                            self.alertMessage = String(localized: "Failed to fetch, check your config.")
+                            self.alertText = String.localized("🚫 Whoooops...")
+                            self.alertMessage = String.localized("Failed to fetch, check your config.")
                             self.showConfigValidAlert.toggle()
                         }
                         isLoading = false
@@ -139,6 +134,12 @@ struct ConfigurationSettingsView: View {
                     Alert(title: Text(alertText), message: Text(alertMessage))
                 })
                 .disabled(isLoading)
+
+                Link(destination: URL(string: "https://paimon.swo.moe/#how-to-get-my-cookie")!) {
+                    Button("?") {
+                        print("Navigating to help page.")
+                    }.clipShape(Circle())
+                }
             }
 
         }.padding()

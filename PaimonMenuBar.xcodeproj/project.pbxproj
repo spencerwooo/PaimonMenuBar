@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320C466128254F8700C6932E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 320C466028254F8700C6932E /* Kingfisher */; };
+		323850E1282540EE0097B5C2 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323850E0282540EE0097B5C2 /* Compatibility.swift */; };
 		76085E6127FC23B000960915 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 76085E6027FC23B000960915 /* LaunchAtLogin */; };
 		76085E6427FC23EA00960915 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 76085E6327FC23EA00960915 /* Sparkle */; };
 		7621675327F2FC080023F8B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7621675527F2FC080023F8B2 /* Localizable.strings */; };
@@ -27,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		323850E0282540EE0097B5C2 /* Compatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compatibility.swift; sourceTree = "<group>"; };
 		7621675427F2FC080023F8B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7621675627F2FC0B0023F8B2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7686474027EF082400BCC350 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320C466128254F8700C6932E /* Kingfisher in Frameworks */,
 				9F38F972281D4D000004D240 /* Defaults in Frameworks */,
 				76085E6127FC23B000960915 /* LaunchAtLogin in Frameworks */,
 				76085E6427FC23EA00960915 /* Sparkle in Frameworks */,
@@ -88,6 +92,7 @@
 				76D73BBE27EC650500CCDEA6 /* DataModels.swift */,
 				76D73BC027EC67D300CCDEA6 /* Networking.swift */,
 				9F38F973281D4D120004D240 /* Defaults+Workaround.swift */,
+				323850E0282540EE0097B5C2 /* Compatibility.swift */,
 			);
 			path = PaimonMenuBar;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				76085E6027FC23B000960915 /* LaunchAtLogin */,
 				76085E6327FC23EA00960915 /* Sparkle */,
 				9F38F971281D4D000004D240 /* Defaults */,
+				320C466028254F8700C6932E /* Kingfisher */,
 			);
 			productName = PaimonMenuBar;
 			productReference = 76F9AE6B27F570640051CDC8 /* PaimonMenuBar.app */;
@@ -155,6 +161,7 @@
 				76085E5F27FC23B000960915 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				76085E6227FC23EA00960915 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				9F38F970281D4D000004D240 /* XCRemoteSwiftPackageReference "Defaults" */,
+				320C465F28254F8700C6932E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 76CCDDD127EAD1C4009CFC64;
 			projectDirPath = "";
@@ -207,6 +214,7 @@
 				7686474127EF082400BCC350 /* Bundle.swift in Sources */,
 				76E429A927EDDE000032313C /* GameRecordUpdater.swift in Sources */,
 				9F38F974281D4D120004D240 /* Defaults+Workaround.swift in Sources */,
+				323850E1282540EE0097B5C2 /* Compatibility.swift in Sources */,
 				76D73BBF27EC650500CCDEA6 /* DataModels.swift in Sources */,
 				76C290F027EAFFB000A30C9F /* AppDelegate.swift in Sources */,
 				76D73BC127EC67D300CCDEA6 /* Networking.swift in Sources */,
@@ -355,7 +363,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 111;
 				DEVELOPMENT_ASSET_PATHS = "\"PaimonMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = W2HGAU9MPP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -368,8 +376,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.6;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = spencerwoo.PaimonMenuBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -387,7 +395,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 111;
 				DEVELOPMENT_ASSET_PATHS = "\"PaimonMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = W2HGAU9MPP;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -400,8 +408,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.6;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = spencerwoo.PaimonMenuBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -433,6 +441,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		320C465F28254F8700C6932E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		76085E5F27FC23B000960915 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -460,6 +476,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		320C466028254F8700C6932E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 320C465F28254F8700C6932E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		76085E6027FC23B000960915 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 76085E5F27FC23B000960915 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;

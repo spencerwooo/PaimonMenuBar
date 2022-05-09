@@ -71,7 +71,7 @@ func getGameRecord() async -> GameRecord? {
 //            print(string)
 //        }
         var gameRecord = try? JSONDecoder().decode(GameRecord.self, from: data)
-        gameRecord?.fetchAt = Date.now
+        gameRecord?.fetchAt = Date()
         return gameRecord
     } catch {
         print("Invalid data")

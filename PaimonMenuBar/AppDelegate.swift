@@ -81,10 +81,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Submenu, preferences, and quit APP
         menu.addItem(NSMenuItem.separator())
         menu
-            .addItem(NSMenuItem(title: String(localized: "Preferences"), action: #selector(openSettingsView),
+            .addItem(NSMenuItem(title: String.localized("Preferences"), action: #selector(openSettingsView),
                                 keyEquivalent: ","))
         menu
-            .addItem(NSMenuItem(title: String(localized: "Quit"), action: #selector(NSApplication.terminate(_:)),
+            .addItem(NSMenuItem(title: String.localized("Quit"), action: #selector(NSApplication.terminate(_:)),
                                 keyEquivalent: "q"))
 
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)

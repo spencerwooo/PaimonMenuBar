@@ -7,6 +7,7 @@
 
 import Defaults
 import Foundation
+import Kingfisher
 import SwiftUI
 
 class RelativeFormatter {
@@ -41,13 +42,13 @@ private func formatFutureDate(timeInterval: String) -> String {
     let futureTime = currentTime.addingTimeInterval((TimeInterval(timeInterval) ?? TimeInterval("0"))!)
 
     if Calendar.current.isDateInToday(futureTime) {
-        return "\(String(localized: "Today")) \(futureTime.formatted(date: .omitted, time: .shortened))"
+        return "\(String.localized("Today")) \(futureTime.shortenedFormatted)"
     }
     if Calendar.current.isDateInTomorrow(futureTime) {
-        return "\(String(localized: "Tomorrow")) \(futureTime.formatted(date: .omitted, time: .shortened))"
+        return "\(String.localized("Tomorrow")) \(futureTime.shortenedFormatted)"
     }
     // This should not happen, but just in case.
-    return futureTime.formatted()
+    return futureTime.defaultFormatted
 }
 
 struct MenuExtrasView: View {
@@ -120,7 +121,7 @@ struct ResinView: View {
                 .font(.system(.largeTitle, design: .monospaced).bold())
 
             HStack {
-                Label("Fully replenished", systemImage: "hourglass.circle")
+                Label("Fully replenished", systemImage: "moon.circle")
                 Spacer()
                 Text(formatTimeInterval(timeInterval: resinRecoveryTime))
                     .font(.system(.body, design: .monospaced).bold())
@@ -169,13 +170,13 @@ struct ExpeditionItemView: View {
 
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: avatar)) { image in
-                image.resizable()
-            } placeholder: { Color.gray.opacity(0.3) }
+            KFImage.url(URL(string: avatar))
+                .resizable()
+                .placeholder { Color.gray.opacity(0.3) }
                 .clipShape(Circle())
                 .overlay(Circle().stroke(status == "Finished" ? Color.green : Color.gray))
                 .frame(width: 20, height: 20)
-            Text(status == "Finished" ? String(localized: "Complete") : String(localized: "Exploring"))
+            Text(status == "Finished" ? String.localized("Complete") : String.localized("Exploring"))
             Spacer()
             Text(formatTimeInterval(timeInterval: remainedTime))
                 .font(.system(.body, design: .monospaced).bold())
@@ -245,9 +246,9 @@ struct ParametricTransformerView: View {
         if recoveryTime.reached {
             return "✔"
         } else {
-            return recoveryTime.Day != 0 ? "\(recoveryTime.Day)\(String(localized: "d"))" :
-                recoveryTime.Hour != 0 ? "\(recoveryTime.Hour)\(String(localized: "h"))"
-                : "\(recoveryTime.Minute)\(String(localized: "m"))"
+            return recoveryTime.Day != 0 ? "\(recoveryTime.Day)\(String.localized("d"))" :
+                recoveryTime.Hour != 0 ? "\(recoveryTime.Hour)\(String.localized("h"))"
+                : "\(recoveryTime.Minute)\(String.localized("m"))"
         }
     }
 
