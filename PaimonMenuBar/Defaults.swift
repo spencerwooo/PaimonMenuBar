@@ -15,6 +15,9 @@ extension Defaults.Keys {
 
     static let cookie = Key<String>("cookie", default: "")
 
+    // render the icon in the status menu view as template (white icon) or original (colored icon)
+    static let isStatusIconTemplate = Key<Bool>("is_status_icon_template", default: true)
+
     // resin restores every 8 minutes
     static let recordUpdateInterval = Key<Double>("update_interval", default: 60 * 8)
 

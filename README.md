@@ -4,7 +4,7 @@
   <p><em>Paimon's now in your menu bar!</em></p>
 
   <img src="https://img.shields.io/badge/uses-SwiftUI-f05138?labelColor=282c34&logo=swift" alt="Use Swift" />
-  <img src="https://img.shields.io/badge/macOS-12.0+-f05138?labelColor=282c34&logo=apple" alt="macOS 12.0+" />
+  <img src="https://img.shields.io/badge/macOS-11.0+-f05138?labelColor=282c34&logo=apple" alt="macOS 11.0+" />
   <a href="https://github.com/spencerwooo/PaimonMenuBar/releases/latest"><img src="https://img.shields.io/github/v/release/spencerwooo/PaimonMenuBar?labelColor=282c34&logo=GitHub" alt="GitHub Release" /></a>
 </div>
 

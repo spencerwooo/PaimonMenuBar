@@ -13,23 +13,21 @@ import SwiftUI
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private(set) static var shared: AppDelegate!
 
-    /** Must be called in the main thread to avoid race condition. */
+    private var statusItem: NSStatusItem!
+    private var statusButton: NSStatusBarButton!
+    private var menuItemMain: NSHostingView<MenuExtrasView>!
+
+    /** updateStatusBar and updateStatusIcon must be called in the main thread to avoid race condition. */
     func updateStatusBar() {
         assert(Thread.isMainThread)
 
-        guard let button = statusItem.button else { return }
-
-        button.imagePosition = NSControl.ImagePosition.imageLeading
-        button.image = NSImage(named: NSImage.Name("FragileResin"))
-        button.image?.isTemplate = true // This sets the resin icon in the statusbar as monochrome
-        button.image?.size.width = 19
-        button.image?.size.height = 19
+        updateStatusIcon()
 
         let gameRecord = Defaults[.lastGameRecord]
         if gameRecord.fetchAt == nil {
-            button.title = "" // Cookie Not configured
+            statusButton.title = "" // Cookie Not configured
         } else {
-            button.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
+            statusButton.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
         }
 
         let currentExpeditionNum = gameRecord.data.current_expedition_num
@@ -37,8 +35,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menuItemMain.frame = NSRect(x: 0, y: 0, width: 280, height: 286 + currentExpeditionNum * 28)
     }
 
-    private var statusItem: NSStatusItem!
-    private var menuItemMain: NSHostingView<MenuExtrasView>!
+    func updateStatusIcon() {
+        assert(Thread.isMainThread)
+
+        statusButton.imagePosition = NSControl.ImagePosition.imageLeading
+        statusButton.image = NSImage(named: NSImage.Name("FragileResin"))
+
+        // This sets the resin icon in the statusbar as monochrome if isTemplate == true
+        statusButton.image?.isTemplate = Defaults[.isStatusIconTemplate]
+
+        statusButton.image?.size.width = 19
+        statusButton.image?.size.height = 19
+    }
 
     @objc private func openSettingsView() {
         NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
@@ -89,6 +97,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.menu = menu
+        statusButton = statusItem.button
 
         updateStatusBar()
     }

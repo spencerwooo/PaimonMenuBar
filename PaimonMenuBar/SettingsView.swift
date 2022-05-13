@@ -22,13 +22,14 @@ struct CheckForUpdatesView: View {
 
 struct PreferenceSettingsView: View {
     @Default(.recordUpdateInterval) private var recordUpdateInterval
+    @Default(.isStatusIconTemplate) private var isStatusIconTemplate
 
     @StateObject var updaterViewModel = UpdaterViewModel.shared
 
     @State private var isEditing = false
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             Form {
                 LaunchAtLogin.Toggle {
                     Text("Launch at Login")
@@ -40,12 +41,23 @@ struct PreferenceSettingsView: View {
                 Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
                     .font(.caption).opacity(0.6)
 
+                Defaults.Toggle(key: .isStatusIconTemplate) {
+                    Image("FragileResin")
+                        .renderingMode(isStatusIconTemplate ? .template : .original)
+                        .frame(width: 19, height: 19)
+                }
+                .onChange { _ in
+                    AppDelegate.shared.updateStatusIcon()
+                }
+                .formLabel(Text("Menubar icon:"))
+                Text(isStatusIconTemplate ? "Native macOS adaptive icon." : "Colored icon.").font(.caption).opacity(0.6)
+
                 Slider(value: $recordUpdateInterval, in: 60 ... 16 * 60, step: 60, label: {
                     Text("Update interval:")
                 }) { editing in
                     isEditing = editing
                 }
-                .frame(width: 400)
+                .frame(width: 360)
 
                 Text("Paimon fetches data every \(recordUpdateInterval, specifier: "%.0f") seconds*")
                     .font(.caption).opacity(0.6)
