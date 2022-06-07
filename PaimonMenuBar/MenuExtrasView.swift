@@ -74,16 +74,16 @@ struct MenuExtrasView: View {
                 totalTaskNum: lastGameRecord.data.total_task_num
             )
 
-            HomeCoinView(
-                currentHomeCoin: lastGameRecord.data.current_home_coin,
-                maxHomeCoin: lastGameRecord.data.max_home_coin,
-                homeCoinRecoveryTime: lastGameRecord.data.home_coin_recovery_time
-            )
-
             ExtraTaskRewardView(
                 remainResinDiscountNum: lastGameRecord.data.remain_resin_discount_num,
                 resinDiscountNumLimit: lastGameRecord.data.resin_discount_num_limit,
                 isExtraTaskRewardReceived: lastGameRecord.data.is_extra_task_reward_received
+            )
+
+            HomeCoinView(
+                currentHomeCoin: lastGameRecord.data.current_home_coin,
+                maxHomeCoin: lastGameRecord.data.max_home_coin,
+                homeCoinRecoveryTime: lastGameRecord.data.home_coin_recovery_time
             )
 
             ParametricTransformerView(transformer: lastGameRecord.data.transformer)
@@ -149,6 +149,7 @@ struct ExpeditionView: View {
                     .font(.subheadline)
                     .opacity(0.6)
                 Spacer()
+                Image("Expedition").resizable().frame(width: 18, height: 18)
             }
 
             ForEach(expeditions, id: \.self) { expedition in
@@ -195,7 +196,7 @@ struct DailyCommissionView: View {
                 .frame(width: 20, height: 20, alignment: .leading)
             Text("Daily commissions")
             Spacer()
-            Text("\(finishedTaskNum)/\(totalTaskNum)")
+            Text("\(totalTaskNum - finishedTaskNum) left")
                 .font(.system(.body, design: .monospaced).bold())
         }
     }
@@ -233,7 +234,7 @@ struct ExtraTaskRewardView: View {
                 .frame(width: 20, height: 20, alignment: .center)
             Text("Weekly bosses")
             Spacer()
-            Text("\(remainResinDiscountNum)/\(resinDiscountNumLimit)")
+            Text("\(remainResinDiscountNum) left")
                 .font(.system(.body, design: .monospaced).bold())
         }
     }
@@ -244,11 +245,13 @@ struct ParametricTransformerView: View {
 
     func formatRecoveryTime(recoveryTime: RecoveryTime) -> String {
         if recoveryTime.reached {
-            return "✔"
+            return "Ready"
         } else {
-            return recoveryTime.Day != 0 ? "\(recoveryTime.Day)\(String.localized("d"))" :
-                recoveryTime.Hour != 0 ? "\(recoveryTime.Hour)\(String.localized("h"))"
-                : "\(recoveryTime.Minute)\(String.localized("m"))"
+            return recoveryTime
+                .Day != 0 ? "\(recoveryTime.Day) \(String.localized(recoveryTime.Day == 1 ? "day" : "days"))" :
+                recoveryTime
+                .Hour != 0 ? "\(recoveryTime.Hour) \(String.localized(recoveryTime.Hour == 1 ? "hour" : "hours"))"
+                : "\(recoveryTime.Minute) \(String.localized(recoveryTime.Minute == 1 ? "min" : "mins"))"
         }
     }
 
@@ -264,7 +267,7 @@ struct ParametricTransformerView: View {
                 Text(formatRecoveryTime(recoveryTime: transformer.recovery_time))
                     .font(.system(.body, design: .monospaced).bold())
             } else {
-                Text("🚫")
+                Text("Unavailable")
             }
         }
     }
