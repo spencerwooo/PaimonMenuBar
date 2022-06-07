@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "JarOfRiches.png",
+      "filename" : "Expedition.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "JarOfRiches@2x.png",
+      "filename" : "Expedition@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "JarOfRiches@3x.png",
+      "filename" : "Expedition@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
