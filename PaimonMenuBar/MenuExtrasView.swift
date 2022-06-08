@@ -118,19 +118,19 @@ struct ResinView: View {
 
             Text("\(currentResin)/\(maxResin)")
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(.largeTitle, design: .monospaced).bold())
+                .font(.custom("Avenir Next Bold", size: 25, relativeTo: .largeTitle).italic())
 
             HStack {
                 Label("Fully replenished", systemImage: "moon.circle")
                 Spacer()
                 Text(formatTimeInterval(timeInterval: resinRecoveryTime))
-                    .font(.system(.body, design: .monospaced).bold())
+                    .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
             }
             HStack {
                 Label("ETA", systemImage: "clock")
                 Spacer()
                 Text(formatFutureDate(timeInterval: resinRecoveryTime))
-                    .font(.system(.body, design: .monospaced).bold())
+                    .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
             }
             Divider()
         }
@@ -180,7 +180,7 @@ struct ExpeditionItemView: View {
             Text(status == "Finished" ? String.localized("Complete") : String.localized("Exploring"))
             Spacer()
             Text(formatTimeInterval(timeInterval: remainedTime))
-                .font(.system(.body, design: .monospaced).bold())
+                .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
         }
     }
 }
@@ -197,7 +197,7 @@ struct DailyCommissionView: View {
             Text("Daily commissions")
             Spacer()
             Text("\(totalTaskNum - finishedTaskNum) left")
-                .font(.system(.body, design: .monospaced).bold())
+                .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
         }
     }
 }
@@ -216,7 +216,7 @@ struct HomeCoinView: View {
             Text("Realm currency")
             Spacer()
             Text("\(currentHomeCoin)/\(maxHomeCoin)")
-                .font(.system(.body, design: .monospaced).bold())
+                .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
         }
     }
 }
@@ -235,7 +235,7 @@ struct ExtraTaskRewardView: View {
             Text("Weekly bosses")
             Spacer()
             Text("\(remainResinDiscountNum) left")
-                .font(.system(.body, design: .monospaced).bold())
+                .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
         }
     }
 }
@@ -261,14 +261,10 @@ struct ParametricTransformerView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20, height: 20, alignment: .center)
-            Text("Parametric Transformer")
+            Text("Parametric transformer")
             Spacer()
-            if transformer.obtained {
-                Text(formatRecoveryTime(recoveryTime: transformer.recovery_time))
-                    .font(.system(.body, design: .monospaced).bold())
-            } else {
-                Text("Unavailable")
-            }
+            Text(transformer.obtained ? formatRecoveryTime(recoveryTime: transformer.recovery_time) : "Unavailable")
+                .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
         }
     }
 }
@@ -276,7 +272,7 @@ struct ParametricTransformerView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuExtrasView()
-            .frame(width: 280.0)
-            .frame(height: 430.0)
+            .frame(width: 290.0)
+            .frame(height: 426.0)
     }
 }

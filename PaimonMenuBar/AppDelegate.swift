@@ -31,8 +31,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         let currentExpeditionNum = gameRecord.data.current_expedition_num
-        // 286 = 314 (ViewHeight with Padding) - 28
-        menuItemMain.frame = NSRect(x: 0, y: 0, width: 280, height: 286 + currentExpeditionNum * 28)
+        // 290 = 314 (ViewHeight with Padding) - 28
+        menuItemMain.frame = NSRect(x: 0, y: 0, width: 290, height: 290 + currentExpeditionNum * 28)
     }
 
     func updateStatusIcon() {
