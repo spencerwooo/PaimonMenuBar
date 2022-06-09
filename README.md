@@ -10,7 +10,7 @@
 
 ## Demo
 
-[![Screenshot](Assets/screenshot.png)](https://paimon.swo.moe)
+[![Screenshot](Assets/screenshot.jpg)](https://paimon.swo.moe)
 
 ## What's this?
 
@@ -42,8 +42,8 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 * [x] Help button beside the text field for entering the cookie.
 * [x] Support for cn and global genshin accounts (米游社 and hoyolab).
 * [x] Backward-compatibility for macOS 11.0.
-* [ ] Better first-time installation experience (guidance for initial setup).
-* [ ] Support for multiple accounts?
+* [x] Better first-time installation experience (guidance for initial setup).
+* ~~[ ] Support for multiple accounts?~~
 
 ## Releasing a new version
 
