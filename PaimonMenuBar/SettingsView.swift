@@ -8,6 +8,7 @@
 import Defaults
 import LaunchAtLogin
 import SwiftUI
+import UserNotifications
 
 // This additional view is needed for the disabled state on the menu item to work properly before Monterey.
 // See https://stackoverflow.com/questions/68553092/menu-not-updating-swiftui-bug for more information
@@ -23,6 +24,7 @@ struct CheckForUpdatesView: View {
 struct PreferenceSettingsView: View {
     @Default(.recordUpdateInterval) private var recordUpdateInterval
     @Default(.isStatusIconTemplate) private var isStatusIconTemplate
+    @Default(.isNotifyParametricReady) private var isNotifyParametricReady
 
     @StateObject var updaterViewModel = UpdaterViewModel.shared
 
@@ -51,6 +53,14 @@ struct PreferenceSettingsView: View {
                 }
                 .formLabel(Text("Menubar icon:"))
                 Text(isStatusIconTemplate ? "Native macOS adaptive icon." : "Colored icon.").font(.caption).opacity(0.6)
+
+                Defaults.Toggle(key: .isNotifyParametricReady) {
+                    Image(
+                        systemName: isNotifyParametricReady ? "bell.badge" : "bell.slash"
+                    )
+                }
+                .formLabel(Text("Notify:"))
+                Text("... when parametric transformer is ready.").font(.caption).opacity(0.6)
 
                 Slider(value: $recordUpdateInterval, in: 60 ... 16 * 60, step: 60, label: {
                     Text("Update interval:")
@@ -195,7 +205,7 @@ struct SettingsView: View {
                     Label("About", systemImage: "person")
                 }
         }
-        .frame(width: 560, height: 320)
+        .frame(width: 560, height: 360)
     }
 }
 

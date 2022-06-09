@@ -9,6 +9,7 @@ import AppKit
 import Defaults
 import Foundation
 import SwiftUI
+import UserNotifications
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private(set) static var shared: AppDelegate!
@@ -56,6 +57,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         AppDelegate.shared = self
+
+        // Request notification permissions
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
+            if error != nil {
+                print("Notification permission not granted.")
+            } else {
+                print("Notification permission granted.")
+            }
+        }
 
         // Update game record on initial launch
         print("App is started")

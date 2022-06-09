@@ -10,6 +10,7 @@ import Defaults
 import Foundation
 import Network
 import SwiftUI
+import UserNotifications
 
 class GameRecordUpdater {
     static let shared = GameRecordUpdater()
@@ -124,6 +125,47 @@ class GameRecordUpdater {
 
         print("GameRecord is updated: ", Defaults[.lastGameRecord])
         AppDelegate.shared.updateStatusBar()
+
+        // Early return if user chooses not to push notifications
+        guard Defaults[.isNotifyParametricReady] else { return }
+
+        let parametricTransformerReady = Defaults[.lastGameRecord].data.transformer.recovery_time.reached
+        // Check for parametric transformer ready state - push notification only on:
+        // 1. Parametric transformer ready
+        // 2. User selected to notify when parametric transformer is ready
+        // 3. Notification for parametric transformer ready state has not been sent
+        if parametricTransformerReady,
+           Defaults[.hasNotifiedParametricReady] == false
+        {
+            let center = UNUserNotificationCenter.current()
+
+            center.getNotificationSettings { settings in
+                guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
+                else { return }
+
+                let content = UNMutableNotificationContent()
+                content.title = String.localized("Parametric transformer is ready")
+                content.sound = UNNotificationSound.default
+
+                let request = UNNotificationRequest(
+                    identifier: UUID().uuidString,
+                    content: content,
+                    trigger: UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+                )
+
+                center.add(request) { _ in
+                    // set .hasNotifiedParametricReady to true on notification delivery
+                    Defaults[.hasNotifiedParametricReady] = true
+                }
+            }
+        }
+
+        // If parametric transformer is not ready but .hasNotifiedParametricReady is true, then reset the trigger
+        if parametricTransformerReady == false,
+           Defaults[.hasNotifiedParametricReady]
+        {
+            Defaults[.hasNotifiedParametricReady] = false
+        }
     }
 
     private func onRecordUpdateIntervalChanged() {
