@@ -25,6 +25,7 @@ class GameRecordUpdater {
             }
             return data
         } else {
+            sendLocalNotification(context: "⚠️ Data fetch failed, check your configuration") {}
             return nil
         }
     }
@@ -99,6 +100,31 @@ class GameRecordUpdater {
         }
     }
 
+    // MARK: - Notification handler
+
+    private func sendLocalNotification(context: LocalizedStringKey, completion: @escaping () -> Void) {
+        let center = UNUserNotificationCenter.current()
+
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
+            else { return }
+
+            let content = UNMutableNotificationContent()
+            content.title = String.localized(context)
+            content.sound = UNNotificationSound.default
+
+            let request = UNNotificationRequest(
+                identifier: UUID().uuidString,
+                content: content,
+                trigger: UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+            )
+
+            center.add(request) { _ in
+                completion()
+            }
+        }
+    }
+
     // MARK: -
 
     private var initialized = false
@@ -137,26 +163,9 @@ class GameRecordUpdater {
         if parametricTransformerReady,
            Defaults[.hasNotifiedParametricReady] == false
         {
-            let center = UNUserNotificationCenter.current()
-
-            center.getNotificationSettings { settings in
-                guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
-                else { return }
-
-                let content = UNMutableNotificationContent()
-                content.title = String.localized("Parametric transformer is ready")
-                content.sound = UNNotificationSound.default
-
-                let request = UNNotificationRequest(
-                    identifier: UUID().uuidString,
-                    content: content,
-                    trigger: UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
-                )
-
-                center.add(request) { _ in
-                    // set .hasNotifiedParametricReady to true on notification delivery
-                    Defaults[.hasNotifiedParametricReady] = true
-                }
+            sendLocalNotification(context: "Parametric transformer is ready") {
+                // set .hasNotifiedParametricReady to true on notification delivery
+                Defaults[.hasNotifiedParametricReady] = true
             }
         }
 

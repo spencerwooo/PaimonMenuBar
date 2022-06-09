@@ -107,3 +107,5 @@
 "Notify:" = "通知：";
 
 "... when parametric transformer is ready." = "… 当参量质变仪就绪时。";
+
+"⚠️ Data fetch failed, check your configuration" = "⚠️ 数据获取失败，检查你的配置信息";
