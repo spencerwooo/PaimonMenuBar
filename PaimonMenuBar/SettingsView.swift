@@ -21,6 +21,12 @@ struct CheckForUpdatesView: View {
     }
 }
 
+func getNotificationPermission(completion: @escaping (Bool) -> Void) {
+    UNUserNotificationCenter.current().getNotificationSettings { settings in
+        completion(settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional)
+    }
+}
+
 struct PreferenceSettingsView: View {
     @Default(.recordUpdateInterval) private var recordUpdateInterval
     @Default(.isStatusIconTemplate) private var isStatusIconTemplate
@@ -29,6 +35,7 @@ struct PreferenceSettingsView: View {
     @StateObject var updaterViewModel = UpdaterViewModel.shared
 
     @State private var isEditing = false
+    @State private var isNotNotificationAuthorized = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -58,8 +65,22 @@ struct PreferenceSettingsView: View {
                     Image(
                         systemName: isNotifyParametricReady ? "bell.badge" : "bell.slash"
                     )
+                    if isNotNotificationAuthorized {
+                        Label("⚠️ Notification unauthorized.", systemImage: "arrow.left")
+                            .font(.caption2).opacity(0.8)
+                    }
                 }
                 .formLabel(Text("Notify:"))
+                .onAppear {
+                    getNotificationPermission { authorized in
+                        isNotNotificationAuthorized = !authorized
+                    }
+                }
+                .onChange(of: isNotifyParametricReady) { _ in
+                    getNotificationPermission { authorized in
+                        isNotNotificationAuthorized = !authorized
+                    }
+                }
                 Text("... when parametric transformer is ready.").font(.caption).opacity(0.6)
 
                 Slider(value: $recordUpdateInterval, in: 60 ... 16 * 60, step: 60, label: {
@@ -122,7 +143,7 @@ struct ConfigurationSettingsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)
                 .font(.system(.body, design: .monospaced))
-                .frame(height: 88)
+                .frame(height: 120)
 
             Spacer()
 
