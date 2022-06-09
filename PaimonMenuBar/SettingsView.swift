@@ -112,7 +112,7 @@ struct ConfigurationSettingsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)
                 .font(.system(.body, design: .monospaced))
-                .frame(height: 80)
+                .frame(height: 88)
 
             Spacer()
 
@@ -125,12 +125,11 @@ struct ConfigurationSettingsView: View {
                         if let _ = await GameRecordUpdater.shared.fetchGameRecordAndRenderNow() {
                             self.alertText = String.localized("👌 It's working!")
                             self.alertMessage = String.localized("Your config is valid.")
-                            self.showConfigValidAlert.toggle()
                         } else {
                             self.alertText = String.localized("🚫 Whoooops...")
                             self.alertMessage = String.localized("Failed to fetch, check your config.")
-                            self.showConfigValidAlert.toggle()
                         }
+                        self.showConfigValidAlert.toggle()
                         isLoading = false
                     }
                 } label: {
@@ -150,7 +149,7 @@ struct ConfigurationSettingsView: View {
                 Link(destination: URL(string: "https://paimon.swo.moe/#how-to-get-my-cookie")!) {
                     Button("?") {
                         print("Navigating to help page.")
-                    }.clipShape(Circle())
+                    }.clipShape(Circle()).shadow(radius: 1)
                 }
             }
 

@@ -95,3 +95,9 @@
 "min" = "分";
 
 "mins" = "分";
+
+"NOT INITIALIZED" = "尚未配置";
+
+"Please go to _Preferences > Configuration_ and setup your in-game **_UID_**, **_server_**, and **_cookie_**." = "请前往「偏好设置 > 配置信息」设置你的游戏内 **_UID_**、**_服务器_**、以及 **_米游社 cookie_**.";
+
+"Open preferences here" = "在这里打开偏好设置";

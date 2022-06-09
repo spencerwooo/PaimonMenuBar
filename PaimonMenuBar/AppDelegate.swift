@@ -25,14 +25,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let gameRecord = Defaults[.lastGameRecord]
         if gameRecord.fetchAt == nil {
-            statusButton.title = "" // Cookie Not configured
+            statusButton.title = "-/160" // Cookie Not configured
         } else {
             statusButton.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
         }
 
         let currentExpeditionNum = gameRecord.data.current_expedition_num
-        // 290 = 314 (ViewHeight with Padding) - 28
-        menuItemMain.frame = NSRect(x: 0, y: 0, width: 290, height: 290 + currentExpeditionNum * 28)
+        menuItemMain.frame = NSRect(x: 0, y: 0, width: 290, height: 292 + currentExpeditionNum * 28)
     }
 
     func updateStatusIcon() {
