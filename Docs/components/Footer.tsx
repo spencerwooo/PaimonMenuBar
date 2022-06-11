@@ -1,20 +1,20 @@
 import { RiHeartPulseLine, RiHeartsLine } from 'react-icons/ri'
 
 const Footer = () => (
-  <div className="p-4 text-sm text-center bg-black/20 w-full">
+  <div className="relative px-4 py-8 text-sm text-center bg-[#232c33] w-full">
     <div>
-      created with love by{' '}
+      Created with love by{' '}
       <a
         href="https://spencerwoo.com"
         target="_blank"
         rel="noopener noreferrer"
+        className="text-[#9CA6A0] underline hover:opacity-90"
       >
-        @spencerwoo
+        Spencer Woo
       </a>{' '}
-      with swiftui
     </div>
     <div>
-      <RiHeartPulseLine className="inline" /> love and kisses from hu tao{' '}
+      <RiHeartPulseLine className="inline" /> Love and Kisses from Hu Tao{' '}
       <RiHeartsLine className="inline" />
     </div>
   </div>

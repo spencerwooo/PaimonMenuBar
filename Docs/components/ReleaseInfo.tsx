@@ -45,22 +45,29 @@ const ReleaseInfo = ({
   ) as Array<[reactionKeys, number]>
 
   return (
-    <div className="flex flex-wrap items-center text-xs gap-x-2 py-2 opacity-60 hover:opacity-80 transition-all duration-150">
-      <span>{formatRelativeDate(publishedAt)},</span>
-      <span>
-        {downloadCount} {downloadCount > 1 ? 'downloads' : 'download'},
-      </span>
-
-      <a href={htmlUrl} target="_blank" rel="noopener noreferrer">
-        goto release.
-      </a>
-
-      {reactionsNonZero.map(([key, val]: [key: reactionKeys, val: number]) => (
-        <span key={key}>
-          {reactionToEmoji[key]} {val}
+    <>
+      <a
+        href={htmlUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm mt-4 opacity-60 hover:opacity-50 block"
+      >
+        Last updated {formatRelativeDate(publishedAt)}. Downloads:{' '}
+        {downloadCount}.
+        <span className="inline-flex items-center space-x-2 text-xs ml-2">
+          {reactionsNonZero.map(
+            ([key, val]: [key: reactionKeys, val: number]) => (
+              <span
+                key={key}
+                className="rounded-lg border border-slate-50/40 px-2 py-0.5"
+              >
+                {reactionToEmoji[key]} {val}
+              </span>
+            )
+          )}
         </span>
-      ))}
-    </div>
+      </a>
+    </>
   )
 }
 

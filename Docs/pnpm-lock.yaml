@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fontsource/mulish': ^4.5.11
+  '@tailwindcss/typography': ^0.5.2
   '@types/node': 17.0.41
   '@types/react': 18.0.12
   '@types/react-dom': 18.0.5
@@ -17,6 +19,7 @@ specifiers:
   typescript: 4.7.3
 
 dependencies:
+  '@fontsource/mulish': 4.5.11
   atropos: 1.0.2
   next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
   react: 18.1.0
@@ -24,6 +27,7 @@ dependencies:
   react-icons: 4.4.0_react@18.1.0
 
 devDependencies:
+  '@tailwindcss/typography': 0.5.2_tailwindcss@3.1.1
   '@types/node': 17.0.41
   '@types/react': 18.0.12
   '@types/react-dom': 18.0.5
@@ -67,6 +71,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@fontsource/mulish/4.5.11:
+    resolution: {integrity: sha512-7oywPzRLjxT0j746/AWo5HQrmJmt9Sn2IUiSuOq2lkfpVQY9nUBqbNGjVH9QSdx5E9LkxX3g7Y0R9zl+s2SGgg==}
+    dev: false
 
   /@humanwhocodes/config-array/0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
@@ -211,6 +219,17 @@ packages:
 
   /@rushstack/eslint-patch/1.1.3:
     resolution: {integrity: sha512-WiBSI6JBIhC6LRIsB2Kwh8DsGTlbBU+mLRxJmAe3LjHTdkDpwIbEOZgoXBbZilk/vlfjK8i6nKRAvIRn1XaIMw==}
+    dev: true
+
+  /@tailwindcss/typography/0.5.2_tailwindcss@3.1.1:
+    resolution: {integrity: sha512-coq8DBABRPFcVhVIk6IbKyyHUt7YTEC/C992tatFB+yEx5WGBQrCgsSFjxHUr8AWXphWckadVJbominEduYBqw==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1 || insiders'
+    dependencies:
+      lodash.castarray: 4.4.0
+      lodash.isplainobject: 4.0.6
+      lodash.merge: 4.6.2
+      tailwindcss: 3.1.1
     dev: true
 
   /@types/json5/0.0.29:
@@ -1406,6 +1425,14 @@ packages:
     dependencies:
       p-locate: 2.0.0
       path-exists: 3.0.0
+    dev: true
+
+  /lodash.castarray/4.4.0:
+    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
+    dev: true
+
+  /lodash.isplainobject/4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
     dev: true
 
   /lodash.merge/4.6.2:

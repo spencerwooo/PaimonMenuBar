@@ -1,7 +1,11 @@
 import type { GetStaticProps } from 'next'
 import type { AppReleaseData } from './types'
+import Atropos from 'atropos/react'
 import Head from 'next/head'
 import Image from 'next/image'
+
+import screenshot from '../images/screenshot-transparent-light.png'
+import hutaoBackground from '../images/hutao_bg.jpg'
 
 import DownloadButton from '../components/DownloadButton'
 import ReleaseInfo from '../components/ReleaseInfo'
@@ -20,61 +24,120 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
     <>
       <Head>
         <title>PaimonMenuBar</title>
-        <meta name="description" content="Paimon is now in your macOS menubar!" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <meta
+          name="description"
+          content="Paimon is now in your macOS menubar!"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="min-h-screen flex flex-col items-center bg-secondary text-primary">
-        <div className="min-h-[80vh] flex flex-1 space-x-4 items-center">
-          <div className="hidden md:block">
+      <div className="text-white relative">
+        <div className="absolute w-full">
+          <Image
+            src={hutaoBackground}
+            alt="background"
+            placeholder="blur"
+            layout="responsive"
+            priority
+          />
+          <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-[#2C3740]" />
+        </div>
+
+        <div className="relative container px-6 mx-auto pt-28">
+          <div className="float-right">
             <Screenshot3D />
           </div>
 
-          <div className="max-w-md p-4 space-y-2">
-            <Image src={logo} alt="PaimonMenuBar logo" height={140} width={140} priority />
-            <h1 className="text-white font-bold text-xl">PaimonMenuBar</h1>
-            <h3 className="tracking-wider">yes, paimon now lives in your macos menubar 😎</h3>
-
-            <p className="tracking-wider text-xs opacity-60 pb-8">
-              * we dont want a logo clash with the game itself, so ... love from Hu Tao! (credits to{' '}
-              <a href="https://www.pixiv.net/en/artworks/92415888" target="_blank" rel="noopener noreferrer">
-                @chawong
-              </a>{' '}
-              for the logo)
-            </p>
-
-            <div className="flex space-x-4 items-center">
-              <DownloadButton tagName={latest.tag_name} downloadUrl={latest.assets[0].browser_download_url} />
-              <GitHubButton />
+          <div className="flex items-center">
+            <div className="-ml-4 h-[72px] w-[72px]">
+              <Image src={logo} alt="logo" height={72} width={72} priority />
             </div>
 
-            <ReleaseInfo
-              htmlUrl={latest.html_url}
-              publishedAt={latest.published_at}
-              downloadCount={latest.assets[0].download_count}
-              reactions={latest.reactions}
+            <span className="text-5xl font-bold tracking-wide ml-4 font-mulish inline">
+              PaimonMenuBar
+            </span>
+          </div>
+
+          <div className="mt-16 text-3xl max-w-lg tracking-wide">
+            Track your Genshin Impact daily resin, expeditions, and more —
+            straight in your macOS menu bar.
+          </div>
+
+          <div className="text-lg mt-16">
+            <div className="opacity-60 text-base mb-4">
+              Made with SwiftUI, designed for macOS. Works with —
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="border rounded-lg p-2">
+                <div className="text-xs">天空岛 | 世界树</div>
+                <div className="font-bold font-mulish tracking-wider">
+                  🇨🇳 CN
+                </div>
+              </div>
+              <div className="opacity-60">&</div>
+              <div className="border rounded-lg p-2">
+                <div className="text-xs">NA | EU | Asia | SAR</div>
+                <div className="font-bold font-mulish tracking-wider">
+                  🌍 Global
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="inline-flex items-center space-x-4 mt-16">
+            <DownloadButton
+              tagName={latest.tag_name}
+              downloadUrl={latest.assets[0].browser_download_url}
             />
+            <GitHubButton />
+          </div>
+
+          <div className="font-medium opacity-80 mt-4">
+            Requires macOS 11 Big Sur or later
+          </div>
+
+          <ReleaseInfo
+            htmlUrl={latest.html_url}
+            publishedAt={latest.published_at}
+            downloadCount={latest.assets[0].download_count}
+            reactions={latest.reactions}
+          />
+
+          <div className="mt-16">
+            {/* <PaimonCan /> */}
           </div>
         </div>
 
-        <PaimonCan />
-        <PaimonUses />
-        <PaimonCookie />
-        <HowToGetMyCookie />
-
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const resp = await fetch('https://api.github.com/repos/spencerwooo/PaimonMenuBar/releases/latest')
+  const resp = await fetch(
+    'https://api.github.com/repos/spencerwooo/PaimonMenuBar/releases/latest'
+  )
   const latest = (await resp.json()) as AppReleaseData
-  return { props: { latest }, revalidate: 60 }
+  return { props: { latest }, revalidate: 5 * 60 }
 }
 
 export default Home

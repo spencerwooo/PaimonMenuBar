@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -5,12 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        "primary": "#b2a5a5",
-        "secondary": "#291e1f",
-        "accent": "#7d211a"
+      fontFamily: {
+        "mulish": ["Mulish", ...defaultTheme.fontFamily.sans],
       }
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

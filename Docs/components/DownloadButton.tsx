@@ -6,18 +6,16 @@ const DownloadButton = ({
 }: {
   tagName: string
   downloadUrl: string
-}) => {
-  return (
-    <a href={downloadUrl} target="_blank" rel="noopener noreferrer">
-      <button className="px-4 py-2 flex items-center space-x-2 bg-primary text-secondary rounded-md">
-        <RiDownloadCloud2Line />
-        <div>
-          Download{' '}
-          <span className="font-mono font-bold text-sm">{tagName}</span>
-        </div>
-      </button>
-    </a>
-  )
-}
+}) => (
+  <a
+    href={downloadUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-4 py-2 font-mulish rounded-lg text-lg cursor-pointer bg-gradient-to-b from-slate-50 to-gray-300 text-slate-800 transition-all duration-150 hover:scale-105 hover:shadow-lg"
+  >
+    Download <span className="font-bold">{tagName}</span>
+    <RiDownloadCloud2Line className="inline ml-2" size={20} />
+  </a>
+)
 
 export default DownloadButton
