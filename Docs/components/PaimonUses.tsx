@@ -1,28 +1,25 @@
-const PaimonUses = () => {
-  return (
-    <div className="w-full p-4">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-xl font-black mb-4">paimon uses ...</h2>
-        <p>
-          the official mihoyo / hoyoverse api found in{' '}
-          <a
-            href="https://bbs.mihoyo.com/ys/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            米游社
-          </a>{' '}
-          or{' '}
-          <a
-            href="https://www.hoyolab.com/home"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            hoyolab
-          </a>
-        </p>
-      </div>
-    </div>
-  )
-}
+const PaimonUses = () => (
+  <section>
+    <h2>How does Paimon work?</h2>
+    <p>
+      Paimon uses the official Mihoyo / Hoyoverse API found in either{' '}
+      <a
+        href="https://bbs.mihoyo.com/ys/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        米游社 (for CN players)
+      </a>{' '}
+      or{' '}
+      <a
+        href="https://www.hoyolab.com/home"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        HoYoLAB (for Global players)
+      </a>
+      .
+    </p>
+  </section>
+)
 export default PaimonUses

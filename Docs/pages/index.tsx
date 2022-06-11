@@ -1,23 +1,21 @@
 import type { GetStaticProps } from 'next'
 import type { AppReleaseData } from './types'
-import Atropos from 'atropos/react'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import screenshot from '../images/screenshot-transparent-light.png'
 import hutaoBackground from '../images/hutao_bg.jpg'
+import logo from '../images/logo.png'
 
+import Screenshot3D from '../components/Screenshot3D'
 import DownloadButton from '../components/DownloadButton'
 import ReleaseInfo from '../components/ReleaseInfo'
-import Screenshot3D from '../components/Screenshot3D'
-import Footer from '../components/Footer'
 import GitHubButton from '../components/GitHubButton'
+import Features from '../components/Features'
 import PaimonCan from '../components/PaimonCan'
 import PaimonUses from '../components/PaimonUses'
 import PaimonCookie from '../components/PaimonCookie'
 import HowToGetMyCookie from '../components/HowToGetMyCookie'
-
-import logo from '../images/logo.png'
+import Footer from '../components/Footer'
 
 const Home = ({ latest }: { latest: AppReleaseData }) => {
   return (
@@ -60,8 +58,8 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
           <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-[#2C3740]" />
         </div>
 
-        <div className="relative container px-6 mx-auto pt-28">
-          <div className="float-right">
+        <div className="relative max-w-5xl p-6 mx-auto pt-28">
+          <div className="hidden md:block float-right">
             <Screenshot3D />
           </div>
 
@@ -120,13 +118,20 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
             downloadCount={latest.assets[0].download_count}
             reactions={latest.reactions}
           />
-
-          <div className="mt-16">
-            {/* <PaimonCan /> */}
-          </div>
         </div>
 
-        {/* <Footer /> */}
+        <Features />
+
+        <div className="relative max-w-4xl p-6 mx-auto">
+          <article className="prose prose-invert prose-img:rounded prose-figcaption:text-center">
+            <PaimonCan />
+            <PaimonUses />
+            <PaimonCookie />
+            <HowToGetMyCookie />
+          </article>
+        </div>
+
+        <Footer />
       </div>
     </>
   )
