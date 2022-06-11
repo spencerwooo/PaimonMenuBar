@@ -122,16 +122,18 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
 
         <Features />
 
-        <div className="relative max-w-4xl p-6 mx-auto">
-          <article className="prose prose-invert prose-img:rounded prose-figcaption:text-center">
-            <PaimonCan />
-            <PaimonUses />
-            <PaimonCookie />
-            <HowToGetMyCookie />
-          </article>
-        </div>
+        <div className="bg-[#2c3740] relative">
+          <div className="max-w-4xl p-6 mx-auto">
+            <article className="prose prose-invert prose-img:rounded prose-figcaption:text-center">
+              <PaimonCan />
+              <PaimonUses />
+              <PaimonCookie />
+              <HowToGetMyCookie />
+            </article>
+          </div>
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
     </>
   )
