@@ -17,7 +17,7 @@ const IconCard = ({
   style: string
 }) => (
   <div
-    className={`rounded-lg text-lg flex flex-col items-center justify-center py-6 ${style}`}
+    className={`rounded-lg lg:text-lg flex flex-col items-center justify-center py-6 ${style}`}
   >
     <Image src={icon} alt="icon" width={36} height={36} />
     <span className="mt-2">{label}</span>
@@ -25,7 +25,7 @@ const IconCard = ({
 )
 
 const Features = () => (
-  <div className="relative grid grid-cols-4 2xl:grid-cols-6 gap-8 mt-12 mb-8 py-16 px-8 border-y border-white/20 bg-[#232c33]">
+  <div className="relative grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 gap-4 md:gap-8 mt-12 mb-8 py-16 px-4 md:px-8 border-y border-white/20 bg-[#232c33]">
     <IconCard
       icon={fragileResin}
       label="Resin"

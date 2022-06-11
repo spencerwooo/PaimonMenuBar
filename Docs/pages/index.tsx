@@ -68,18 +68,18 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
               <Image src={logo} alt="logo" height={72} width={72} priority />
             </div>
 
-            <span className="text-5xl font-bold tracking-wide ml-4 font-mulish inline">
+            <span className="text-3xl lg:text-5xl font-bold tracking-wide ml-4 font-mulish inline">
               PaimonMenuBar
             </span>
           </div>
 
-          <div className="mt-16 text-3xl max-w-lg tracking-wide">
+          <div className="mt-16 text-xl lg:text-3xl max-w-lg tracking-wide">
             Track your Genshin Impact daily resin, expeditions, and more —
             straight in your macOS menu bar.
           </div>
 
           <div className="text-lg mt-16">
-            <div className="opacity-60 text-base mb-4">
+            <div className="opacity-60 text-xs lg:text-base mb-4">
               Made with SwiftUI, designed for macOS. Works with —
             </div>
 

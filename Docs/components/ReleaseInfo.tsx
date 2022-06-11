@@ -54,7 +54,7 @@ const ReleaseInfo = ({
       >
         Last updated {formatRelativeDate(publishedAt)}. Downloads:{' '}
         {downloadCount}.
-        <span className="inline-flex items-center space-x-2 text-xs ml-2">
+        <div className="flex md:inline-flex mt-2 md:ml-2 items-center gap-2 text-xs">
           {reactionsNonZero.map(
             ([key, val]: [key: reactionKeys, val: number]) => (
               <span
@@ -65,7 +65,7 @@ const ReleaseInfo = ({
               </span>
             )
           )}
-        </span>
+        </div>
       </a>
     </>
   )
