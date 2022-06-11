@@ -19,11 +19,15 @@ const PaimonCan = () => {
           <Image src={shipOut} alt="paimon-hehe" width={40} height={40} />
         </p>
         <p className="flex items-center">
-          <span className="mr-1">check for your realm currency to avoid overflow</span>
+          <span className="mr-1">
+            check for your realm currency to avoid overflow
+          </span>
           <Image src={timeToEat} alt="paimon-hehe" width={40} height={40} />
         </p>
         <p className="flex items-center">
-          <span className="mr-1">so you can reuse your parametric transformer just in time</span>
+          <span className="mr-1">
+            so you can reuse your parametric transformer just in time
+          </span>
           <Image src={tooEasy} alt="paimon-hehe" width={40} height={40} />
         </p>
       </div>
