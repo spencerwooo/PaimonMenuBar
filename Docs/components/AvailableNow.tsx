@@ -6,7 +6,7 @@ import DownloadButton from './DownloadButton'
 import logo from '../images/logo.png'
 
 const AvailableNow = ({ latest }: { latest: AppReleaseData }) => (
-  <div className="relative mt-12 py-8 px-4 md:px-8 border-y border-white/20 bg-[#232c33]">
+  <div className="relative py-8 px-4 md:px-8 border-y border-white/20 bg-[#232c33]">
     <div className="max-w-5xl mx-auto p-6 md:flex md:items-center md:justify-between">
       <div className="flex items-center">
         <Image

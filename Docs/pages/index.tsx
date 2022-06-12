@@ -37,7 +37,7 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
         <Features />
 
         <div className="bg-[#2c3740] relative">
-          <div className="max-w-5xl p-6 pt-24 mx-auto">
+          <div className="max-w-5xl px-6 py-20 mx-auto">
             <div className="space-y-16">
               <PaimonCan />
               <PaimonUses />
@@ -48,7 +48,7 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
 
           <AvailableNow latest={latest} />
 
-          <div className="max-w-5xl p-6 mx-auto">
+          <div className="max-w-5xl px-6 py-20 mx-auto">
             <Faq />
           </div>
 
