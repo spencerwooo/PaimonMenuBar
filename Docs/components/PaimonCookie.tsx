@@ -4,7 +4,7 @@ import luminePlease from '../images/lumine-please.png'
 const PaimonCookie = () => (
   <div>
     <Image
-      className="float-right"
+      className="float-right sticky top-4 hidden md:block"
       src={luminePlease}
       alt="lumine emoji"
       width={128}

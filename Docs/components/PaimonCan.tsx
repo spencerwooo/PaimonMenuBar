@@ -4,7 +4,7 @@ import paimonMighty from '../images/paimon-mighty.png'
 const PaimonCan = () => (
   <div>
     <Image
-      className="float-right"
+      className="float-right sticky top-4 hidden md:block"
       src={paimonMighty}
       alt="paimon emoji"
       width={128}

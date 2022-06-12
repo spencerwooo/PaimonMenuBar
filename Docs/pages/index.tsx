@@ -12,13 +12,15 @@ import Hero from '../components/Hero'
 import Meta from '../components/Head'
 
 import hutaoBackground from '../images/hutao-bg.jpg'
+import AvailableNow from '../components/AvailableNow'
+import Faq from '../components/Faq'
 
 const Home = ({ latest }: { latest: AppReleaseData }) => {
   return (
     <>
       <Meta />
 
-      <div className="text-white relative">
+      <main className="text-white relative">
         <div className="absolute w-full">
           <Image
             src={hutaoBackground}
@@ -36,17 +38,23 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
 
         <div className="bg-[#2c3740] relative">
           <div className="max-w-5xl p-6 pt-24 mx-auto">
-            <article className="space-y-16">
+            <div className="space-y-16">
               <PaimonCan />
               <PaimonUses />
               <PaimonCookie />
               <HowToGetMyCookie />
-            </article>
+            </div>
+          </div>
+
+          <AvailableNow latest={latest} />
+
+          <div className="max-w-5xl p-6 mx-auto">
+            <Faq />
           </div>
 
           <Footer />
         </div>
-      </div>
+      </main>
     </>
   )
 }

@@ -7,7 +7,7 @@ import configScreenshot from '../images/config-screenshot.jpg'
 const HowToGetMyCookie = () => (
   <div>
     <Image
-      className="float-right"
+      className="float-right sticky top-4 hidden md:block"
       src={hutaoSleepy}
       alt="emoji hutao"
       width={128}
@@ -38,7 +38,7 @@ const HowToGetMyCookie = () => (
         >
           https://hoyolab.com/home
         </a>{' '}
-        (if you are on asia/na/eu/sar) in <b>Chrome</b>, login, and press{' '}
+        (if you are on NA | EU | Asia | SAR) in <b>Chrome</b>, login, and press{' '}
         <kbd>F12</kbd> to open Chrome devtools.
       </p>
 

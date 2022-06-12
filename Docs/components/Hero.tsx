@@ -16,9 +16,15 @@ const Hero = ({ latest }: { latest: AppReleaseData }) => (
     </div>
 
     <div className="flex items-center">
-      <div className="-ml-4 h-[72px] w-[72px]">
-        <Image src={logo} alt="logo" height={72} width={72} priority />
-      </div>
+      <Image
+        className="-ml-4"
+        src={logo}
+        alt="logo"
+        height={72}
+        width={72}
+        priority
+        layout="raw"
+      />
 
       <span className="text-3xl lg:text-5xl font-bold tracking-wide ml-4 font-mulish inline">
         PaimonMenuBar
@@ -57,7 +63,7 @@ const Hero = ({ latest }: { latest: AppReleaseData }) => (
     </div>
 
     <div className="font-medium opacity-80 mt-4">
-      Requires macOS 11 Big Sur or later
+      Requires macOS 11 Big Sur or later.
     </div>
 
     <ReleaseInfo

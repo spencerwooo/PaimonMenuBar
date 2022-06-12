@@ -4,7 +4,7 @@ import zhongliThink from '../images/zhongli-think.png'
 const PaimonUses = () => (
   <div>
     <Image
-      className="float-right"
+      className="float-right sticky top-4 hidden md:block"
       src={zhongliThink}
       alt="zhongli emoji"
       width={128}
