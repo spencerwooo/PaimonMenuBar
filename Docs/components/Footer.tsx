@@ -1,7 +1,7 @@
 import { RiHeartPulseLine, RiHeartsLine } from 'react-icons/ri'
 
 const Footer = () => (
-  <div className="relative px-4 py-8 text-sm text-center bg-[#232c33] w-full">
+  <div className="relative px-4 py-8 text-sm text-center border-t border-white/20 bg-[#232c33] w-full">
     <div>
       Created with love by{' '}
       <a

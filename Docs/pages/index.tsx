@@ -123,8 +123,8 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
         <Features />
 
         <div className="bg-[#2c3740] relative">
-          <div className="max-w-5xl p-6 mx-auto">
-            <article className="prose prose-invert prose-img:rounded prose-figcaption:text-center">
+          <div className="max-w-5xl p-6 pt-24 mx-auto">
+            <article className="space-y-16">
               <PaimonCan />
               <PaimonUses />
               <PaimonCookie />
