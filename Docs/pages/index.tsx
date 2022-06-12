@@ -3,7 +3,7 @@ import type { AppReleaseData } from './types'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import hutaoBackground from '../images/hutao_bg.jpg'
+import hutaoBackground from '../images/hutao-bg.jpg'
 import logo from '../images/logo.png'
 
 import Screenshot3D from '../components/Screenshot3D'
@@ -123,7 +123,7 @@ const Home = ({ latest }: { latest: AppReleaseData }) => {
         <Features />
 
         <div className="bg-[#2c3740] relative">
-          <div className="max-w-4xl p-6 mx-auto">
+          <div className="max-w-5xl p-6 mx-auto">
             <article className="prose prose-invert prose-img:rounded prose-figcaption:text-center">
               <PaimonCan />
               <PaimonUses />

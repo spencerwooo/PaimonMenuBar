@@ -2,10 +2,10 @@ import Image, { StaticImageData } from 'next/image'
 
 import daily from '../images/daily.png'
 import expedition from '../images/expedition.png'
-import fragileResin from '../images/fragile_resin.png'
-import weeklyBoss from '../images/weekly_boss.png'
-import jarOfRiches from '../images/jar_of_riches.png'
-import parametric from '../images/parametric_transformer.png'
+import fragileResin from '../images/fragile-resin.png'
+import weeklyBoss from '../images/weekly-boss.png'
+import jarOfRiches from '../images/jar-of-riches.png'
+import parametric from '../images/parametric-transformer.png'
 
 const IconCard = ({
   icon,
