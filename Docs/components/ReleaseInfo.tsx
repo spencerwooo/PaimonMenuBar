@@ -50,7 +50,7 @@ const ReleaseInfo = ({
         href={htmlUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm mt-4 opacity-60 hover:opacity-50 block"
+        className="text-sm mt-4 opacity-50 hover:opacity-60"
       >
         Last updated {formatRelativeDate(publishedAt)}. Downloads:{' '}
         {downloadCount}.
