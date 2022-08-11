@@ -172,7 +172,7 @@ struct ExpeditionView: View {
     let currentExpeditionNum: Int
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
             HStack {
                 Text("Expeditions \(currentExpeditionNum)/\(maxExpeditionNum)")
                     .font(.subheadline)
@@ -198,6 +198,9 @@ struct ExpeditionItemView: View {
     let avatar: String
     let remainedTime: String
 
+    // 20 hours in seconds
+    let totalExpeditionTime: Float = 20 * 60 * 60
+
     var body: some View {
         HStack {
             KFImage.url(URL(string: avatar))
@@ -205,11 +208,21 @@ struct ExpeditionItemView: View {
                 .placeholder { Color.gray.opacity(0.3) }
                 .clipShape(Circle())
                 .overlay(Circle().stroke(status == "Finished" ? Color.green : Color.gray))
-                .frame(width: 20, height: 20)
-            Text(status == "Finished" ? String.localized("Complete") : String.localized("Exploring"))
-            Spacer()
-            Text(formatTimeInterval(timeInterval: remainedTime))
-                .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
+                .frame(width: 22, height: 22)
+
+            VStack(spacing: 6) {
+                HStack {
+                    Text(status == "Finished" ? String.localized("Complete") : String.localized("Exploring"))
+                    Spacer()
+                    Text(formatTimeInterval(timeInterval: remainedTime))
+                        .font(.custom("Avenir Next Demi Bold", size: 13, relativeTo: .body).italic())
+                }
+
+                ProgressView(value: totalExpeditionTime - (Float(remainedTime) ?? 0), total: totalExpeditionTime)
+                    .progressViewStyle(LinearProgressViewStyle(tint: status == "Finished" ?
+                            Color.green : Color(red: 0.89, green: 0.90, blue: 0.92)))
+                    .frame(height: 1).scaleEffect(x: 1, y: 0.4, anchor: .center)
+            }
         }
     }
 }
@@ -302,6 +315,6 @@ struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuExtrasView()
             .frame(width: 290.0)
-            .frame(height: 426.0)
+            .frame(height: 472.0)
     }
 }
