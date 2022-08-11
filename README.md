@@ -1,32 +1,52 @@
 <div align="center">
   <img src="Assets/logo.png" alt="logo" width="160" height="160" />
   <h3><code>PaimonMenuBar</code></h3>
-  <p><em>Paimon's now in your menu bar!</em></p>
+  <p><em>Track real-time Genshin Impact stats in your macOS menubar</em></p>
 
   <img src="https://img.shields.io/badge/uses-SwiftUI-f05138?labelColor=282c34&logo=swift" alt="Use Swift" />
   <img src="https://img.shields.io/badge/macOS-11.0+-f05138?labelColor=282c34&logo=apple" alt="macOS 11.0+" />
   <a href="https://github.com/spencerwooo/PaimonMenuBar/releases/latest"><img src="https://img.shields.io/github/v/release/spencerwooo/PaimonMenuBar?labelColor=282c34&logo=GitHub" alt="GitHub Release" /></a>
 </div>
 
-
 ## What's this?
 
-<img align="right" src="Assets/screenshot.jpg" width="300px" height="auto" alt="screenshot" />
+<img align="right" src="Assets/screenshot.jpg" width="240px" height="auto" alt="screenshot" />
 
-Genshin Impact has got a complicated daily (weekly) system, consisting of:
+> Paimon helps you track your Genshin Impact daily resin, expeditions, and more — straight in your macOS menu bar.
 
-* 4 Daily commisions.
-* 5 Expeditions.
-* 3~6 Weekly bosses.
-* and most importantly - **Resin** - capped at 160.
+Paimon can help you —
 
-Keeping track of these things daily to decide whether it is time to log into Genshin Impact is a pain-in-the-ass. Hence, I present: `PaimonMenuBar`.
+* 🌙 Keep track of your daily resin.
+* 💰 Monitor your daily expeditions and real-time realm currency.
+* 🏁 Remind you about your daily commissions and weekly boss fights.
+* 🍯 And notify you when your parametric transformer is ready to use.
 
-`PaimonMenuBar` is a native SwiftUI app living only in your macOS menu bar. Paimon will periodically pulls data from the Mihoyo API to update your latest in-game statistics - so you can decide whether it's time to continue the grind in that stupid artifact domain ;).
+Basically, `PaimonMenuBar` lives in your macOS menu bar quietly, and offers you a nice way of monitoring your in-game real-time stats when you need to check them.
+
+> **Note:**
+>
+> `PaimonMenuBar` is made with SwiftUI, designed and native to macOS.
 
 ## Download
 
 [![GitHub Release](https://img.shields.io/github/v/release/spencerwooo/PaimonMenuBar?labelColor=282c34&logo=GitHub&style=for-the-badge)](https://github.com/spencerwooo/PaimonMenuBar/releases/latest)
+
+## Things to know
+
+1. Paimon uses the official Mihoyo / Hoyoverse API found in either [米游社 (for CN players)](https://bbs.mihoyo.com/ys/) or [HoYoLAB (for Global players)](https://www.hoyolab.com/home).
+2. Yes, Paimon needs your cookie. It is so that Paimon can request said API on your behalf, and fetch those in-game stats periodically.
+3. Paimon will never-ever-ever-ever ask for your credentials to Genshin Impact nor any account! **The cookie is only stored locally.**
+4. If you got other questions or concerns: check [FAQ](https://paimon.swo.moe/).
+
+## Credits
+
+* Credits to [@Chawong](https://www.pixiv.net/en/artworks/92415888) for the logo. (Love from Hu Tao :heart:)
+* iOS widget (Scriptable): [[闲聊杂谈][工具分享] iOS 快捷指令/小组件](https://bbs.nga.cn/read.php?tid=29801567)
+* Friendly browser extension alternative: [daidr/paimon-webext](https://github.com/daidr/paimon-webext)
+* Friendly Windows alternative: [ArvinZJC/PaimonTray](https://github.com/ArvinZJC/PaimonTray)
+
+<details>
+<summary>Development notes.</summary>
 
 ## TO-DO
 
@@ -63,13 +83,7 @@ Keeping track of these things daily to decide whether it is time to log into Gen
 
 * Profit.
 
-## Credits
-
-* Credits to:
-  * [@Chawong](https://www.pixiv.net/en/artworks/92415888) for the logo. (Love from Hu Tao :heart:)
-  * iOS widget (Scriptable): [[闲聊杂谈][工具分享] iOS 快捷指令/小组件](https://bbs.nga.cn/read.php?tid=29801567)
-* Similar web extension: [daidr/paimon-webext](https://github.com/daidr/paimon-webext)
-* Friendly Windows alternative: [ArvinZJC/PaimonTray](https://github.com/ArvinZJC/PaimonTray)
+</details>
 
 ## License
 
