@@ -143,11 +143,14 @@ struct ConfigurationSettingsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             TextEditor(text: $cookie)
                 .font(.system(.body, design: .monospaced))
-                .frame(height: 120)
+                .frame(height: 120).cornerRadius(6)
+                .background(Color.black.cornerRadius(6).shadow(radius: 0.5, y: 0.8).opacity(0.6))
 
             Spacer()
 
             HStack {
+                Label("This cookie is only stored locally.", systemImage: "exclamationmark.circle")
+                    .font(.caption).opacity(0.6)
                 Spacer()
                 Button {
                     GameRecordUpdater.shared.clearGameRecord()

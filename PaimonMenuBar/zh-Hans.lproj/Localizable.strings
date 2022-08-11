@@ -111,3 +111,5 @@
 "⚠️ Data fetch failed, check your configuration" = "⚠️ 数据获取失败，检查你的配置信息";
 
 "⚠️ Notification unauthorized." = "⚠️ 没有推送通知权限。";
+
+"This cookie is only stored locally." = "Cookie 仅保存于本地。";
