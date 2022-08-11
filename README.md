@@ -8,11 +8,10 @@
   <a href="https://github.com/spencerwooo/PaimonMenuBar/releases/latest"><img src="https://img.shields.io/github/v/release/spencerwooo/PaimonMenuBar?labelColor=282c34&logo=GitHub" alt="GitHub Release" /></a>
 </div>
 
-## Demo
-
-[![Screenshot](Assets/screenshot.jpg)](https://paimon.swo.moe)
 
 ## What's this?
+
+<img align="right" src="Assets/screenshot.jpg" width="300px" height="auto" alt="screenshot" />
 
 Genshin Impact has got a complicated daily (weekly) system, consisting of:
 
@@ -60,14 +59,17 @@ Keeping track of these things daily to decide whether it is time to log into Gen
   ```bash
   cd <PATH_TO_SPARKLE>/artifacts/sparkle/bin
   ./generate_appcast <PATH_TO_PROJECT>/PaimonMenuBar/Build/
+  ```
 
 * Profit.
 
-## Credits and related
+## Credits
 
-* Credits to [@Chawong](https://www.pixiv.net/en/artworks/92415888) for the logo - originally posted on Pixiv - where I have shamelessly stolen from. (Love from Hu Tao :heart:).
-* Credits to the iOS widget made with Scriptable: [[闲聊杂谈][工具分享] iOS 快捷指令/小组件 树脂查询 自动获取，无需手动输入树脂](https://bbs.nga.cn/read.php?tid=29801567).
-* Similar web extension: [daidr/paimon-webext](https://github.com/daidr/paimon-webext).
+* Credits to:
+  * [@Chawong](https://www.pixiv.net/en/artworks/92415888) for the logo. (Love from Hu Tao :heart:)
+  * iOS widget (Scriptable): [[闲聊杂谈][工具分享] iOS 快捷指令/小组件](https://bbs.nga.cn/read.php?tid=29801567)
+* Similar web extension: [daidr/paimon-webext](https://github.com/daidr/paimon-webext)
+* Friendly Windows alternative: [ArvinZJC/PaimonTray](https://github.com/ArvinZJC/PaimonTray)
 
 ## License
 
