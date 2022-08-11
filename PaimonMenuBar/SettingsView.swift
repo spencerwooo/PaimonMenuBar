@@ -116,7 +116,7 @@ struct ConfigurationSettingsView: View {
 
     var body: some View {
         VStack {
-            Text("Personal information")
+            Text("User")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Form {

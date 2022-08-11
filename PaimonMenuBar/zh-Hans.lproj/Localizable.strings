@@ -26,7 +26,7 @@
 
 "Paste your cookie from:" = "从这里粘贴你的 Cookie：";
 
-"Personal information" = "个人信息";
+"User" = "个人信息";
 
 "Preferences" = "偏好设置";
 
@@ -112,4 +112,4 @@
 
 "⚠️ Notification unauthorized." = "⚠️ 没有推送通知权限。";
 
-"This cookie is only stored locally." = "Cookie 仅保存于本地。";
+"This cookie is only stored locally." = "Cookie 仅保存于本地";

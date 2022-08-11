@@ -100,6 +100,17 @@ class GameRecordUpdater {
         }
     }
 
+    // MARK: - Record update at midnight to avoid today or tomorrow conflicts
+
+    private func setupDayChangeUpdater() {
+        assert(Thread.isMainThread)
+
+        NotificationCenter.default.addObserver(forName: .NSCalendarDayChanged, object: nil, queue: .main) { _ in
+            print("Day change (midnight) update is triggered")
+            self.tryFetchGameRecordAndRender()
+        }
+    }
+
     // MARK: - Notification handler
 
     private func sendLocalNotification(context: LocalizedStringKey, completion: @escaping () -> Void) {
@@ -132,6 +143,7 @@ class GameRecordUpdater {
     init() {
         startNetworkActivityUpdater()
         resetUpdateTimer()
+        setupDayChangeUpdater()
 
         Defaults.observe(.recordUpdateInterval) { _ in
             self.onRecordUpdateIntervalChanged()
