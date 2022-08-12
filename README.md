@@ -10,7 +10,7 @@
 
 ## What's this?
 
-<img align="right" src="Assets/screenshot.jpg" width="240px" height="auto" alt="screenshot" />
+<img align="right" src="Assets/screenshot.jpg" width="320px" height="auto" alt="screenshot" />
 
 > Paimon helps you track your Genshin Impact daily resin, expeditions, and more — straight in your macOS menu bar.
 
@@ -23,7 +23,7 @@ Paimon can help you —
 
 Basically, `PaimonMenuBar` lives in your macOS menu bar quietly, and offers you a nice way of monitoring your in-game real-time stats when you need to check them.
 
-> **Note:**
+> **Note**
 >
 > `PaimonMenuBar` is made with SwiftUI, designed and native to macOS.
 
@@ -33,10 +33,9 @@ Basically, `PaimonMenuBar` lives in your macOS menu bar quietly, and offers you 
 
 ## Things to know
 
-1. Paimon uses the official Mihoyo / Hoyoverse API found in either [米游社 (for CN players)](https://bbs.mihoyo.com/ys/) or [HoYoLAB (for Global players)](https://www.hoyolab.com/home).
-2. Yes, Paimon needs your cookie. It is so that Paimon can request said API on your behalf, and fetch those in-game stats periodically.
-3. Paimon will never-ever-ever-ever ask for your credentials to Genshin Impact nor any account! **The cookie is only stored locally.**
-4. If you got other questions or concerns: check [FAQ](https://paimon.swo.moe/).
+1. Paimon uses the official Hoyoverse API found in either [米游社 (for CN players)](https://bbs.mihoyo.com/ys/) or [HoYoLAB (for Global players)](https://www.hoyolab.com/home).
+2. Yes, Paimon needs your cookie. It is so that Paimon can request said API on your behalf, and fetch those in-game stats periodically. Rest assured that **the cookie is only stored locally.**
+3. Check [FAQ](https://paimon.swo.moe/) if you have anymore questions.
 
 ## Credits
 
