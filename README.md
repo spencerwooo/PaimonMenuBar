@@ -10,7 +10,7 @@
 
 ## What's this?
 
-<img align="right" src="Assets/screenshot.jpg" width="320px" height="auto" alt="screenshot" />
+![screenshot](Assets/screenshot.jpg)
 
 > Paimon helps you track your Genshin Impact daily resin, expeditions, and more — straight in your macOS menu bar.
 
@@ -25,7 +25,7 @@ Basically, `PaimonMenuBar` lives in your macOS menu bar quietly, and offers you 
 
 > **Note**
 >
-> `PaimonMenuBar` is made with SwiftUI, designed and native to macOS.
+> `PaimonMenuBar` is made with SwiftUI, designed for and native to macOS.
 
 ## Download
 
