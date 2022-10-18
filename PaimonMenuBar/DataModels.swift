@@ -14,12 +14,12 @@ struct GameRecord: Codable, Defaults.Serializable {
      When this field is not present, it means the record is not a real record (e.g. empty record).
      */
     var fetchAt: Date?
-
+    
     var retcode: Int
     var message: String
-
+    
     var data: GameData
-
+    
     static let empty = GameRecord(
         fetchAt: nil, // Indicate an empty record
         retcode: 0,
@@ -49,14 +49,14 @@ struct GameData: Codable, Defaults.Serializable {
     var resin_discount_num_limit: Int
     var current_expedition_num: Int
     var max_expedition_num: Int
-
+    
     var expeditions: [Expeditions]
-
+    
     var current_home_coin: Int
     var max_home_coin: Int
     var home_coin_recovery_time: String
     var calendar_url: String
-
+    
     var transformer: Transformer
 }
 
@@ -83,14 +83,14 @@ struct RecoveryTime: Codable, Defaults.Serializable {
 enum GenshinServer: String, CaseIterable, Identifiable, Defaults.Serializable {
     case cn_gf01 // 天空岛
     case cn_qd01 // 世界树
-
+    
     case os_usa // Global (NA)
     case os_euro // Global (EU)
     case os_asia // Global (Asia)
     case os_cht // Global (SAR)
-
+    
     var id: String { rawValue }
-
+    
     var serverName: String {
         switch self {
         case .cn_gf01:
@@ -107,7 +107,7 @@ enum GenshinServer: String, CaseIterable, Identifiable, Defaults.Serializable {
             return "SAR"
         }
     }
-
+    
     var isCNServer: Bool {
         switch self {
         case .cn_gf01, .cn_qd01:
@@ -116,7 +116,7 @@ enum GenshinServer: String, CaseIterable, Identifiable, Defaults.Serializable {
             return false
         }
     }
-
+    
     var cookieSiteUrl: String {
         switch self {
         case .cn_gf01, .cn_qd01:
@@ -125,4 +125,10 @@ enum GenshinServer: String, CaseIterable, Identifiable, Defaults.Serializable {
             return "https://www.hoyolab.com/home"
         }
     }
+}
+
+enum IconStyle: Int,Defaults.Serializable {
+    case Normal = 1
+    case IconOnly = 2
+    case Compact = 3
 }

@@ -113,3 +113,11 @@
 "⚠️ Notification unauthorized." = "⚠️ 没有推送通知权限。";
 
 "This cookie is only stored locally." = "Cookie 仅保存于本地";
+
+"Status Icon Style:" = "状态栏图标样式:";
+
+"Normal" = "完全展示";
+
+"Compact" = "缩减文字";
+
+"IconOnly" = "仅图标";
