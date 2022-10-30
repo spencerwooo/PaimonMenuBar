@@ -20,6 +20,9 @@ class GameRecordUpdater {
      */
     func fetchGameRecordAndRenderNow() async -> GameRecord? {
         if let data = await getGameRecord() {
+            if data.fetchAt==nil {
+                return Defaults[.lastGameRecord];
+            }
             DispatchQueue.main.async {
                 Defaults[.lastGameRecord] = data
             }
