@@ -83,22 +83,24 @@ struct PreferenceSettingsView: View {
                 }
                 Text("... when parametric transformer is ready.").font(.caption).opacity(0.6)
 
-                Slider(value: $recordUpdateInterval, in: 60 ... 16 * 60, step: 60, label: {
+                Slider(value: $recordUpdateInterval, in: 1 ... 6, step: 1, label: {
                     Text("Update interval:")
                 }) { editing in
                     isEditing = editing
                 }
                 .frame(width: 360)
 
-                Text("Paimon fetches data every \(recordUpdateInterval, specifier: "%.0f") seconds*")
+                Text("Paimon fetches data every \(recordUpdateInterval, specifier: "%.0f") hour(s)*")
                     .font(.caption).opacity(0.6)
             }
 
             Divider()
 
-            Label("*Resin replenishes every 8 minutes, for your reference.", image: "FragileResin")
-                .font(.caption)
-                .opacity(0.6)
+            Label(
+                "*Updating every 1-3 hours is sufficient, to prevent from being captcha-ed. Don't worry, as Paimon will auto-update the data offline as time passes.",
+                image: "FragileResin"
+            )
+            .font(.caption).opacity(0.6).frame(width: 400)
         }
     }
 }

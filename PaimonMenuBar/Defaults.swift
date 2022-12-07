@@ -27,5 +27,8 @@ extension Defaults.Keys {
     // resin restores every 8 minutes
     static let recordUpdateInterval = Key<Double>("update_interval", default: 60 * 8)
 
+    // If the API encounters a failure (fetch failed, mostly because of the new captcha) ...
+    static let fetchFailed = Key<Bool>("fetch_failed", default: false)
+
     static let lastGameRecord = Key<GameRecord>("game_record", default: GameRecord.empty)
 }

@@ -22,10 +22,19 @@ class GameRecordUpdater {
         if let data = await getGameRecord() {
             DispatchQueue.main.async {
                 Defaults[.lastGameRecord] = data
+                Defaults[.fetchFailed] = false
             }
             return data
         } else {
-            sendLocalNotification(context: "⚠️ Data fetch failed, check your configuration") {}
+            // sendLocalNotification(context: "⚠️ Data fetch failed, check your configuration") {}
+
+            /**
+             The new API is more likely to fail due to captcha. Instead of sending notification
+             each time fetch fails, we update the UI when we encounter the captcha instead.
+             */
+            DispatchQueue.main.async {
+                Defaults[.fetchFailed] = true
+            }
             return nil
         }
     }
@@ -84,20 +93,71 @@ class GameRecordUpdater {
         networkActivityMon.start(queue: DispatchQueue.main)
     }
 
-    // MARK: - Self-Update the record according to the interval
+    // MARK: - Make a request to the remote API and update the record according to the interval
 
-    private var updateTimer: Timer?
+    private var apiUpdateTimer: Timer?
 
-    private func resetUpdateTimer() {
+    private func resetApiUpdateTimer() {
         assert(Thread.isMainThread)
 
-        if updateTimer != nil {
-            updateTimer?.invalidate()
+        if apiUpdateTimer != nil {
+            apiUpdateTimer?.invalidate()
         }
-        updateTimer = Timer.scheduledTimer(withTimeInterval: Defaults[.recordUpdateInterval], repeats: true) { _ in
-            print("Scheduled update is triggered")
-            self.tryFetchGameRecordAndRender()
+        apiUpdateTimer = Timer
+            .scheduledTimer(withTimeInterval: Defaults[.recordUpdateInterval] * 3600, repeats: true) { _ in
+                print("Scheduled update is triggered")
+                self.tryFetchGameRecordAndRender()
+            }
+    }
+
+    // MARK: - Self-Update the record according to the interval (which is 8 mins)
+
+    private var localUpdateTimer: Timer?
+
+    private func resetLocalUpdateTimer() {
+        assert(Thread.isMainThread)
+
+        if localUpdateTimer != nil {
+            localUpdateTimer?.invalidate()
         }
+        localUpdateTimer = Timer.scheduledTimer(withTimeInterval: 8 * 60, repeats: true, block: { _ in
+            print("Local updater triggered.")
+
+            guard self.updateTask == nil else {
+                // If there is an on-flying network request, then skip.
+                print("Local updater skipped, there is on-flying request")
+                return
+            }
+
+            var gameRecord = Defaults[.lastGameRecord]
+
+            // Update resin and recovery time
+            if gameRecord.data.current_resin < gameRecord.data.max_resin {
+                gameRecord.data.current_resin += 1
+            }
+            var resinRecoveryTime = Int(gameRecord.data.resin_recovery_time) ?? 0
+            if resinRecoveryTime > 0 {
+                var updatedTime = resinRecoveryTime - 8 * 60
+                gameRecord.data
+                    .resin_recovery_time =
+                    String(updatedTime > 0 ? updatedTime : 0)
+            }
+
+            // Update expedition and their status
+            for (index, expedition) in gameRecord.data.expeditions.enumerated() {
+                var expeditionRemainedTime = Int(expedition.remained_time) ?? 0
+                if expeditionRemainedTime > 0 {
+                    var updatedRemainedTime = expeditionRemainedTime - 8 * 60
+                    gameRecord.data.expeditions[index]
+                        .remained_time = String(updatedRemainedTime > 0 ? updatedRemainedTime : 0)
+                    if updatedRemainedTime <= 0 {
+                        gameRecord.data.expeditions[index].status = "Finished"
+                    }
+                }
+            }
+
+            Defaults[.lastGameRecord] = gameRecord
+        })
     }
 
     // MARK: - Record update at midnight to avoid today or tomorrow conflicts
@@ -142,7 +202,8 @@ class GameRecordUpdater {
 
     init() {
         startNetworkActivityUpdater()
-        resetUpdateTimer()
+        resetApiUpdateTimer()
+        resetLocalUpdateTimer()
         setupDayChangeUpdater()
 
         Defaults.observe(.recordUpdateInterval) { _ in
@@ -195,6 +256,6 @@ class GameRecordUpdater {
         guard initialized else { return }
 
         print("RecordUpdateInterval is changed: ", Defaults[.recordUpdateInterval])
-        resetUpdateTimer()
+        resetApiUpdateTimer()
     }
 }
