@@ -30,7 +30,9 @@ func getNotificationPermission(completion: @escaping (Bool) -> Void) {
 struct PreferenceSettingsView: View {
     @Default(.recordUpdateInterval) private var recordUpdateInterval
     @Default(.isStatusIconTemplate) private var isStatusIconTemplate
+    @Default(.isShowResinText) private var isShowResinText
     @Default(.isNotifyParametricReady) private var isNotifyParametricReady
+    @Default(.lastGameRecord) private var lastGameRecord
 
     @StateObject var updaterViewModel = UpdaterViewModel.shared
 
@@ -50,16 +52,32 @@ struct PreferenceSettingsView: View {
                 Text("Current version: \(Bundle.main.appVersion ?? "") (\(Bundle.main.buildNumber ?? ""))")
                     .font(.caption).opacity(0.6)
 
-                Defaults.Toggle(key: .isStatusIconTemplate) {
-                    Image("FragileResin")
-                        .renderingMode(isStatusIconTemplate ? .template : .original)
-                        .frame(width: 19, height: 19)
-                }
-                .onChange { _ in
-                    AppDelegate.shared.updateStatusIcon()
+                HStack {
+                    Defaults.Toggle(key: .isStatusIconTemplate) {
+                        Image("FragileResin")
+                            .renderingMode(isStatusIconTemplate ? .template : .original)
+                            .frame(width: 19, height: 19)
+                    }
+                    .onChange { _ in
+                        AppDelegate.shared.updateStatusIcon()
+                    }
+
+                    Defaults.Toggle(key: .isShowResinText) {
+                        Text("\(lastGameRecord.data.current_resin)/\(lastGameRecord.data.max_resin)")
+                            .opacity(isShowResinText ? 1 : 0.4)
+                    }
+                    .onChange { _ in
+                        AppDelegate.shared.updateStatusButtonTitle()
+                    }
                 }
                 .formLabel(Text("Menubar icon:"))
-                Text(isStatusIconTemplate ? "Native macOS adaptive icon." : "Colored icon.").font(.caption).opacity(0.6)
+
+                HStack(spacing: 2) {
+                    Text(isStatusIconTemplate ? "Native macOS adaptive icon." : "Colored icon.").font(.caption)
+                        .opacity(0.6)
+                    Text(isShowResinText ? "With resin counter." : "Resin counter hidden.").font(.caption)
+                        .opacity(0.6)
+                }
 
                 Defaults.Toggle(key: .isNotifyParametricReady) {
                     Image(

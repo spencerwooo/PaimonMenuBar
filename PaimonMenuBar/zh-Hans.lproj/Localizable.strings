@@ -80,6 +80,10 @@
 
 "Colored icon." = "彩色图标。";
 
+"With resin counter." = "显示树脂。";
+
+"Resin counter hidden." = "树脂隐藏。";
+
 "%@ left" = "剩 %@ 个";
 
 "Ready" = "冷却完成";

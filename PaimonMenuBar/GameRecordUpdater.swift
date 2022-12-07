@@ -135,9 +135,9 @@ class GameRecordUpdater {
             if gameRecord.data.current_resin < gameRecord.data.max_resin {
                 gameRecord.data.current_resin += 1
             }
-            var resinRecoveryTime = Int(gameRecord.data.resin_recovery_time) ?? 0
+            let resinRecoveryTime = Int(gameRecord.data.resin_recovery_time) ?? 0
             if resinRecoveryTime > 0 {
-                var updatedTime = resinRecoveryTime - 8 * 60
+                let updatedTime = resinRecoveryTime - 8 * 60
                 gameRecord.data
                     .resin_recovery_time =
                     String(updatedTime > 0 ? updatedTime : 0)
@@ -145,9 +145,9 @@ class GameRecordUpdater {
 
             // Update expedition and their status
             for (index, expedition) in gameRecord.data.expeditions.enumerated() {
-                var expeditionRemainedTime = Int(expedition.remained_time) ?? 0
+                let expeditionRemainedTime = Int(expedition.remained_time) ?? 0
                 if expeditionRemainedTime > 0 {
-                    var updatedRemainedTime = expeditionRemainedTime - 8 * 60
+                    let updatedRemainedTime = expeditionRemainedTime - 8 * 60
                     gameRecord.data.expeditions[index]
                         .remained_time = String(updatedRemainedTime > 0 ? updatedRemainedTime : 0)
                     if updatedRemainedTime <= 0 {

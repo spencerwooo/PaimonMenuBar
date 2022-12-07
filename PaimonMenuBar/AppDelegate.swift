@@ -23,14 +23,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         assert(Thread.isMainThread)
 
         updateStatusIcon()
+        updateStatusButtonTitle()
 
         let gameRecord = Defaults[.lastGameRecord]
-        if gameRecord.fetchAt == nil {
-            statusButton.title = "-/160" // Cookie Not configured
-        } else {
-            statusButton.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
-        }
-
         let currentExpeditionNum = gameRecord.data.current_expedition_num
         menuItemMain.frame = NSRect(x: 0, y: 0, width: 290, height: 292 + currentExpeditionNum * 36)
     }
@@ -46,6 +41,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         statusButton.image?.size.width = 19
         statusButton.image?.size.height = 19
+    }
+
+    func updateStatusButtonTitle() {
+        if !Defaults[.isShowResinText] {
+            statusButton.title = ""
+            return
+        }
+
+        let gameRecord = Defaults[.lastGameRecord]
+        if gameRecord.fetchAt == nil {
+            statusButton.title = "-/160" // Cookie Not configured
+        } else {
+            statusButton.title = "\(gameRecord.data.current_resin)/\(gameRecord.data.max_resin)"
+        }
     }
 
     @objc private func openSettingsView() {
