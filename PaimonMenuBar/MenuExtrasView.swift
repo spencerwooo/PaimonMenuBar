@@ -118,6 +118,8 @@ struct MenuExtrasView: View {
                 }
                 .padding()
             }
+        }.onAppear {
+            GameRecordUpdater.shared.tryFetchGameRecordAndRender()
         }
     }
 }
