@@ -122,7 +122,7 @@ class GameRecordUpdater {
         if localUpdateTimer != nil {
             localUpdateTimer?.invalidate()
         }
-        localUpdateTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { _ in
+        localUpdateTimer = Timer.scheduledTimer(withTimeInterval: 8 * 60, repeats: true, block: { _ in
             print("Local updater triggered.")
 
             guard self.updateTask == nil else {
@@ -137,25 +137,23 @@ class GameRecordUpdater {
                 return
             }
 
-            // Elapsed time since last update in seconds
-            let elapsedTime = Int(Date().timeIntervalSince(gameRecord.fetchAt!))
-            print("Elapsed time since last fetch:", elapsedTime)
-
             // Update resin and recovery time
-            var currentResin = gameRecord.data.current_resin + Int(elapsedTime / 8 / 60)
-            currentResin = currentResin < gameRecord.data.max_resin ? currentResin : gameRecord.data.max_resin
-
-            var currentRecoveryTime = (Int(gameRecord.data.resin_recovery_time) ?? 0) - elapsedTime
-            currentRecoveryTime = currentRecoveryTime > 0 ? currentRecoveryTime : 0
-
-            gameRecord.data.current_resin = currentResin
-            gameRecord.data.resin_recovery_time = String(currentRecoveryTime)
+            if gameRecord.data.current_resin < gameRecord.data.max_resin {
+                gameRecord.data.current_resin += 1
+            }
+            let resinRecoveryTime = Int(gameRecord.data.resin_recovery_time) ?? 0
+            if resinRecoveryTime > 0 {
+                let updatedTime = resinRecoveryTime - 8 * 60
+                gameRecord.data
+                    .resin_recovery_time =
+                    String(updatedTime > 0 ? updatedTime : 0)
+            }
 
             // Update expedition and their status
             for (index, expedition) in gameRecord.data.expeditions.enumerated() {
                 let expeditionRemainedTime = Int(expedition.remained_time) ?? 0
                 if expeditionRemainedTime > 0 {
-                    let updatedRemainedTime = expeditionRemainedTime - elapsedTime
+                    let updatedRemainedTime = expeditionRemainedTime - 8 * 60
                     gameRecord.data.expeditions[index]
                         .remained_time = String(updatedRemainedTime > 0 ? updatedRemainedTime : 0)
                     if updatedRemainedTime <= 0 {
