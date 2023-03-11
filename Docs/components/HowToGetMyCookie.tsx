@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image"
 
 import hutaoSleepy from '../images/hutao-sleepy.png'
 import cookieScreenshot from '../images/cookie.jpg'
@@ -11,9 +11,7 @@ const HowToGetMyCookie = () => (
       src={hutaoSleepy}
       alt="emoji hutao"
       width={128}
-      height={128}
-      layout="raw"
-    />
+      height={128} />
 
     <section
       id="how-to-get-my-cookie"
@@ -48,7 +46,13 @@ const HowToGetMyCookie = () => (
       </p>
 
       <figure>
-        <Image src={cookieScreenshot} alt="Cookie screenshot" />
+        <Image
+          src={cookieScreenshot}
+          alt="Cookie screenshot"
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <figcaption>Getting your cookie from 米游社 or HoYoLAB</figcaption>
       </figure>
 
@@ -59,7 +63,13 @@ const HowToGetMyCookie = () => (
       </p>
 
       <figure>
-        <Image src={configScreenshot} alt="Config screenshot" />
+        <Image
+          src={configScreenshot}
+          alt="Config screenshot"
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <figcaption>Putting your cookie in PaimonMenuBar</figcaption>
       </figure>
 

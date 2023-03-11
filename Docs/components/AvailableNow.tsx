@@ -1,5 +1,5 @@
 import type { AppReleaseData } from '../pages/types'
-import Image from 'next/image'
+import Image from "next/image"
 
 import DownloadButton from './DownloadButton'
 
@@ -9,14 +9,7 @@ const AvailableNow = ({ latest }: { latest: AppReleaseData }) => (
   <div className="relative py-8 px-4 md:px-8 border-y border-white/20 bg-[#232c33]">
     <div className="max-w-5xl mx-auto p-6 md:flex md:items-center md:justify-between">
       <div className="flex items-center">
-        <Image
-          className="-ml-4 mr-4"
-          src={logo}
-          alt="logo"
-          height={120}
-          width={120}
-          layout="raw"
-        />
+        <Image className="-ml-4 mr-4" src={logo} alt="logo" height={120} width={120} />
 
         <div>
           <div className="font-bold font-mulish text-2xl md:text-4xl">

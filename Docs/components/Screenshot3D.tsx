@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image"
 import Atropos from 'atropos/react'
 import screenshot from '../images/screenshot-transparent-light.png'
 
@@ -9,7 +9,10 @@ const Screenshot3D = () => (
       alt="PaimonMenuBar screenshot"
       width={360}
       height={592.8}
-    />
+      style={{
+        maxWidth: "100%",
+        height: "auto"
+      }} />
   </Atropos>
 )
 

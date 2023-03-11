@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image"
 import zhongliThink from '../images/zhongli-think.png'
 
 const PaimonUses = () => (
@@ -8,9 +8,7 @@ const PaimonUses = () => (
       src={zhongliThink}
       alt="zhongli emoji"
       width={128}
-      height={128}
-      layout="raw"
-    />
+      height={128} />
 
     <section className="prose prose-invert">
       <h2>How does Paimon work?</h2>

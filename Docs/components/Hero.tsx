@@ -1,6 +1,6 @@
 import type { AppReleaseData } from '../pages/types'
 
-import Image from 'next/image'
+import Image from "next/image"
 
 import Screenshot3D from '../components/Screenshot3D'
 import DownloadButton from '../components/DownloadButton'
@@ -16,15 +16,7 @@ const Hero = ({ latest }: { latest: AppReleaseData }) => (
     </div>
 
     <div className="flex items-center">
-      <Image
-        className="-ml-4"
-        src={logo}
-        alt="logo"
-        height={72}
-        width={72}
-        priority
-        layout="raw"
-      />
+      <Image className="-ml-4" src={logo} alt="logo" height={72} width={72} priority />
 
       <span className="text-3xl lg:text-5xl font-bold tracking-wide ml-4 font-mulish inline">
         PaimonMenuBar

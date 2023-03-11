@@ -1,6 +1,6 @@
 import type { GetStaticProps } from 'next'
 import type { AppReleaseData } from './types'
-import Image from 'next/image'
+import Image from "next/image"
 
 import Features from '../components/Features'
 import PaimonCan from '../components/PaimonCan'
@@ -16,47 +16,48 @@ import AvailableNow from '../components/AvailableNow'
 import Faq from '../components/Faq'
 
 const Home = ({ latest }: { latest: AppReleaseData }) => {
-  return (
-    <>
-      <Meta />
+  return <>
+    <Meta />
 
-      <main className="text-white relative">
-        <div className="absolute w-full">
-          <Image
-            src={hutaoBackground}
-            alt="background"
-            placeholder="blur"
-            layout="responsive"
-            priority
-          />
-          <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-[#2C3740]" />
+    <main className="text-white relative">
+      <div className="absolute w-full">
+        <Image
+          src={hutaoBackground}
+          alt="background"
+          placeholder="blur"
+          priority
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto"
+          }} />
+        <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-[#2C3740]" />
+      </div>
+
+      <Hero latest={latest} />
+
+      <Features />
+
+      <div className="bg-[#2c3740] relative">
+        <div className="max-w-5xl px-6 py-20 mx-auto">
+          <div className="space-y-16">
+            <PaimonCan />
+            <PaimonUses />
+            <PaimonCookie />
+            <HowToGetMyCookie />
+          </div>
         </div>
 
-        <Hero latest={latest} />
+        <AvailableNow latest={latest} />
 
-        <Features />
-
-        <div className="bg-[#2c3740] relative">
-          <div className="max-w-5xl px-6 py-20 mx-auto">
-            <div className="space-y-16">
-              <PaimonCan />
-              <PaimonUses />
-              <PaimonCookie />
-              <HowToGetMyCookie />
-            </div>
-          </div>
-
-          <AvailableNow latest={latest} />
-
-          <div className="max-w-5xl px-6 py-20 mx-auto">
-            <Faq />
-          </div>
-
-          <Footer />
+        <div className="max-w-5xl px-6 py-20 mx-auto">
+          <Faq />
         </div>
-      </main>
-    </>
-  )
+
+        <Footer />
+      </div>
+    </main>
+  </>;
 }
 
 export const getStaticProps: GetStaticProps = async () => {

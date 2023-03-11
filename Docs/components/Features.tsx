@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/image'
+import Image, { StaticImageData } from "next/image"
 
 import daily from '../images/daily.png'
 import expedition from '../images/expedition.png'
@@ -19,7 +19,15 @@ const IconCard = ({
   <div
     className={`rounded-lg lg:text-lg flex flex-col items-center justify-center py-6 ${style}`}
   >
-    <Image src={icon} alt="icon" width={36} height={36} />
+    <Image
+      src={icon}
+      alt="icon"
+      width={36}
+      height={36}
+      style={{
+        maxWidth: "100%",
+        height: "auto"
+      }} />
     <span className="mt-2">{label}</span>
   </div>
 )

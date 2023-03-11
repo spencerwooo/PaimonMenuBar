@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image"
 import luminePlease from '../images/lumine-please.png'
 
 const PaimonCookie = () => (
@@ -8,9 +8,7 @@ const PaimonCookie = () => (
       src={luminePlease}
       alt="lumine emoji"
       width={128}
-      height={128}
-      layout="raw"
-    />
+      height={128} />
 
     <section className="prose prose-invert">
       <h2>Why does Paimon need your cookie?</h2>

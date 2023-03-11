@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image"
 import paimonMighty from '../images/paimon-mighty.png'
 
 const PaimonCan = () => (
@@ -8,9 +8,7 @@ const PaimonCan = () => (
       src={paimonMighty}
       alt="paimon emoji"
       width={128}
-      height={128}
-      layout="raw"
-    />
+      height={128} />
 
     <section className="prose prose-invert">
       <h2>Mighty Paimon!</h2>
